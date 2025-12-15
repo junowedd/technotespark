@@ -1,50 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Kyung Wook Park | Semiconductor Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Kyung Wook Park | Senior EDA & Physical Verification Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       margin: 0;
       background: #f5f7fa;
       color: #1f2937;
-      line-height: 1.6;
+      line-height: 1.7;
     }
     .container {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: auto;
       padding: 40px 20px;
     }
     header {
-      background: #0f172a;
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
       color: #ffffff;
-      padding: 60px 20px;
+      padding: 90px 20px 70px;
     }
     header h1 {
-      margin: 0;
-      font-size: 2.6em;
+      margin: 0 0 16px 0;
+      font-size: 3em;
     }
     header p {
-      font-size: 1.2em;
-      opacity: 0.9;
+      font-size: 1.35em;
+      max-width: 950px;
+      opacity: 0.95;
     }
     section {
       background: #ffffff;
-      margin-top: 30px;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+      margin-top: 50px;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.07);
     }
     h2 {
-      border-bottom: 2px solid #e5e7eb;
-      padding-bottom: 8px;
-      margin-bottom: 20px;
+      margin-top: 0;
       color: #0f172a;
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 10px;
     }
-    ul {
-      padding-left: 20px;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      margin-top: 24px;
+    }
+    .card {
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 26px;
+      border: 1px solid #e5e7eb;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 34px rgba(0,0,0,0.1);
+    }
+    .card h4 {
+      margin-top: 0;
+      color: #1e3a8a;
     }
     a {
       color: #2563eb;
@@ -54,14 +73,9 @@
     a:hover {
       text-decoration: underline;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
     footer {
       text-align: center;
-      margin: 40px 0 20px;
+      margin: 70px 0 30px;
       font-size: 0.9em;
       color: #6b7280;
     }
@@ -73,82 +87,47 @@
 <header>
   <div class="container">
     <h1>Kyung Wook Park</h1>
-    <p>Senior Semiconductor Engineer | EDA & Manufacturing | Automotive & High-Performance ICs</p>
+    <p><strong>Senior Physical Design & Verification Engineer</strong> delivering manufacturable, silicon-proven solutions at advanced technology nodes.</p>
+    <p>29+ years of hands-on expertise in DRC/LVS/PERC, PEX, power integrity, OPC/RET, automation, and full tape-out execution across complex ASIC products.</p>
   </div>
 </header>
 
 <div class="container">
 
-  <section>
-    <h2>Professional Summary</h2>
-    <p>
-    Senior semiconductor engineer with <strong>29+ years of experience</strong> spanning IC design,
-    DDR/SRAM memory, mixed-signal integration, EDA/CAD verification, and design-to-mask preparation.
-    Strong expertise in circuit simulation, physical layout, parasitic extraction, timing analysis,
-    PDK development, full-chip sign-off, OPC/RET, and advanced-node manufacturing enablement.  
-  </p>
-  <p>
-    Proven track record of bridging design, verification, and photomask data preparation while working
-    closely with leading foundries including <strong>TSMC, Intel, GlobalFoundries, Samsung, and ST</strong>.
-    Extensive experience supporting automotive OEMs and Tier-1 suppliers across <strong>EMEA and APAC</strong>.
-  </p>
-  <p>
-    Brings cross-domain experience across automotive, ASIC, and high-performance products—combining
-    deep technical expertise with customer-facing <strong>Applicaiton Engineering and regional Sales</strong> 
-    experience to drive technology adoption, business growth, and successful tape-outs.
-  </p>
-  </section>
-
-  <section>
-    <h2>Core Expertise</h2>
-    <div class="grid">
-      <ul>
-        <li>IC Design (DDR / SRAM)</li>
-        <li>Analog & Mixed-Signal</li>
-        <li>Physical Design & Sign-off</li>
-        <li>DRC / LVS / PERC / PEX</li>
-      </ul>
-      <ul>
-        <li>StarRC & PrimeTime</li>
-        <li>PDK Development</li>
-        <li>OPC / RET & Mask Data Prep</li>
-        <li>Advanced-Node Manufacturing</li>
-      </ul>
-      <ul>
-        <li>Automotive Semiconductors</li>
-        <li>Foundry Enablement</li>
-        <li>Field Applications Engineering</li>
-        <li>Technical Sales Leadership</li>
-      </ul>
+<section>
+  <h2>Technical Ownership Highlights</h2>
+  <div class="grid">
+    <div class="card">
+      <h4>🔒 Sign-off Ownership</h4>
+      <p>End-to-end responsibility for physical verification and tape-out readiness.</p>
+      <a href="highlights/signoff_ownership.html">View highlight →</a>
     </div>
-  </section>
+    <div class="card">
+      <h4>⚙ Automation & Flow Optimization</h4>
+      <p>Scalable automation improving verification predictability and turnaround time.</p>
+      <a href="highlights/automation_flow_optimization.html">View highlight →</a>
+    </div>
+    <div class="card">
+      <h4>🧠 Interview Discussion Guide</h4>
+      <p>STAR-based technical discussion guide mapped to real projects.</p>
+      <a href="interview_bridge.html">View guide →</a>
+    </div>
+  </div>
+</section>
 
-  <section>
-    <h2>Portfolio & Downloads</h2>
-    <ul>
-      <li>📄 <a href="resume/KyungWookPark_CV.pdf" target="_blank"> Download CV (PDF)</a></li>
-      <li>🧩 <a href="projects/eda/Document_2_Frontend_Backend_KWPARK.pdf" target="_blank"> EDA & Physical Verification Tools Expertise (PDF)</a></li>
-      <li>🕒 <a href="projects/career/career_timeline.pdf" target="_blank"> Career Growth</a></li>
-      <li>🏭 <a href="projects/foundry/dfm_foundries.pdf" target="_blank"> Foundry & Manufacturing Projects, Coming soon</a></li>
-      <li>🚗 <a href="projects/automotive/auto_customers.pdf" target="_blank"> Automotive Customer Engagement, Coming soon</a></li>
-    </ul>
-    <p><em>Confidential or proprietary content is excluded.</em></p>
-  </section>
-
-  <section>
-    <h2>Contact</h2>
-    <ul>
-      <li>Email: <a href="mailto:junowedd@gmail.com">junowedd@gmail.com</a></li>
-      <li>Location: Munich, Germany</li>
-      <li>LinkedIn: <a href="https://www.linkedin.com/in/munichkpark/" target="_blank">Professional Profile </a></li>
-      <li>GitHub: <a href="https://junowedd.github.io/technotespark/" target="_blank">Portfolio Site</a></li>
-    </ul>
-  </section>
+<section>
+  <h2>Contact</h2>
+  <ul>
+    <li>Email: <a href="mailto:junowedd@gmail.com">junowedd@gmail.com</a></li>
+    <li>Location: Munich, Germany</li>
+    <li>LinkedIn: <a href="https://www.linkedin.com/in/munichkpark/" target="_blank">linkedin.com/in/munichkpark</a></li>
+  </ul>
+</section>
 
 </div>
 
 <footer>
-  © Kyung Wook Park — Semiconductor Engineering Portfolio
+  © Kyung Wook Park — Senior EDA & Physical Verification Engineering Portfolio
 </footer>
 
 </body>
