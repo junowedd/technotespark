@@ -116,8 +116,8 @@ fetch("search-index.json")
   .then(docs => {
     const idx = lunr(function () {
       this.ref("url");
-      this.field("title");
-      this.field("content");
+      this.field("title", { boost: 1 });
+      this.field("content", { boost: 10 });
       docs.forEach(d => this.add(d));
     });
 
