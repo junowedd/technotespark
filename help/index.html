@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Help Documentation</title>
+  <link rel="stylesheet" href="../styles/help.css" />
+</head>
+<body>
+<header class="site-header">
+  <nav class="global-nav">
+    <span>Help Center</span>
+    <button id="theme-toggle">🌙</button>
+  </nav>
+</header>
+
+<section class="page-intro">
+  <h1>Help Documentation</h1>
+  <p class="intro">Product help and documentation</p>
+</section>
+
+<main class="content-layout">
+  <aside class="side-nav">
+    <nav class="toc"><ul class="toc-list"><li><a href="#what-is-it">What is it?</a></ul></nav>
+  </aside>
+
+  <article class="content">
+    <h1>PDF Collaboration Spaces</h1><div class="callout note"><strong>Note</strong><p>This document explains how collaboration spaces work.</p></div>
+
+<h2 id="what-is-it">What is it?</h2><p>A shared environment for reviewing PDFs.</p>
+<pre><code class="language-js">createSpace();
+</code></pre>
+<pre><code class="language-diff">- oldMethod();
++ newMethod();
+</code></pre>
+
+  </article>
+</main>
+
+<footer class="site-footer">
+  © 2025 Company
+</footer>
+
+
+<script>
+const toggleBtn = document.getElementById("theme-toggle");
+const root = document.documentElement;
+const saved = localStorage.getItem("theme");
+
+if (saved) {
+  root.setAttribute("data-theme", saved);
+  toggleBtn.textContent = saved === "dark" ? "☀️" : "🌙";
+}
+
+toggleBtn.addEventListener("click", () => {
+  const current = root.getAttribute("data-theme");
+  const next = current === "dark" ? "light" : "dark";
+  root.setAttribute("data-theme", next);
+  localStorage.setItem("theme", next);
+  toggleBtn.textContent = next === "dark" ? "☀️" : "🌙";
+});
+
+document.querySelectorAll("pre > code").forEach(code => {
+  const pre = code.parentElement;
+  pre.classList.add("code-block");
+
+  const rawLines = code.innerText.split("
+");
+  const htmlLines = code.innerHTML.split("
+");
+  code.innerHTML = "";
+
+  htmlLines.forEach((line, i) => {
+    const row = document.createElement("span");
+    row.className = "line";
+
+    const ln = document.createElement("span");
+    ln.className = "ln";
+    ln.textContent = i + 1;
+
+    const content = document.createElement("span");
+    content.innerHTML = line || " ";
+
+    row.appendChild(ln);
+    row.appendChild(content);
+    code.appendChild(row);
+  });
+
+  const btn = document.createElement("button");
+  btn.className = "copy-btn";
+  btn.textContent = "Copy";
+
+  btn.addEventListener("click", () => {
+    const clean = rawLines.map(l => l.replace(/^([+-])/, "")).join("
+");
+    navigator.clipboard.writeText(clean);
+    btn.textContent = "Copied";
+    btn.classList.add("copied");
+    setTimeout(() => {
+      btn.textContent = "Copy";
+      btn.classList.remove("copied");
+    }, 1500);
+  });
+
+  pre.appendChild(btn);
+});
+</script>
+
+</body>
+</html>
