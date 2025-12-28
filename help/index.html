@@ -10,6 +10,11 @@
   <nav class="global-nav">
     <span>Help Center</span>
     <button id="theme-toggle">🌙</button>
+    <input
+    type="search"
+    id="search-input"
+    placeholder="Search documentation…"
+    />
   </nav>
 </header>
 
@@ -22,7 +27,7 @@
   <aside class="side-nav">
     <nav class="toc"><ul class="toc-list"><li><a href="#what-is-it">What is it?</a></ul></nav>
   </aside>
-
+<div id="search-results" hidden></div>
   <article class="content">
     <h1>PDF Collaboration Spaces</h1><div class="callout note"><strong>Note</strong><p>This document explains how collaboration spaces work.</p></div>
 
@@ -103,6 +108,44 @@ document.querySelectorAll("pre > code").forEach(code => {
 
   pre.appendChild(btn);
 });
+</script>
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+<script>
+fetch("search-index.json")
+  .then(r => r.json())
+  .then(docs => {
+    const idx = lunr(function () {
+      this.ref("url");
+      this.field("title");
+      this.field("content");
+      docs.forEach(d => this.add(d));
+    });
+
+    const input = document.getElementById("search-input");
+    const results = document.getElementById("search-results");
+
+    input.addEventListener("input", () => {
+      const q = input.value.trim();
+      results.innerHTML = "";
+
+      if (!q) {
+        results.hidden = true;
+        return;
+      }
+
+      results.hidden = false;
+      idx.search(q).forEach(m => {
+        const doc = docs.find(d => d.url === m.ref);
+        const div = document.createElement("div");
+        div.className = "search-item";
+    div.innerHTML =
+      '<a href="' + doc.url + '">' + doc.title + '</a>' +
+      '<p>' + doc.content.slice(0,120) + '…</p>';
+  
+          results.appendChild(div);
+      });
+    });
+  });
 </script>
 
 </body>
