@@ -20,14 +20,12 @@
 
 <section class="page-intro">
   <h1>Help Documentation</h1>
-  <p class="intro">Product help and documentation</p>
+  <p class="intro">{{description}}</p>
 </section>
 
 <main class="content-layout">
   <aside class="side-nav">
-    <nav class="toc"><ul class="toc-list"><li class="toc-l2">
-    <a href="#what-is-it">What is it?</a>
-  </li></ul></nav>
+    <nav class="toc"><ul class="toc-list"><li><a href="#what-is-it">What is it?</a></li></ul></nav>
   </aside>
 <div id="search-results" hidden></div>
   <article class="content">
@@ -49,52 +47,25 @@ This document explains how collaboration spaces work.
 </footer>
 
 
-<script src="https://unpkg.com/lunr/lunr.js"></script>
 <script>
-fetch("search-index.json")
-  .then(r => r.json())
-  .then(docs => {
-    const idx = lunr(function () {
-      this.ref("url");
-
-      this.pipeline.remove(lunr.stemmer);
-      this.searchPipeline.remove(lunr.stemmer);
-
-      this.field("title", { boost: 2 });
-      this.field("content", { boost: 10 });
-
-      docs.forEach(d => this.add(d));
-    });
-
-    const input = document.getElementById("search-input");
-    const results = document.getElementById("search-results");
-    if (!input || !results) return;
-
-    input.addEventListener("input", () => {
-      const q = input.value.trim();
-      results.innerHTML = "";
-
-      if (!q) {
-        results.hidden = true;
-        return;
-      }
-
-      results.hidden = false;
-
-      idx.search(q).forEach(m => {
-        const doc = docs.find(d => d.url === m.ref);
-        if (!doc) return;
-
-        const div = document.createElement("div");
-        div.className = "search-item";
-        div.innerHTML =
-          '<a href="' + doc.url + '">' + doc.title + '</a>' +
-          '<p>' + doc.content.slice(0, 140) + '…</p>';
-
+fetch("search-index.json").then(r=>r.json()).then(docs=>{
+  const input=document.getElementById("search-input");
+  const results=document.getElementById("search-results");
+  if(!input||!results)return;
+  input.addEventListener("input",()=>{
+    const q=input.value.toLowerCase().trim();
+    results.innerHTML="";
+    if(!q){results.hidden=true;return;}
+    results.hidden=false;
+    for(const d of docs){
+      if((d.title+" "+d.content).toLowerCase().includes(q)){
+        const div=document.createElement("div");
+        div.innerHTML='<a href="'+d.url+'">'+d.title+'</a>';
         results.appendChild(div);
-      });
-    });
+      }
+    }
   });
+});
 </script>
 
 </body>
