@@ -1,7 +1,7 @@
 [
   {
-    "title": "Help Documentation",
-    "content": " PDF Collaboration Spaces\n\n<div class=\"callout note\"<strongNote</strong<pThis document explains how collaboration spaces work.</p</div\n\n What is it?\nA shared environment for reviewing PDFs.\n\njs\ncreateSpace();\n\n\ndiff\n- oldMethod();\n+ newMethod();\n\n",
-    "url": "index.html"
+    "title": "What is it?",
+    "content": "A shared environment for reviewing PDFs.",
+    "url": "index.html#what-is-it"
   }
 ]
