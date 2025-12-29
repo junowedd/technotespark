@@ -56,8 +56,13 @@ fetch("search-index.json")
   .then(docs => {
     const idx = lunr(function () {
       this.ref("url");
+
+      this.pipeline.remove(lunr.stemmer);
+      this.searchPipeline.remove(lunr.stemmer);
+
       this.field("title", { boost: 2 });
       this.field("content", { boost: 10 });
+
       docs.forEach(d => this.add(d));
     });
 
@@ -76,15 +81,7 @@ fetch("search-index.json")
 
       results.hidden = false;
 
-      idx.query(query => {
-  query.term(
-    lunr.tokenizer(q),
-    {
-      wildcard: lunr.Query.wildcard.TRAILING,
-      boost: 10
-    }
-  );
-}).forEach(m => {
+      idx.search(q).forEach(m => {
         const doc = docs.find(d => d.url === m.ref);
         if (!doc) return;
 
