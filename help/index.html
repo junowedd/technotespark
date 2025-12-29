@@ -76,7 +76,15 @@ fetch("search-index.json")
 
       results.hidden = false;
 
-      idx.search(q + "*").forEach(m => {
+      idx.query(query => {
+  query.term(
+    lunr.tokenizer(q),
+    {
+      wildcard: lunr.Query.wildcard.TRAILING,
+      boost: 10
+    }
+  );
+}).forEach(m => {
         const doc = docs.find(d => d.url === m.ref);
         if (!doc) return;
 
