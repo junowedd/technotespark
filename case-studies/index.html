@@ -29,7 +29,7 @@
         <span class="label">CASE STUDY</span>
 
         <span class="tag semiconductor">Semiconductor</span>
-        <span class="date">Dec 31 2025</span>
+        <span class="date">Dec 31, 2025</span>
        
         <h2>3D IC Chiplet-Based AI NPU Architecture</h2>
         <p>
@@ -41,7 +41,7 @@
       <a class="case-card" href="automation-application-engineering.html">
         <span class="label">CASE STUDY</span>
         <span class="tag automation">Automation</span>
-        <span class="date">Dec 30 2025</span>
+        <span class="date">Dec 30, 2025</span>
         <h2>Automation Application Engineering</h2>
         <p>
           Customer-focused automation system deployment and
@@ -53,7 +53,7 @@
       <span class="badge featured">FEATURED</span>
       <span class="label">CASE STUDY</span>
       <span class="tag semiconductor">Semiconductor</span>
-      <span class="date">Jan 1 2026</span>
+      <span class="date">Jan 1, 2026</span>
       <h2>Advanced IC Package Implementation and Verification</h2>
       <p>
         Structured package design and verification workflows
@@ -65,5 +65,20 @@
     </section>
 
   </main>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const container = document.querySelector(".case-grid");
+    const cards = Array.from(container.querySelectorAll(".case-card"));
+
+    cards
+      .sort((a, b) => {
+        const dateA = new Date(a.querySelector(".date").textContent.trim());
+        const dateB = new Date(b.querySelector(".date").textContent.trim());
+        return dateB - dateA; // 최신 날짜 먼저
+      })
+      .forEach(card => container.appendChild(card));
+  });
+</script>
+
 </body>
 </html>
