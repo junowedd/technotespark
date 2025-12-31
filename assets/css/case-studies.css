@@ -1,0 +1,14 @@
+/* Remove default link styling inside case cards */
+.case-card {
+  text-decoration: none;
+  color: inherit;
+}
+
+.case-card:hover {
+  text-decoration: none;
+}
+
+/* Optional: make entire card clearly clickable */
+.case-card {
+  cursor: pointer;
+}
