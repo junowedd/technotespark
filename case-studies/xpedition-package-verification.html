@@ -59,56 +59,43 @@
 
   <!-- WORKFLOW DIAGRAM PLACEHOLDER -->
   <section>
-    <h2>Workflow Overview</h2>
+  <h2>Workflow Overview</h2>
 
-    <div class="workflow-diagram">
-    <svg viewBox="0 0 800 360" width="100%" height="auto"
-       role="img" aria-label="IC Packaging Verification Workflow">
+  <div class="workflow-diagram">
+    <svg
+      viewBox="0 0 800 360"
+      width="100%"
+      height="360"
+      preserveAspectRatio="xMidYMid meet"
+      role="img"
+      aria-label="IC Packaging Verification Workflow">
 
-    <!-- ================= Row 1 ================= -->
-    <!-- Logical Assembly -->
-    <rect x="80" y="40" width="260" height="60" rx="10"/>
-    <!-- Physical Implementation -->
-    <rect x="460" y="40" width="260" height="60" rx="10"/>
+      <!-- Boxes -->
+      <rect x="80" y="40" width="260" height="60" rx="10"/>
+      <rect x="460" y="40" width="260" height="60" rx="10"/>
 
-    <!-- Arrow: Logical → Physical -->
-    <line x1="340" y1="70" x2="460" y2="70"/>
-    <polygon points="460,65 470,70 460,75"/>
+      <!-- Arrows -->
+      <line x1="340" y1="70" x2="460" y2="70"/>
+      <polygon points="460,65 470,70 460,75"/>
 
-    <!-- ================= Row 2 ================= -->
-    <!-- In-Design Verification -->
-    <rect x="270" y="150" width="260" height="60" rx="10"/>
+      <rect x="270" y="150" width="260" height="60" rx="10"/>
+      <line x1="590" y1="100" x2="590" y2="150"/>
+      <polygon points="585,150 590,160 595,150"/>
 
-    <!-- Arrow: Physical ↓ In-Design -->
-    <!-- Physical center x = 460 + 130 = 590 -->
-    <line x1="590" y1="100" x2="590" y2="150"/>
-    <polygon points="585,150 590,160 595,150"/>
+      <rect x="270" y="260" width="260" height="60" rx="10"/>
+      <line x1="400" y1="210" x2="400" y2="260"/>
+      <polygon points="395,260 400,270 405,260"/>
 
-    <!-- ================= Row 3 ================= -->
-    <!-- 3D Sign-off Verification -->
-    <rect x="270" y="260" width="260" height="60" rx="10"/>
-
-    <!-- Arrow: In-Design ↓ 3D Sign-off -->
-    <!-- In-Design center x = 270 + 130 = 400 -->
-    <line x1="400" y1="210" x2="400" y2="260"/>
-    <polygon points="395,260 400,270 405,260"/>
-
-    <!-- ================= Text ================= -->
-    <!-- Row 1 -->
-    <text x="210" y="75" text-anchor="middle">Logical Assembly</text>
-    <text x="590" y="75" text-anchor="middle">Physical Implementation</text>
-
-    <!-- Row 2 -->
-    <text x="400" y="185" text-anchor="middle">In-Design Verification</text>
-    <text x="400" y="205" text-anchor="middle">(Xpedition)</text>
-
-    <!-- Row 3 -->
-    <text x="400" y="295" text-anchor="middle">3D Sign-off Verification</text>
-    <text x="400" y="315" text-anchor="middle">(Calibre 3DSTACK)</text>
+      <!-- Text nodes -->
+      <text x="210" y="75" text-anchor="middle">Logical Assembly</text>
+      <text x="570" y="75" text-anchor="middle">Physical Implementation</text>
+      <text x="400" y="185" text-anchor="middle">In-Design Verification</text>
+      <text x="400" y="205" text-anchor="middle">(Xpedition)</text>
+      <text x="400" y="295" text-anchor="middle">3D Sign-off Verification</text>
+      <text x="400" y="315" text-anchor="middle">(Calibre 3DSTACK)</text>
 
     </svg>
   </div>
-
   
     <p class="diagram-explanation">
     This workflow illustrates how package designs evolve from logical assembly

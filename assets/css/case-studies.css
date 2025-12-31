@@ -227,11 +227,14 @@
    ========================= */
 
 .workflow-diagram {
-  margin: 2.5rem 0;
-  padding: 1.5rem;
   background: #f8fafc;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
+}
+
+.workflow-diagram svg {
+  display: block;
+  margin: 1.5rem auto;
 }
 
 .workflow-diagram rect {
