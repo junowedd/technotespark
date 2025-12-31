@@ -28,6 +28,18 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
+/* Tag positioning */
+.case-card .tag {
+  display: inline-block;
+  margin-top: 0.4rem;
+  margin-bottom: 0.9rem;
+}
+
+.case-card:hover .tag {
+  filter: brightness(0.95);
+}
+
+
 /* =========================
    Case Study Tags
    ========================= */
@@ -58,4 +70,31 @@
 .tag.sales {
   background: #fff4e6;
   color: #b45309;
+}
+
+/* Unified tag base */
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  border-radius: 4px;
+  background: #eef4ff;
+  color: #1a4fd8;
+}
+
+/* Category variations (same hue, different tone) */
+.tag.semiconductor {
+  background: #eef4ff;
+  color: #1a4fd8;
+}
+
+.tag.automation {
+  background: #f0f6ff;
+  color: #2457c5;
+}
+
+.tag.sales {
+  background: #f4f8ff;
+  color: #355fcf;
 }
