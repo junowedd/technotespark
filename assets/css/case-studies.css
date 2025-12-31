@@ -261,3 +261,40 @@
   color: #374151;
   max-width: 900px;
 }
+
+/* =========================
+   Header Navigation
+   ========================= */
+
+.site-header {
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.site-title {
+  font-weight: 700;
+  margin-right: 1.5rem;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: #1f2937;
+  font-size: 0.95rem;
+}
+
+.site-nav a:hover {
+  text-decoration: underline;
+}
+
+.site-nav a.active {
+  font-weight: 600;
+  color: #2457c5;
+}
