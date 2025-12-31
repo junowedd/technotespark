@@ -158,3 +158,56 @@
 .latest-cases .case-card {
   margin-bottom: 0;
 }
+
+/* =========================
+   Case Study Navigation
+   ========================= */
+
+.case-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.case-nav a {
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: #2457c5;
+  font-weight: 500;
+}
+
+.case-nav a:hover {
+  text-decoration: underline;
+}
+
+/* If only one link exists, align left */
+.case-nav a:only-child {
+  margin-left: 0;
+}
+
+/* =========================
+   Related Case Studies
+   ========================= */
+
+.related-cases {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+
+.related-cases h2 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 1.2rem;
+}
+
+
+/* Related cards should feel lighter */
+.related-cases .case-card {
+  background: #fafafa;
+}
