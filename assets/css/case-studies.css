@@ -39,6 +39,36 @@
   filter: brightness(0.95);
 }
 
+/* =========================
+   Homepage – Compact Case Cards
+   ========================= */
+
+.case-card.compact {
+  padding: 1.2rem;
+}
+
+.case-card.compact h3 {
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.case-card.compact p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Spacing between cards on homepage */
+.latest-cases {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* "View all" link spacing */
+.more-link {
+  margin-top: 1rem;
+}
+
 
 /* =========================
    Case Study Tags
