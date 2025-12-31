@@ -1,0 +1,9 @@
+local data 다시 삭제하고 싶을 때>
+git rm resume/KyungWookPark-CV.pdf
+git commit -m "Remove CV PDF"
+git push origin main
+
+로컬에서도 그 PDF가 필요할 때 from GitHub web data
+git pull origin main
+그러면: 가 로컬에 생김
+resume/KyungWookPark-CV.pdf
