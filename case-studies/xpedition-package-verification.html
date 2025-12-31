@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Case Study – Advanced IC Package Implementation and Verification</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../assets/css/case-studies.css">
+</head>
+
+<body>
+<main class="container">
+
+  <!-- HERO -->
+  <header class="hero">
+    <span class="label">CASE STUDY</span>
+    <h1>Advanced IC Package Implementation and Verification</h1>
+    <p class="subtitle">
+      Applying structured package implementation and verification workflows
+      to chiplet-based and 3D IC designs.
+    </p>
+  </header>
+
+  <!-- INTRO -->
+  <section>
+    <p>
+      As advanced packaging technologies such as chiplet-based architectures
+      and 2.5D/3D IC integration become mainstream, the complexity of package
+      design and verification has increased significantly. This case study
+      describes how a structured workflow enables early risk mitigation and
+      reliable manufacturing handoff.
+    </p>
+  </section>
+
+  <!-- CHALLENGE -->
+  <section>
+    <h2>Challenge</h2>
+    <p>
+      Modern IC packages integrate multiple heterogeneous dies, each with
+      different process technologies, power domains, and assembly constraints.
+      Ensuring correct connectivity, manufacturability, and compliance across
+      dies and layers is a significant technical challenge. Late error discovery
+      often leads to costly redesign cycles.
+    </p>
+  </section>
+
+  <!-- SOLUTION -->
+  <section>
+    <h2>Solution</h2>
+    <p>
+      A structured package implementation flow was established using an
+      interactive physical design environment. Logical connectivity was
+      translated into detailed physical geometry, including substrate stack-ups,
+      redistribution layers, and die-to-die routing. Early in-design verification
+      enabled rapid identification and correction of geometry and connectivity
+      issues.
+    </p>
+  </section>
+
+  <!-- WORKFLOW DIAGRAM PLACEHOLDER -->
+  <section>
+    <h2>Workflow Overview</h2>
+
+    <div class="workflow-diagram">
+    <svg viewBox="0 0 900 180" width="100%" height="auto" role="img" aria-label="IC Packaging Verification Workflow">
+
+    <!-- Boxes -->
+    <rect x="20"  y="60" width="200" height="60" rx="10"/>
+    <rect x="250" y="60" width="220" height="60" rx="10"/>
+    <rect x="510" y="60" width="260" height="60" rx="10"/>
+    <rect x="820" y="60" width="260" height="60" rx="10" transform="translate(-180,0)"/>
+
+    <!-- Arrows -->
+    <line x1="220" y1="90" x2="250" y2="90"/>
+    <line x1="470" y1="90" x2="510" y2="90"/>
+    <line x1="770" y1="90" x2="820" y2="90"/>
+
+    <polygon points="250,85 260,90 250,95"/>
+    <polygon points="510,85 520,90 510,95"/>
+    <polygon points="820,85 830,90 820,95"/>
+
+    <!-- Text -->
+    <text x="120" y="95" text-anchor="middle">Logical Assembly</text>
+    <text x="360" y="95" text-anchor="middle">Physical Implementation</text>
+    <text x="640" y="85" text-anchor="middle">In-Design Verification</text>
+    <text x="640" y="105" text-anchor="middle">(Xpedition)</text>
+    <text x="850" y="85" text-anchor="middle">3D Sign-off Verification</text>
+    <text x="850" y="105" text-anchor="middle">(Calibre 3DSTACK)</text>
+
+    </svg>
+    </div>
+
+    <p class="diagram-explanation">
+    This workflow illustrates how package designs evolve from logical assembly
+    to physical implementation, followed by early in-design verification.
+    Final manufacturing readiness is ensured through sign-off-level 3D
+    verification, clearly separating fast iterative checks from authoritative
+    validation.
+    </p>
+
+    </section>
+
+  <!-- VERIFICATION -->
+  <section>
+    <h2>Verification Strategy</h2>
+    <p>
+      In-design verification provided fast feedback during implementation,
+      while final manufacturing readiness was ensured through sign-off-level
+      3D verification. Design data was exported for comprehensive cross-die
+      checking, alignment validation, and assembly rule verification.
+    </p>
+  </section>
+
+  <!-- RESULTS -->
+  <section>
+    <h2>Results</h2>
+    <p>
+      The combined approach significantly reduced late-stage errors and
+      iteration cycles. Most design issues were resolved during early
+      implementation, increasing overall development efficiency and confidence
+      prior to manufacturing handoff.
+    </p>
+  </section>
+
+  <!-- TOOLS -->
+  <section>
+    <h2>Tools & Technologies</h2>
+    <ul class="tools">
+      <li>Advanced IC Packaging (2.5D / 3D IC / Chiplet)</li>
+      <li>Package Physical Implementation</li>
+      <li>In-Design DRC and Connectivity Checks</li>
+      <li>3D Sign-off Verification</li>
+      <li>OSAT Manufacturing Rules</li>
+    </ul>
+  </section>
+
+  <!-- RECOMMENDATION -->
+  <section class="related-cases">
+    <h2>You may also be interested in</h2>
+
+    <div class="case-grid">
+      <a class="case-card compact" href="etri-amkor-chiplet.html">
+        <span class="label">CASE STUDY</span>
+        <span class="tag semiconductor">Semiconductor</span>
+        <h3>3D IC Chiplet-Based AI NPU Architecture</h3>
+        <p>
+          System-level design considerations for scalable AI processors
+          using chiplet-based advanced packaging.
+        </p>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="case-footer">
+    <a href="index.html">← Back to Case Studies</a>
+    <p class="disclaimer">
+      This case study is an independently written technical summary.
+      All product names and technologies referenced are used descriptively
+      and remain the property of their respective owners.
+    </p>
+  </footer>
+
+</main>
+</body>
+</html>
