@@ -84,8 +84,9 @@
 
     <!-- ================= Row 1 ================= -->
     <!-- Logical Assembly -->
-    <rect x="80" y="40" width="260" height="60" rx="10"/>
+    <rect x="80" y="40" width="260" height="60" rx="10"
           fill="#ffffff" stroke="#4f46e5" stroke-width="2"/>
+          
     <text x="210" y="75" text-anchor="middle"
           fill="#111827"
           font-size="14"
@@ -109,8 +110,10 @@
     <text x="590" y="205" text-anchor="middle">(Xpedition)</text>
 
     <!-- Arrow: Physical ↓ In-Design -->
-    <line x1="590" y1="100" x2="590" y2="150"/>
-    <polygon points="585,150 590,160 595,150"/>
+    <line x1="590" y1="100" x2="590" y2="150"
+          stroke="#4f46e5"
+          stroke-width="2"
+          marker-end="url(#arrow)"/>
 
     <!-- ================= Row 3 ================= -->
     <!-- 3D Sign-off Verification -->
@@ -119,8 +122,11 @@
     <text x="590" y="315" text-anchor="middle">(Calibre 3DSTACK)</text>
 
     <!-- Arrow: In-Design ↓ 3D Sign-off -->
-    <line x1="590" y1="210" x2="590" y2="260"/>
-    <polygon points="585,260 590,270 595,260"/>
+    <line x1="590" y1="210" x2="590" y2="260"
+          stroke="#4f46e5"
+          stroke-width="2"
+          marker-end="url(#arrow)"/>
+
   
   <defs>
     <marker id="arrow"
