@@ -115,15 +115,20 @@
    EDA Portfolio – Contents
    ============================ */
 
-.case-study ul,
-.case-study ul li {
-  line-height: 1.8;           /* 줄 간격 넓게 */
+h2 + ul li {
+  line-height: 2.0;        /* 줄 간격 확실히 */
+  margin-bottom: 0.6em;    /* 항목 간 여백 */
 }
 
-.case-study ul li {
-  margin-bottom: 0.4em;       /* 항목 간 여백 */
+h2 + ul li a {
+  font-size: 1.15rem;     /* 눈에 띄게 크게 */
 }
 
-.case-study ul li a {
-  font-size: 1.05rem;         /* 링크 글자 크기 업 */
+.eda-portfolio ul li {
+  line-height: 2.1;
+  margin-bottom: 0.65em;
+}
+
+.eda-portfolio ul li a {
+  font-size: 1.2rem;
 }
