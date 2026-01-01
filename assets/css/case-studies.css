@@ -139,7 +139,8 @@ h2 + ul li a {
   line-height: 1.7;
 }
 
-main.eda-portfolio > p {
-  font-size: 1.2rem;
+main.eda-portfolio > p:first-of-type {
+  font-size: 1.25rem;
   line-height: 1.7;
+  color: #374151;
 }
