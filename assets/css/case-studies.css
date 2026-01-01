@@ -163,3 +163,15 @@ header p {
   line-height: 1.5;
   margin-bottom: 0.7em;
 }
+
+/* ============================
+   Site navigation – active link
+   ============================ */
+
+
+nav a.active,
+.site-nav a.active {
+  color: #0f172a;
+  font-weight: 600;
+  border-bottom: 2px solid #2563eb;
+}
