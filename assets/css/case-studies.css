@@ -188,3 +188,34 @@ nav a.active,
 .site-nav a:hover {
   text-decoration: underline; /* hover 시에만 밑줄 */
 }
+
+/* ============================
+   Site navigation – override
+   ============================ */
+
+.site-header .site-nav a {
+  text-decoration: none !important;
+}
+
+.site-header .site-nav a:hover {
+  text-decoration: underline !important;
+}
+
+/* ============================
+   Case Studies – top nav links
+   ============================ */
+
+nav a {
+  text-decoration: none;        /* 평상시 밑줄 제거 */
+  color: #2563eb;
+}
+
+nav a:hover {
+  text-decoration: underline;  /* hover 시에만 밑줄 */
+}
+
+nav a.active {
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 2px solid #2563eb;
+}
