@@ -276,3 +276,13 @@ nav a.active,
   border-bottom: 2px solid #2563eb;
   text-decoration: none; /* prevent hover underline */
 }
+
+nav a,
+.site-nav a {
+  text-decoration: none !important;
+}
+
+nav a:hover,
+.site-nav a:hover {
+  text-decoration: underline !important;
+}
