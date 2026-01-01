@@ -110,3 +110,20 @@
   margin-top: 2.5rem;
   text-align: left;
 }
+
+/* ============================
+   EDA Portfolio – Contents
+   ============================ */
+
+.case-study ul,
+.case-study ul li {
+  line-height: 1.8;           /* 줄 간격 넓게 */
+}
+
+.case-study ul li {
+  margin-bottom: 0.4em;       /* 항목 간 여백 */
+}
+
+.case-study ul li a {
+  font-size: 1.05rem;         /* 링크 글자 크기 업 */
+}
