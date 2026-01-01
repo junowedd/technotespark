@@ -132,3 +132,9 @@ h2 + ul li a {
 .eda-portfolio ul li a {
   font-size: 1.2rem;
 }
+
+/* EDA Portfolio – intro paragraph only */
+.eda-portfolio > p {
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
