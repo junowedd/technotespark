@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Practical ERC for Foundry, Safety, and Reliability</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Case study CSS -->
+  <link rel="stylesheet" href="../assets/css/case-studies.css" />
+</head>
+
+<body>
+
+<main class="case-study">
+
+  <!-- HERO -->
+  <header class="case-hero">
+    <h1>Practical ERC for Foundry, Safety, and Reliability</h1>
+    <p class="case-intro">
+      Electrical Rule Checking (ERC) as a design-intent and reliability
+      verification methodology beyond traditional DRC and LVS.
+    </p>
+  </header>
+
+  <!-- INTRODUCTION -->
+  <section>
+    <h2>Introduction</h2>
+    <p>
+      Electrical Rule Checking (ERC) complements DRC and LVS by focusing on
+      electrical correctness, voltage intent, and reliability risks.
+      This case study consolidates practical ERC usage together with
+      foundry- and safety-oriented concepts commonly applied in real
+      semiconductor projects.
+    </p>
+  </section>
+
+  <!-- SECTION 1 -->
+  <section>
+    <h2>1. Practical ERC Checks (Design-Level)</h2>
+    <p>
+      This section covers fundamental ERC checks that detect common but
+      critical design issues early in the development cycle.
+    </p>
+
+    <h3>Floating Gate / Floating Net</h3>
+    <p>
+      Detects MOS gates or nets that are not driven. Floating gates can cause
+      unpredictable behavior, especially in analog, sensor, and automotive ICs.
+    </p>
+
+    <pre><code>
+ERC FLOATING_GATE
+  DEVICE MOS
+  TERMINAL GATE
+  CONDITION NOT CONNECTED
+END
+    </code></pre>
+
+    <h3>VDD–VSS Short</h3>
+    <p>
+      Detects shorts between power and ground that may not be caught by LVS alone.
+    </p>
+
+    <h3>Multiple Driver on a Net</h3>
+    <p>
+      Identifies nets driven by multiple outputs, preventing contention and
+      long-term reliability issues.
+    </p>
+
+    <h3>Well Tie and Bulk Connection</h3>
+    <p>
+      Ensures proper NWELL/PWELL and bulk connections to prevent latch-up and
+      leakage issues.
+    </p>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section>
+    <h2>2. Foundry-Style ERC (GlobalFoundries Perspective)</h2>
+    <p>
+      Foundry-style ERC encodes manufacturing, voltage, and reliability intent
+      directly into rule decks.
+    </p>
+
+    <h3>Voltage Domain Crossing</h3>
+    <p>
+      ERC rules enforce the presence of level shifters between voltage domains
+      to avoid gate-oxide stress.
+    </p>
+
+    <h3>Over-Voltage Device Protection</h3>
+    <p>
+      Checks correct usage of high-voltage and low-voltage devices across
+      different voltage domains.
+    </p>
+
+    <h3>Power Sequencing and Back-Powering</h3>
+    <p>
+      Detects unsafe power-up sequences that may cause unintended current paths,
+      especially critical for automotive ECUs.
+    </p>
+
+    <h3>Safety-Critical Signal Integrity</h3>
+    <p>
+      Ensures that safety-related signals are never floating or multiply driven.
+    </p>
+
+    <h3>ESD Protection Path Verification</h3>
+    <p>
+      Verifies that all IO pads have valid ESD discharge paths.
+    </p>
+  </section>
+
+  <!-- CONCLUSION -->
+  <section>
+    <h2>Conclusion</h2>
+    <p>
+      Effective ERC is not a checkbox exercise but a way to encode design intent
+      and reliability requirements into verification flows. When used correctly,
+      ERC significantly reduces late-stage failures and improves sign-off
+      confidence.
+    </p>
+  </section>
+
+  <!-- DISCLAIMER -->
+  <footer class="case-disclaimer">
+    <p>
+      This case study is an original technical interpretation created for
+      educational and portfolio purposes. It does not reproduce or disclose
+      proprietary foundry rule decks or confidential design data.
+    </p>
+  </footer>
+
+</main>
+
+</body>
+</html>
