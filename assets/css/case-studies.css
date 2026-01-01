@@ -140,7 +140,7 @@ h2 + ul li a {
 }
 
 main.eda-portfolio > p:first-of-type {
-  font-size: 1.25rem;
+  font-size: 1.4rem !important;
   line-height: 1.7;
   color: #374151;
 }
