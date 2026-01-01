@@ -85,16 +85,23 @@
     <!-- ================= Row 1 ================= -->
     <!-- Logical Assembly -->
     <rect x="80" y="40" width="260" height="60" rx="10"/>
-    <text x="210" y="75" text-anchor="middle">Logical Assembly</text>
+          fill="#ffffff" stroke="#4f46e5" stroke-width="2"/>
+    <text x="210" y="75" text-anchor="middle"
+          fill="#111827"
+          font-size="14"
+          font-weight="600">
+    Logical Assembly</text>
 
     <!-- Physical Implementation -->
     <rect x="460" y="40" width="260" height="60" rx="10"/>
     <text x="590" y="75" text-anchor="middle">Physical Implementation</text>
 
     <!-- Arrow: Logical → Physical -->
-    <line x1="340" y1="70" x2="460" y2="70"/>
-    <polygon points="460,65 470,70 460,75"/>
-
+    <line x1="340" y1="70" x2="460" y2="70"
+          stroke="#4f46e5"
+          stroke-width="2"
+          marker-end="url(#arrow)"/>
+    
     <!-- ================= Row 2 ================= -->
     <!-- In-Design Verification -->
     <rect x="460" y="150" width="260" height="60" rx="10"/>
@@ -114,6 +121,17 @@
     <!-- Arrow: In-Design ↓ 3D Sign-off -->
     <line x1="590" y1="210" x2="590" y2="260"/>
     <polygon points="585,260 590,270 595,260"/>
+  
+  <defs>
+    <marker id="arrow"
+          markerWidth="10"
+          markerHeight="10"
+          refX="10"
+          refY="3"
+          orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4f46e5" />
+    </marker>
+  </defs>
 
   </svg>
   </div>
