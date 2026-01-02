@@ -259,3 +259,30 @@ nav a.active,
   color: #475569;
   letter-spacing: 0.02em;
 }
+
+/* ============================
+   Sales – Selected Case Studies list
+   ============================ */
+
+.selected-case-studies ul {
+  margin-top: 1.2rem;
+  padding-left: 1.2rem;
+}
+
+.selected-case-studies li {
+  margin-bottom: 0.8rem;      /* 줄 간격 */
+  line-height: 1.7;           /* 가독성 핵심 */
+}
+
+/* 링크 기본 */
+.selected-case-studies li a {
+  text-decoration: none;
+  color: #2563eb;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+/* hover 시 살짝 강조 */
+.selected-case-studies li a:hover {
+  background-color: rgba(37, 99, 235, 0.08);
+  border-radius: 4px;
+}
