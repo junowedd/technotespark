@@ -1,6 +1,5 @@
-
 /* =========================================================
-   Case Studies – Clean & Consolidated Stylesheet
+   Case Studies – Clean & Consolidated Stylesheet (FINAL)
    ========================================================= */
 
 /* ===== Grid Layout ===== */
@@ -31,9 +30,9 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 1.0rem 1.1rem;   /* ⭐ 전체 높이 체감 ↓ */
+  padding: 1.0rem 1.1rem;
   background: #ffffff;
-  border: 1px solid #c7d2fe; /* soft indigo */
+  border: 1px solid #c7d2fe;
   border-left: 4px solid #6366f1;
   border-radius: 8px;
   text-decoration: none;
@@ -45,12 +44,12 @@
 .case-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
-  border-color: #6366f1;  /* indigo-500 */
+  border-color: #6366f1;
 }
 
 /* ===== Card Content ===== */
 .case-card h2 {
-  margin: 0.35rem 0 0.35rem;  /* ⭐ 빈 공간 감소 */
+  margin: 0.35rem 0;
   font-size: 1.1rem;
   line-height: 1.45;
 }
@@ -100,43 +99,17 @@
   color: #6b7280;
 }
 
-.view-all-link {
-  display: block;
-  margin-top: 1.2rem;   /* ⭐ 링크를 아래로 내림 */
-  font-size: 0.95rem;
-}
-
-.more-link {
-  margin-top: 2.5rem;
-  text-align: left;
-}
-
 /* ============================
-   EDA Portfolio – Contents
+   EDA Portfolio – Typography
    ============================ */
 
-h2 + ul li {
-  line-height: 2.0;        /* 줄 간격 확실히 */
-  margin-bottom: 0.6em;    /* 항목 간 여백 */
-}
-
-h2 + ul li a {
-  font-size: 1.15rem;     /* 눈에 띄게 크게 */
-}
-
 .eda-portfolio ul li {
-  line-height: 2.1;
-  margin-bottom: 0.65em;
+  line-height: 2.0;
+  margin-bottom: 0.6em;
 }
 
 .eda-portfolio ul li a {
-  font-size: 1.2rem;
-}
-
-/* EDA Portfolio – intro paragraph only */
-.eda-portfolio > p {
   font-size: 1.15rem;
-  line-height: 1.7;
 }
 
 main.eda-portfolio > p:first-of-type {
@@ -164,125 +137,28 @@ header p {
   margin-bottom: 0.7em;
 }
 
-/* ============================
-   Site navigation – active link
-   ============================ */
-
-
-nav a.active,
-.site-nav a.active {
-  color: #0f172a;
-  font-weight: 600;
-  border-bottom: 2px solid #2563eb;
-}
-
-/* ============================
-   Site navigation – link style
-   ============================ */
-
-.site-nav a {
-  text-decoration: none;     /* 평상시 밑줄 제거 */
-  color: #2563eb;            /* 기존 파란 링크 색 유지 */
-}
-
-.site-nav a:hover {
-  text-decoration: underline; /* hover 시에만 밑줄 */
-}
-
-/* ============================
-   Site navigation – override
-   ============================ */
-
-.site-header .site-nav a {
-  text-decoration: none !important;
-}
-
-.site-header .site-nav a:hover {
-  text-decoration: underline !important;
-}
-
-/* ============================
-   Case Studies – top nav links
-   ============================ */
-
-nav a {
-  text-decoration: none;        /* 평상시 밑줄 제거 */
-  color: #2563eb;
-}
-
-nav a:hover {
-  text-decoration: underline;  /* hover 시에만 밑줄 */
-}
-
-nav a.active {
-  text-decoration: none;
-  font-weight: 600;
-  border-bottom: 2px solid #2563eb;
-}
-
-/* ============================
-   Global navigation – base
-   ============================ */
-
-nav a,
-.site-nav a {
-  text-decoration: none; /* 평상시 밑줄 제거 */
-  color: #2563eb;        /* 링크 기본 파란색 */
-}
-
-/* ============================
-   Global navigation – hover
-   ============================ */
-
-nav a:hover,
-.site-nav a:hover {
-  text-decoration: underline; /* hover 시 밑줄 */
-}
-
-/* ============================
-   Global navigation – active
-   ============================ */
-
-nav a.active,
-.site-nav a.active {
-  color: #0f172a;               /* active 진한 네이비 */
-  font-weight: 600;
-  border-bottom: 2px solid #2563eb;
-  text-decoration: none;        /* active에서 hover 밑줄 제거 */
-}
-
 /* =================================================
-   Global navigation – unified (ALL pages)
+   Global navigation (FINAL – all pages)
    ================================================= */
 
-/* Base: no underline */
+/* Base */
 nav a,
 .site-nav a {
   text-decoration: none;
   color: #2563eb;
 }
 
-/* Hover: underline only on hover */
+/* Hover */
 nav a:hover,
 .site-nav a:hover {
   text-decoration: underline;
 }
 
-/* Active: current page */
+/* Active */
 nav a.active,
 .site-nav a.active {
   color: #0f172a;
   font-weight: 600;
   border-bottom: 2px solid #2563eb;
-  text-decoration: none; /* prevent hover underline */
-}
-
-nav a,
-.site-nav a {
-  text-decoration: none !important;
-}
-
-nav a:hover,
-.site-nav a:hover {
-  text-decoration: underline !important;
+  text-decoration: none;
 }
