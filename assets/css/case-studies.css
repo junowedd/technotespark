@@ -222,7 +222,9 @@ nav a.active,
 }
 
 .footer-brand img {
-  height: 24px;
+  height: 26px;
+  opacity: 0.95;
+  filter: brightness(1.6) contrast(1.2);
 }
 
 .footer-brand p {
