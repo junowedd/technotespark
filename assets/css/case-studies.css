@@ -287,3 +287,12 @@ nav a.active,
   border-radius: 4px;
 }
 
+/* ============================
+   Footer Pavix logo – FIX
+   ============================ */
+
+.site-footer .footer-brand img {
+  height: 26px !important;
+  width: auto !important;
+  max-width: none !important;
+}
