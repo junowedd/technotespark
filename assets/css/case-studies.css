@@ -162,3 +162,95 @@ nav a.active,
   border-bottom: 2px solid #2563eb;
   text-decoration: none;
 }
+
+/* ============================
+   Hero layout (Option A)
+   ============================ */
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1.6fr 0.9fr; /* text : brand */
+  align-items: center;
+  gap: 2.5rem;
+}
+
+/* Left text block */
+.hero-text {
+  max-width: 760px;
+}
+
+/* Right brand block */
+.hero-brand {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Pavix logo tuning for Mobile*/
+.hero-brand img {
+  max-width: 260px;
+  opacity: 0.88;              /* 핵심: 절제된 존재감 */
+  filter: brightness(1.15) contrast(1.05);
+}
+
+@media (max-width: 900px) {
+  .hero-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-brand {
+    justify-content: flex-start;
+    margin-top: 2rem;
+  }
+
+  .hero-brand img {
+    max-width: 180px;
+  }
+}
+
+.site-footer {
+  background: #0f172a;
+  color: #cbd5f5;
+  padding: 3rem 2rem 2rem;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0.75;
+}
+
+.footer-brand img {
+  height: 32px;
+}
+
+.footer-brand p {
+  font-size: 0.85rem;
+  margin: 0;
+  color: #94a3b8;
+}
+
+.footer-copy {
+  margin-top: 1.5rem;
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.case-framework {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 1.2rem 0 2rem;
+  opacity: 0.8;
+}
+
+.case-framework img {
+  height: 22px;
+}
+
+.case-framework span {
+  font-size: 0.8rem;
+  color: #475569;
+  letter-spacing: 0.02em;
+}
