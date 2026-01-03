@@ -315,3 +315,31 @@ nav a.active,
   z-index: 3;
   filter: drop-shadow(0 1px 1px rgba(0,0,0,0.15));
 }
+
+/* ============================
+   Hero text hover effect
+   ============================ */
+
+.hero-line {
+  margin-bottom: 14px;
+  transition: all 0.25s ease;
+}
+
+.hero-line p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.88);
+  transition: all 0.25s ease;
+}
+
+/* Hover effect */
+.hero-line:hover p {
+  color: #ffffff;
+  transform: scale(1.02);
+}
+
+/* Optional subtle background highlight */
+.hero-line:hover {
+  background: rgba(255, 255, 255, 0.04);
+  padding-left: 8px;
+  border-left: 2px solid rgba(255, 255, 255, 0.35);
+}
