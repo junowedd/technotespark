@@ -334,7 +334,7 @@ nav a.active,
 /* Hover effect */
 .hero-line:hover p {
   color: #ffffff;
-  transform: scale(1.02);
+  transform: scale(1.03);
 }
 
 /* Optional subtle background highlight */
