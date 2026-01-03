@@ -214,20 +214,36 @@
   
 
   </main>
-  <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const container = document.querySelector(".case-grid");
-    const cards = Array.from(container.querySelectorAll(".case-card"));
+  
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.querySelector(".case-grid");
+  const cards = Array.from(container.querySelectorAll(".case-card"));
 
-    cards
-      .sort((a, b) => {
-        const dateA = new Date(a.querySelector(".date").textContent.trim());
-        const dateB = new Date(b.querySelector(".date").textContent.trim());
-        return dateB - dateA; // 최신 날짜 먼저
-      })
-      .forEach(card => container.appendChild(card));
-  });
+  function getDate(card) {
+    const dateEl = card.querySelector(".date");
+    return dateEl ? new Date(dateEl.textContent.trim()) : new Date(0);
+  }
+
+  const featured = cards.filter(card =>
+    card.classList.contains("featured")
+  );
+
+  const normal = cards.filter(card =>
+    !card.classList.contains("featured")
+  );
+
+  // 날짜 기준 정렬 (최신 → 과거)
+  featured.sort((a, b) => getDate(b) - getDate(a));
+  normal.sort((a, b) => getDate(b) - getDate(a));
+
+  // DOM 재배치: FEATURED → NORMAL
+  [...featured, ...normal].forEach(card =>
+    container.appendChild(card)
+  );
+});
 </script>
+
 
 </body>
 </html>
