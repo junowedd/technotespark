@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Accelerating LVS Closure for Large-Scale SoCs</title>
+  <link rel="stylesheet" href="../assets/css/case-studies.css?v=20260210">
+</head>
+
+<body>
+
+<nav class="site-nav">
+  <strong>TechNotesPark</strong> |
+  <a href="../index.html">Home</a> |
+  <a href="../projects/sales/index.html">Sales & Customer Success</a> |
+  <a href="./index.html">Case Studies</a>
+</nav>
+
+<main class="container">
+
+  <header class="page-header">
+    <h1>Accelerating LVS Closure for Large-Scale SoCs</h1>
+    <p class="subtitle">
+      How Second-Generation Verilog-to-LVS Translation Removed Performance and Debug Bottlenecks
+    </p>
+  </header>
+
+  <!-- Sales summary -->
+  <section class="case-summary">
+    <p>
+      Removed critical LVS runtime and memory bottlenecks in large SoC designs by modernizing
+      Verilog-to-LVS translation architecture.
+      This enabled faster turnaround, improved debug visibility, and higher confidence in
+      sign-off under tight tape-out schedules.
+    </p>
+  </section>
+
+  <!-- Pavix framework -->
+  <div class="case-framework">
+    <img src="../assets/images/Logo-Pavix.png" alt="Pavix">
+    <span>Applied using the Pavix execution framework</span>
+  </div>
+
+  <!-- Context -->
+  <section>
+    <h2>Context</h2>
+    <p>
+      As SoC designs continue to scale in size and complexity, verification teams face
+      increasing pressure to reduce turnaround time while maintaining sign-off confidence.
+      Layout Versus Schematic (LVS) verification sits at the center of this challenge,
+      bridging RTL design intent and transistor-level layout accuracy.
+    </p>
+    <p>
+      In large designs with massive netlists, Verilog-to-LVS translation becomes a critical
+      performance and reliability dependency for the entire verification flow.
+    </p>
+  </section>
+
+  <!-- Challenge -->
+  <section>
+    <h2>The Challenge</h2>
+    <p>
+      Traditional Verilog-to-LVS translation approaches were built on single-threaded,
+      monolithic architectures. While functional, they increasingly struggled with modern
+      SoC demands.
+    </p>
+    <ul>
+      <li>Long LVS runtimes on large netlists</li>
+      <li>Excessive memory consumption limiting scalability</li>
+      <li>Limited visibility into translation progress</li>
+      <li>Difficult diagnosis of duplicate and mismatch issues</li>
+    </ul>
+    <p>
+      These limitations directly impacted tape-out schedules, resource planning, and
+      engineering confidence during sign-off.
+    </p>
+  </section>
+
+  <!-- Why traditional flows fall short -->
+  <section>
+    <h2>Why Traditional Flows Fall Short</h2>
+    <p>
+      Legacy translation tools were designed as linear utilities rather than scalable
+      verification platforms. As netlists grew into the millions of instances, these tools
+      became bottlenecks, offering little insight into internal processing or failure modes.
+    </p>
+    <p>
+      Engineers were often left waiting without progress feedback, while debugging required
+      manual investigation of opaque log files.
+    </p>
+  </section>
+
+  <!-- Solution -->
+  <section>
+    <h2>Solution Approach</h2>
+    <p>
+      A second-generation Verilog-to-LVS translation methodology was introduced, focusing on
+      architectural modernization rather than incremental optimization.
+    </p>
+    <p>
+      The goal was to transform translation from a passive utility into an active,
+      high-performance verification platform capable of scaling with modern SoC complexity.
+    </p>
+  </section>
+
+  <!-- Technical execution -->
+  <section>
+    <h2>Technical Execution</h2>
+    <ul>
+      <li>Modular architecture enabling independent execution stages</li>
+      <li>Parallel execution of translation modules across CPUs</li>
+      <li>Significant reduction in memory footprint through algorithmic optimization</li>
+      <li>Real-time progress reporting for massive netlists</li>
+      <li>Detailed logging, statistics, and resource usage metrics</li>
+      <li>Improved duplicate and mismatch diagnostics</li>
+    </ul>
+    <p>
+      These changes enabled both faster execution and deeper insight into the translation
+      process, even for extremely large designs.
+    </p>
+  </section>
+
+  <!-- Results -->
+  <section>
+    <h2>Results & Impact</h2>
+    <ul>
+      <li>Up to multi-fold LVS translation runtime improvements</li>
+      <li>Massive memory usage reduction, enabling larger designs</li>
+      <li>Improved monitoring and predictability of long verification runs</li>
+      <li>Faster identification and resolution of LVS mismatches</li>
+      <li>Higher confidence in sign-off readiness under schedule pressure</li>
+    </ul>
+  </section>
+
+  <!-- Takeaway -->
+  <section>
+    <h2>Key Takeaway</h2>
+    <p>
+      As SoC designs scale, LVS translation can no longer be treated as a background task.
+      Modernizing translation architecture is essential to achieving predictable,
+      high-confidence sign-off in advanced verification flows.
+    </p>
+  </section>
+
+  <hr>
+
+  <p>
+    ← <a href="./index.html">Back to Case Studies</a> |
+    <a href="../index.html">Home</a>
+  </p>
+
+</main>
+
+</body>
+</html>

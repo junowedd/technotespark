@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Preventing Silent IP Corruption in Large-Scale SoC Tape-outs</title>
+  <link rel="stylesheet" href="../assets/css/case-studies.css?v=20260210">
+</head>
+
+<body>
+
+<nav class="site-nav">
+  <strong>TechNotesPark</strong> |
+  <a href="../index.html">Home</a> |
+  <a href="../projects/sales/index.html">Sales & Customer Success</a> |
+  <a href="./index.html">Case Studies</a>
+</nav>
+
+<main class="container">
+
+  <header class="page-header">
+    <h1>Preventing Silent IP Corruption in Large-Scale SoC Tape-outs</h1>
+    <p class="subtitle">
+      Automated IP Integrity Verification to Protect Design Intent at Physical Sign-off
+    </p>
+  </header>
+
+  <!-- Sales summary -->
+  <section class="case-summary">
+    <p>
+      Enabled early detection of silent IP corruption in complex SoC designs by introducing
+      automated IP integrity verification before sign-off.
+      This approach eliminated late-stage surprises, reduced re-spin risk, and significantly
+      improved confidence in tape-out readiness.
+    </p>
+  </section>
+
+  <!-- Pavix framework badge -->
+  <div class="case-framework">
+    <img src="../assets/images/Logo-Pavix.png" alt="Pavix">
+    <span>Applied using the Pavix execution framework</span>
+  </div>
+
+  <!-- Context -->
+  <section>
+    <h2>Context</h2>
+    <p>
+      Modern System-on-Chip (SoC) designs rely heavily on third-party and internal IP blocks
+      to manage complexity and accelerate development. These IP blocks are commonly treated
+      as black boxes, assumed to remain unchanged from integration through final sign-off.
+    </p>
+    <p>
+      As physical design flows become increasingly automated and aggressive, preserving IP
+      integrity throughout implementation has become a critical challenge—especially in
+      advanced nodes and large-scale SoCs.
+    </p>
+  </section>
+
+  <!-- Challenge -->
+  <section>
+    <h2>The Challenge</h2>
+    <p>
+      In real-world design flows, IP blocks are not always as immutable as assumed.
+      During placement, routing, optimization, and metal fill stages, subtle and unintended
+      modifications can occur inside IP regions.
+    </p>
+    <ul>
+      <li>Automated routing or fill shapes intruding into IP boundaries</li>
+      <li>Minor geometry changes that remain DRC-clean</li>
+      <li>Label or text mismatches leading to late LVS issues</li>
+      <li>Incomplete or overlooked IP placement and routing guidelines</li>
+    </ul>
+    <p>
+      These silent errors often surface only at sign-off—or after tape-out—creating
+      re-spin risk, schedule impact, and uncertainty in design closure.
+    </p>
+  </section>
+
+  <!-- Why traditional checks fail -->
+  <section>
+    <h2>Why Traditional Checks Fall Short</h2>
+    <p>
+      Standard DRC and LVS flows validate rule compliance, not design intent.
+      As long as layouts remain rule-clean, unintended IP modifications frequently pass
+      undetected.
+    </p>
+    <p>
+      Manual inspection is impractical for modern SoCs containing hundreds or thousands
+      of IP instances distributed across deep hierarchies, leaving a critical verification gap.
+    </p>
+  </section>
+
+  <!-- Solution -->
+  <section>
+    <h2>Solution Approach</h2>
+    <p>
+      To close this gap, an automated IP integrity verification methodology was introduced
+      using pattern-based comparison against golden IP references.
+    </p>
+    <p>
+      The objective was clear: ensure that every IP instance in the final layout exactly
+      matches its original reference in geometry, hierarchy, and text—before sign-off.
+    </p>
+  </section>
+
+  <!-- Technical execution -->
+  <section>
+    <h2>Technical Execution</h2>
+    <ul>
+      <li>Identification of all IP instances regardless of hierarchy or naming</li>
+      <li>Exhaustive comparison against golden reference layouts</li>
+      <li>Detection of any added, deleted, or modified geometry within IP regions</li>
+      <li>Verification of routing and fill interactions affecting IP integrity</li>
+      <li>Explicit validation of text and label consistency</li>
+    </ul>
+    <p>
+      This automated flow provided complete visibility into both internal IP modifications
+      and external interactions, even when traditional DRC and LVS reported clean results.
+    </p>
+  </section>
+
+  <!-- Results -->
+  <section>
+    <h2>Results & Impact</h2>
+    <ul>
+      <li>Early detection of silent IP corruption before sign-off</li>
+      <li>Elimination of late-stage IP-related surprises</li>
+      <li>Reduced re-spin risk and improved schedule predictability</li>
+      <li>Higher confidence in design intent preservation</li>
+      <li>Scalable verification across large, IP-heavy SoCs</li>
+    </ul>
+  </section>
+
+  <!-- Takeaway -->
+  <section>
+    <h2>Key Takeaway</h2>
+    <p>
+      As SoC complexity increases, IP integrity can no longer be assumed—it must be verified.
+      Automated IP integrity checking closes a critical blind spot left by traditional
+      physical verification flows and strengthens overall sign-off robustness.
+    </p>
+  </section>
+
+  <hr>
+
+  <p>
+    ← <a href="./index.html">Back to Case Studies</a> |
+    <a href="../index.html">Home</a>
+  </p>
+
+</main>
+
+</body>
+</html>

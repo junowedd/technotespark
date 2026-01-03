@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Eliminating Latch-up Risk in Advanced IC Designs</title>
+  <link rel="stylesheet" href="../assets/css/case-studies.css?v=20260210">
+</head>
+
+<body>
+
+<nav class="site-nav">
+  <strong>TechNotesPark</strong> |
+  <a href="../index.html">Home</a> |
+  <a href="../projects/sales/index.html">Sales & Customer Success</a> |
+  <a href="./index.html">Case Studies</a>
+</nav>
+
+<main class="container">
+
+  <header class="page-header">
+    <h1>Eliminating Latch-up Risk in Advanced IC Designs</h1>
+    <p class="subtitle">
+      Applying ESDA-Compliant PERC Checks to Prevent ESD-Induced Latch-up Failures
+    </p>
+  </header>
+
+  <!-- Sales summary -->
+  <section class="case-summary">
+    <p>
+      Prevented ESD-induced latch-up failures in advanced IC designs by introducing
+      automated, ESDA-compliant guard ring verification.
+      This approach enabled early risk detection, improved reliability confidence,
+      and reduced late-stage rework and time-to-market pressure.
+    </p>
+  </section>
+
+  <!-- Pavix framework -->
+  <div class="case-framework">
+    <img src="../assets/images/Logo-Pavix.png" alt="Pavix">
+    <span>Applied using the Pavix execution framework</span>
+  </div>
+
+  <!-- Context -->
+  <section>
+    <h2>Context</h2>
+    <p>
+      As integrated circuits scale in complexity and sensitivity, reliability threats
+      such as electrostatic discharge (ESD) and latch-up pose significant risks to product
+      quality, yield, and long-term performance.
+    </p>
+    <p>
+      Latch-up events—often triggered by ESD or voltage transients—can lead to uncontrolled
+      current flow, thermal damage, and complete functional failure, making prevention a
+      critical requirement in automotive, industrial, and safety-critical designs.
+    </p>
+  </section>
+
+  <!-- Challenge -->
+  <section>
+    <h2>The Challenge</h2>
+    <p>
+      Guard rings are a proven technique for mitigating latch-up by absorbing minority
+      carriers and isolating sensitive circuit regions. However, ensuring correct guard
+      ring implementation across large, complex layouts is non-trivial.
+    </p>
+    <ul>
+      <li>Missing or incomplete guard ring structures</li>
+      <li>Insufficient width or spacing relative to aggressors</li>
+      <li>Unprotected victims within high-risk danger zones</li>
+      <li>Incorrect or missing guard ring bias connections</li>
+    </ul>
+    <p>
+      These issues are difficult to detect manually and often remain hidden until late
+      verification stages—or after silicon failure.
+    </p>
+  </section>
+
+  <!-- Why traditional checks fall short -->
+  <section>
+    <h2>Why Traditional Checks Fall Short</h2>
+    <p>
+      Standard DRC and LVS flows focus on geometric correctness and connectivity but lack
+      semantic awareness of latch-up risk scenarios defined by ESDA guidelines.
+    </p>
+    <p>
+      As a result, layouts may pass sign-off checks while still containing latent latch-up
+      vulnerabilities related to guard ring placement, coverage, or connectivity.
+    </p>
+  </section>
+
+  <!-- Solution -->
+  <section>
+    <h2>Solution Approach</h2>
+    <p>
+      To close this verification gap, an automated reliability verification flow was
+      introduced using pre-coded, ESDA-compliant latch-up guard ring checks within a
+      Calibre PERC-based methodology.
+    </p>
+    <p>
+      The objective was to systematically verify the presence, quality, and effectiveness
+      of guard ring structures early in the design cycle—without manual rule coding.
+    </p>
+  </section>
+
+  <!-- Technical execution -->
+  <section>
+    <h2>Technical Execution</h2>
+    <ul>
+      <li>Verification of guard ring existence around sensitive devices</li>
+      <li>Width and spacing checks against ESDA-defined requirements</li>
+      <li>Identification of unprotected victims in aggressor danger zones</li>
+      <li>Validation of correct guard ring connectivity and biasing</li>
+      <li>Centralized visualization and debugging of violations</li>
+    </ul>
+    <p>
+      These automated checks provided consistent, repeatable coverage across the entire
+      layout, independent of design size or hierarchy depth.
+    </p>
+  </section>
+
+  <!-- Results -->
+  <section>
+    <h2>Results & Impact</h2>
+    <ul>
+      <li>Early detection of latch-up risks during physical design</li>
+      <li>Improved compliance with ESDA reliability guidelines</li>
+      <li>Reduced late-stage redesign and debug cycles</li>
+      <li>Higher confidence in silicon reliability and robustness</li>
+      <li>Shortened time-to-market through proactive verification</li>
+    </ul>
+  </section>
+
+  <!-- Takeaway -->
+  <section>
+    <h2>Key Takeaway</h2>
+    <p>
+      Latch-up prevention cannot rely on assumption or manual inspection.
+      Automated, standards-based guard ring verification is essential to achieving
+      predictable reliability and robust sign-off in modern IC designs.
+    </p>
+  </section>
+
+  <hr>
+
+  <p>
+    ← <a href="./index.html">Back to Case Studies</a> |
+    <a href="../index.html">Home</a>
+  </p>
+
+</main>
+
+</body>
+</html>

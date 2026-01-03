@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bringing Predictability and Verification Confidence to High-Level Synthesis Design Flows</title>
+  <link rel="stylesheet" href="../assets/css/case-studies.css?v=20260210">
+</head>
+
+<body>
+
+<nav class="site-nav">
+  <strong>TechNotesPark</strong> |
+  <a href="../index.html">Home</a> |
+  <a href="../projects/sales/index.html">Sales & Customer Success</a> |
+  <a href="./index.html">Case Studies</a>
+</nav>
+
+<main class="container">
+
+  <header class="page-header">
+    <h1>Bringing Predictability and Verification Confidence to High-Level Synthesis Design Flows</h1>
+    <p class="subtitle">
+      Ensuring C++/SystemC Design Intent Integrity from Algorithm to RTL
+    </p>
+  </header>
+
+  <!-- Sales summary -->
+  <section class="case-summary">
+    <p>
+      Improved confidence and predictability in High-Level Synthesis flows by introducing
+      formal, coverage-driven verification from C++/SystemC to RTL.
+      This approach reduced late-stage debug, ensured design intent preservation, and
+      enabled production-quality hardware results from HLS methodologies.
+    </p>
+  </section>
+
+  <!-- Pavix framework -->
+  <div class="case-framework">
+    <img src="../assets/images/Logo-Pavix.png" alt="Pavix">
+    <span>Applied using the Pavix execution framework</span>
+  </div>
+
+  <!-- Context -->
+  <section>
+    <h2>Context</h2>
+    <p>
+      High-Level Synthesis (HLS) allows hardware designers to describe design intent at
+      higher abstraction levels using C++ or SystemC, enabling faster architecture
+      exploration and RTL generation.
+    </p>
+    <p>
+      While HLS significantly accelerates development, many teams struggle to achieve
+      production-quality results due to verification challenges and uncertainty around
+      equivalence between high-level models and generated RTL.
+    </p>
+  </section>
+
+  <!-- Challenge -->
+  <section>
+    <h2>The Challenge</h2>
+    <p>
+      In traditional HLS flows, verification often becomes disconnected from the original
+      C++/SystemC source.
+    </p>
+    <ul>
+      <li>Difficulty correlating RTL errors back to high-level source code</li>
+      <li>Limited confidence that generated RTL truly matches golden C++ intent</li>
+      <li>Misleading results from software-oriented C++ coverage tools</li>
+      <li>Late discovery of functional mismatches during downstream RTL verification</li>
+    </ul>
+    <p>
+      These gaps reduce trust in HLS and force teams to rely on manual debug and rework.
+    </p>
+  </section>
+
+  <!-- Why traditional approaches fall short -->
+  <section>
+    <h2>Why Traditional Approaches Fall Short</h2>
+    <p>
+      Conventional verification methodologies were designed for hand-written RTL and
+      provide limited visibility into the semantics of high-level algorithmic code.
+    </p>
+    <p>
+      Software-based C++ coverage tools lack awareness of hardware constructs such as
+      concurrency, state, and signal activity, leading to inaccurate coverage assessment
+      and poor linkage to downstream RTL verification.
+    </p>
+  </section>
+
+  <!-- Solution -->
+  <section>
+    <h2>Solution Approach</h2>
+    <p>
+      A comprehensive High-Level Verification (HLV) strategy was introduced to verify and
+      clean C++/SystemC designs before synthesis and formally prove equivalence between
+      high-level code and generated RTL.
+    </p>
+    <p>
+      This approach integrated formal equivalence checking and hardware-aware coverage
+      directly into the HLS flow.
+    </p>
+  </section>
+
+  <!-- Technical execution -->
+  <section>
+    <h2>Technical Execution</h2>
+    <ul>
+      <li>Early verification and cleanup of C++/SystemC source code</li>
+      <li>Formal equivalence checking between golden C++ and generated RTL</li>
+      <li>Hardware-aware code coverage applied at the C++ level</li>
+      <li>Linking high-level coverage results to RTL verification databases</li>
+      <li>Clear traceability from algorithm intent to final RTL implementation</li>
+    </ul>
+    <p>
+      This methodology ensured that functional correctness and coverage closure were
+      addressed at the appropriate abstraction level.
+    </p>
+  </section>
+
+  <!-- Results -->
+  <section>
+    <h2>Results & Impact</h2>
+    <ul>
+      <li>Earlier detection of functional and structural issues</li>
+      <li>Reduced downstream RTL debug and re-verification effort</li>
+      <li>Higher confidence in HLS-generated RTL quality</li>
+      <li>Improved collaboration between algorithm, architecture, and RTL teams</li>
+      <li>Production-ready HLS adoption with predictable outcomes</li>
+    </ul>
+  </section>
+
+  <!-- Takeaway -->
+  <section>
+    <h2>Key Takeaway</h2>
+    <p>
+      High-Level Synthesis does not eliminate the need for rigorous hardware verification.
+      By integrating formal equivalence and hardware-aware coverage into the HLS flow,
+      teams can achieve both productivity gains and production-level confidence.
+    </p>
+  </section>
+
+  <hr>
+
+  <p>
+    ← <a href="./index.html">Back to Case Studies</a> |
+    <a href="../index.html">Home</a>
+  </p>
+
+</main>
+
+</body>
+</html>
