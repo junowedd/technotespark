@@ -18,6 +18,14 @@ and EDA expertise developed across advanced ASIC and foundry programs.
 
 ## EDA Sign-off & Digital Implementation Comparison
 
+## EDA Sign-off Comparison
+
+For a detailed comparison between Cadence, Synopsys, and Siemens Calibre,
+see the external page below:
+
+➡ https://junowedd.github.io/technotespark/docs/eda-comparison.html
+
+
 | Category | Cadence | Synopsys | Siemens (Calibre) |
 |--------|---------|----------|-------------------|
 | Primary Focus | Integrated digital implementation & sign-off | Integrated digital implementation & sign-off | Independent physical verification & manufacturing sign-off |
