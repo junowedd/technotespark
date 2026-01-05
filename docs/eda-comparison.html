@@ -3,85 +3,114 @@
 <head>
   <meta charset="UTF-8">
   <title>EDA Sign-off Tool Comparison</title>
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <style>
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 2rem 0;
-      font-size: 0.95rem;
-    }
-    th, td {
-      border: 1px solid #e5e7eb;
-      padding: 10px 12px;
-      text-align: left;
-      vertical-align: top;
-    }
-    th {
-      background: #f8fafc;
-      font-weight: 600;
-    }
-    td:nth-child(4),
-    th:nth-child(4) {
-      background: #f0f7ff; /* Siemens 강조 */
-      font-weight: 500;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Case Studies shared style -->
+  <link rel="stylesheet" href="../case-studies/case-studies.css">
 </head>
+
 <body>
 
-<h1>EDA Sign-off & Digital Implementation Comparison</h1>
+<header class="site-header">
+  <nav class="site-nav">
+    <a href="../index.html">Home</a>
+    <a href="../case-studies/index.html">Case Studies</a>
+    <a href="../about.html">About</a>
+  </nav>
+</header>
 
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Cadence</th>
-      <th>Synopsys</th>
-      <th>Siemens (Calibre)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Primary Focus</td>
-      <td>Integrated digital implementation & sign-off</td>
-      <td>Integrated digital implementation & sign-off</td>
-      <td>Independent physical verification & manufacturing sign-off</td>
-    </tr>
-    <tr>
-      <td>Core P&amp;R Tool</td>
-      <td>Innovus</td>
-      <td>ICC2</td>
-      <td>Tool-neutral</td>
-    </tr>
-    <tr>
-      <td>DRC / LVS Engine</td>
-      <td>Pegasus</td>
-      <td>IC Validator</td>
-      <td>Calibre nmDRC / nmLVS</td>
-    </tr>
-    <tr>
-      <td>Foundry Certification</td>
-      <td>Node-dependent</td>
-      <td>Node-dependent</td>
-      <td>Universally certified by leading foundries</td>
-    </tr>
-    <tr>
-      <td>Verification Philosophy</td>
-      <td>Flow-integrated</td>
-      <td>Flow-integrated</td>
-      <td>Independent, sign-off-grade authority</td>
-    </tr>
-    <tr>
-      <td>Best Fit Use Case</td>
-      <td>Fast integrated implementation</td>
-      <td>High-performance digital flows</td>
-      <td>Manufacturing-ready sign-off</td>
-    </tr>
-  </tbody>
-</table>
+<main class="case-study">
 
-<p><a href="../index.html">← Back to Home</a></p>
+  <div class="case-header">
+    <h1>EDA Sign-off & Digital Implementation Comparison</h1>
+    <p class="case-subtitle">
+      Positioning Cadence, Synopsys, and Siemens Calibre in the RTL-to-GDS flow
+    </p>
+  </div>
+
+  <section class="case-section">
+    <h2>Context</h2>
+    <p>
+      This comparison provides a high-level view of how leading EDA vendors
+      position their digital implementation and sign-off technologies.
+      While Cadence and Synopsys focus on integrated design flows,
+      Siemens Calibre serves as the independent, foundry-certified
+      authority for manufacturing sign-off.
+    </p>
+  </section>
+
+  <section class="case-section">
+    <h2>EDA Tool Landscape</h2>
+
+    <div class="case-table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Cadence</th>
+            <th>Synopsys</th>
+            <th>Siemens (Calibre)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Primary Focus</td>
+            <td>Integrated digital implementation & sign-off</td>
+            <td>Integrated digital implementation & sign-off</td>
+            <td>Independent physical verification & manufacturing sign-off</td>
+          </tr>
+          <tr>
+            <td>Core P&amp;R Tool</td>
+            <td>Innovus</td>
+            <td>ICC2</td>
+            <td>Tool-neutral</td>
+          </tr>
+          <tr>
+            <td>DRC / LVS Engine</td>
+            <td>Pegasus</td>
+            <td>IC Validator</td>
+            <td>Calibre nmDRC / nmLVS</td>
+          </tr>
+          <tr>
+            <td>Foundry Certification</td>
+            <td>Node-dependent</td>
+            <td>Node-dependent</td>
+            <td>Universally certified by leading foundries</td>
+          </tr>
+          <tr>
+            <td>Verification Philosophy</td>
+            <td>Flow-integrated</td>
+            <td>Flow-integrated</td>
+            <td>Independent, sign-off-grade authority</td>
+          </tr>
+          <tr>
+            <td>Best Fit Use Case</td>
+            <td>Fast integrated implementation</td>
+            <td>High-performance digital flows</td>
+            <td>Manufacturing-ready sign-off</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <h2>Key Takeaway</h2>
+    <blockquote>
+      Design tools build the layout.  
+      Calibre decides whether it can be manufactured.
+    </blockquote>
+  </section>
+
+  <footer class="case-footer">
+    <a href="../index.html">← Back to Home</a>
+    <p>
+      This comparison is an independently written technical summary.
+      All trademarks and product names belong to their respective owners.
+    </p>
+  </footer>
+
+</main>
 
 </body>
 </html>
