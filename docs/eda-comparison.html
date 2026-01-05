@@ -7,6 +7,34 @@
 
   <!-- Case Studies shared style -->
   <link rel="stylesheet" href="../case-studies/case-studies.css">
+
+  <!-- 🔽 비교 테이블 전용 보정 CSS (여기에 추가) -->
+  <style>
+    /* Stronger table borders for comparison tables */
+    .case-table-wrapper table {
+      border-collapse: collapse;
+      border: 1.5px solid #cbd5e1;
+    }
+
+    .case-table-wrapper th,
+    .case-table-wrapper td {
+      border: 1px solid #cbd5e1;
+      padding: 12px 14px;
+      vertical-align: top;
+    }
+
+    .case-table-wrapper th {
+      background: #f8fafc;
+      font-weight: 600;
+    }
+
+    .case-table-wrapper td:nth-child(4),
+    .case-table-wrapper th:nth-child(4) {
+      background: #f0f7ff; /* Siemens 강조 */
+    }
+  </style>
+  <!-- 🔼 여기까지 -->
+
 </head>
 
 <body>
