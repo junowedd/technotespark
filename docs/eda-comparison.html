@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EDA Sign-off Tool Comparison</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 0.95rem;
+    }
+    th, td {
+      border: 1px solid #e5e7eb;
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #f8fafc;
+      font-weight: 600;
+    }
+    td:nth-child(4),
+    th:nth-child(4) {
+      background: #f0f7ff; /* Siemens 강조 */
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+<h1>EDA Sign-off & Digital Implementation Comparison</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Cadence</th>
+      <th>Synopsys</th>
+      <th>Siemens (Calibre)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Primary Focus</td>
+      <td>Integrated digital implementation & sign-off</td>
+      <td>Integrated digital implementation & sign-off</td>
+      <td>Independent physical verification & manufacturing sign-off</td>
+    </tr>
+    <tr>
+      <td>Core P&amp;R Tool</td>
+      <td>Innovus</td>
+      <td>ICC2</td>
+      <td>Tool-neutral</td>
+    </tr>
+    <tr>
+      <td>DRC / LVS Engine</td>
+      <td>Pegasus</td>
+      <td>IC Validator</td>
+      <td>Calibre nmDRC / nmLVS</td>
+    </tr>
+    <tr>
+      <td>Foundry Certification</td>
+      <td>Node-dependent</td>
+      <td>Node-dependent</td>
+      <td>Universally certified by leading foundries</td>
+    </tr>
+    <tr>
+      <td>Verification Philosophy</td>
+      <td>Flow-integrated</td>
+      <td>Flow-integrated</td>
+      <td>Independent, sign-off-grade authority</td>
+    </tr>
+    <tr>
+      <td>Best Fit Use Case</td>
+      <td>Fast integrated implementation</td>
+      <td>High-performance digital flows</td>
+      <td>Manufacturing-ready sign-off</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><a href="../index.html">← Back to Home</a></p>
+
+</body>
+</html>
