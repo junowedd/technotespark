@@ -196,3 +196,88 @@ Optional: Where This Fits in the AI Layers
 AI Taxonomy View: ML / DL models applied to manufacturing data
 
 System View: End-to-end pipeline with MLOps as the central stabilizing layer
+
+Concrete Examples from Semiconductor Manufacturing
+Example 1: Inspection Drift Detection
+
+Problem
+In inline inspection, gradual changes in tool behavior and process conditions caused distribution drift in inspection data.
+While models initially performed well, subtle drift accumulated over time, leading to increased false positives and reduced engineering trust.
+
+MLOps Response
+
+Continuous monitoring was implemented to track feature distributions and output stability
+
+Drift thresholds were defined in collaboration with process engineers
+
+Alerts triggered controlled evaluation before production impact occurred
+
+Outcome
+The system detected drift before yield impact, enabling timely retraining and maintaining confidence in inspection results.
+
+Without monitoring and retraining, model degradation would have gone unnoticed until it affected yield decisions.
+
+Example 2: Tool Change and Configuration Updates
+
+Problem
+Tool maintenance events and configuration changes introduced non-obvious shifts in data characteristics.
+From a modeling perspective, these changes appeared as unexplained performance drops.
+
+MLOps Response
+
+Tool configuration metadata was versioned alongside model and data artifacts
+
+Deployment pipelines enforced compatibility checks between tool state and model versions
+
+Rollback mechanisms ensured safe recovery in case of unexpected behavior
+
+Outcome
+AI outputs remained interpretable and traceable across tool changes, supporting stable operation during maintenance cycles.
+
+MLOps ensured that operational changes did not silently invalidate AI results.
+
+Example 3: Process Node Migration
+
+Problem
+During process node transitions, historical training data became only partially representative of new conditions.
+Direct model reuse risked incorrect recommendations during early production phases.
+
+MLOps Response
+
+Training pipelines supported phased retraining with mixed historical and early-node data
+
+Model versions were explicitly tied to process node context
+
+Human-in-the-loop validation was enforced during ramp-up
+
+Outcome
+The AI system adapted safely to new process nodes while preserving engineering oversight and decision confidence.
+
+Model evolution was controlled, auditable, and aligned with manufacturing ramp strategy.
+
+What These Examples Demonstrate
+
+Across inspection drift, tool changes, and node migration, the model itself was never the primary failure point.
+Instead, risk emerged from unmanaged change.
+
+MLOps provided:
+
+Early visibility into system degradation
+
+Traceability across data, tools, and models
+
+Safe adaptation to evolving manufacturing conditions
+
+In semiconductor manufacturing, AI must evolve at the same pace as the process—without breaking trust.
+
+Reinforced Key Takeaway
+
+MLOps is not a support function.
+It is the control layer that makes AI acceptable in production fabs.
+
+Interview-Ready Closing (with examples)
+
+“We saw issues like inspection drift, tool changes, and process node migration.
+None of these were model problems—they were system change problems.
+MLOps gave us the control and traceability needed to keep AI usable in production.”
+
