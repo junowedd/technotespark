@@ -415,3 +415,25 @@ nav a.active,
 .case-flow .flow-step.current strong {
   color: #2563eb;
 }
+
+.featured-case {
+  margin: 30px 0;
+}
+
+.case-card {
+  border: 1px solid #ddd;
+  border-left: 6px solid #2c6bed;
+  padding: 18px 20px;
+  background-color: #f9fbff;
+}
+
+.case-card h3 {
+  margin-top: 0;
+}
+
+.case-card a {
+  font-weight: bold;
+  color: #2c6bed;
+  text-decoration: none;
+}
+
