@@ -102,3 +102,97 @@ That transition happens in MLOps.”
       └── layers_of_ai_rounded_mlops_emphasis.png
 
 🧠 Why is this layout powerful?
+
+
+Case Study
+
+Production-Grade AI in Semiconductor Manufacturing:
+Why MLOps Was the Decisive Factor
+Project Context
+
+This project focused on deploying AI within a semiconductor manufacturing environment, where requirements around yield, reliability, traceability, and sign-off credibility are significantly higher than in typical software-driven AI use cases.
+
+The objective was not experimental modeling, but supporting production decisions in areas such as process control, inspection analysis, and manufacturing readiness.
+In this environment, AI failure modes directly translate into cost, yield loss, or qualification risk.
+
+Layer-by-Layer System Mapping
+1️⃣ Compute & Infrastructure
+
+The AI system was deployed on fab-compatible infrastructure, balancing compute availability with security and latency constraints.
+Inference workloads were optimized for predictable response times to align with manufacturing takt time requirements.
+Infrastructure stability was a prerequisite for any production use.
+
+2️⃣ Data Engineering
+
+Manufacturing data originated from heterogeneous sources including inspection tools, metrology systems, and process logs.
+Robust data pipelines were required to handle versioned data, schema evolution, and tool configuration changes.
+Strict data quality controls were essential, as minor upstream variations could invalidate downstream analysis.
+
+3️⃣ Training & Feature Engineering
+
+Feature engineering focused on process-relevant representations rather than generic statistical features.
+Training workflows were standardized and repeatable to support traceability and auditability.
+Evaluation emphasized stability and consistency over incremental accuracy improvements.
+
+4️⃣ Models
+
+The project employed machine learning and deep learning models suitable for manufacturing data characteristics.
+Model choices prioritized robustness, explainability, and operational confidence rather than maximum complexity.
+In this context, the model was deliberately treated as replaceable, not central.
+
+5️⃣ ⭐ MLOps & Operations (Critical Layer)
+
+MLOps was the enabling layer that allowed AI to operate in a manufacturing-grade environment.
+Deployment pipelines, monitoring, drift detection, and controlled retraining ensured that models remained valid as processes evolved.
+This layer provided traceability, version control, and sign-off confidence, which are mandatory in semiconductor production.
+
+Without MLOps, the system could not meet manufacturing or quality requirements.
+
+6️⃣ Applications & Agents
+
+AI outputs were integrated into workflows supporting engineers and manufacturing teams.
+Automation was intentionally constrained, with clear decision boundaries and escalation paths.
+Human-in-the-loop mechanisms ensured accountability and preserved engineering trust.
+
+7️⃣ Business & Decisions
+
+The system supported decisions impacting yield, risk mitigation, and manufacturing readiness.
+Success was measured by operational adoption, decision confidence, and sustained reliability—not by model metrics alone.
+AI became a trusted tool rather than an experimental technology.
+
+Why MLOps Was Essential in Manufacturing AI
+
+In semiconductor manufacturing:
+
+Data distributions change with tools, recipes, and process nodes
+
+Silent model degradation is unacceptable
+
+Traceability and rollback are non-negotiable
+
+MLOps enabled:
+
+Controlled deployment aligned with fab change management
+
+Continuous monitoring for drift and anomalies
+
+Safe retraining without disrupting production flows
+
+MLOps was the boundary between AI experimentation and production sign-off.
+
+Key Takeaway
+
+In semiconductor manufacturing, AI maturity is defined by operational trust, not model novelty.
+
+This project demonstrated that production-grade MLOps is the prerequisite for deploying AI in high-risk manufacturing environments.
+
+Interview-Ready Summary (Manufacturing-Focused)
+
+“In semiconductor manufacturing, the challenge isn’t building AI models—it’s making them trustworthy.
+MLOps provides the traceability, monitoring, and control required for production sign-off.”
+
+Optional: Where This Fits in the AI Layers
+
+AI Taxonomy View: ML / DL models applied to manufacturing data
+
+System View: End-to-end pipeline with MLOps as the central stabilizing layer
