@@ -1,5 +1,5 @@
-AI Case Studies
-From AI Taxonomy to Production-Grade Systems
+##AI Case Studies
+- [From AI Taxonomy to Production-Grade Systems](ai-case-studies/README.md)
 
 AI is often discussed in terms of models.
 In practice, AI succeeds or fails as a system.
@@ -101,12 +101,4 @@ That transition happens in MLOps.”
       ├── layers_of_ai_taxonomy.png
       └── layers_of_ai_rounded_mlops_emphasis.png
 
-🧠 왜 이 레이아웃이 강한가
-
-그림 2장이 각각 다른 질문에 답함
-
-독자가 “아, 이건 단순 설명이 아니라 사고 방식이다”라고 인식
-
-기술 + 시스템 + 실무 경험을 자연스럽게 드러냄
-
-인터뷰에서 바로 꺼내 설명 가능
+🧠 Why is this layout powerful?
