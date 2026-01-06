@@ -1,5 +1,6 @@
 ##AI Case Studies
-- [From AI Taxonomy to Production-Grade Systems](ai-case-studies/README.md)
+- [From AI Taxonomy to Production-Grade Systems](./ai-case-studies/README.md)
+   → Semiconductor Manufacturing AI Case Study
 
 AI is often discussed in terms of models.
 In practice, AI succeeds or fails as a system.
