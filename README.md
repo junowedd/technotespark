@@ -5,6 +5,9 @@ Personal technical portfolio covering **physical verification**, **EDA sign-off 
 and **design-to-manufacturing workflows** across advanced ASIC and foundry programs.
 
 ## AI Case Studies
+AI is often discussed in terms of models.  
+In practice, AI succeeds or fails as a system.
+
 - **From AI Taxonomy to Production-Grade Systems**  
   → Semiconductor Manufacturing AI Case Study  
   ([View case study](ai-case-studies/))
