@@ -4,6 +4,11 @@
 Personal technical portfolio covering **physical verification**, **EDA sign-off methodologies**,
 and **design-to-manufacturing workflows** across advanced ASIC and foundry programs.
 
+## AI Case Studies
+- **From AI Taxonomy to Production-Grade Systems**  
+  → Semiconductor Manufacturing AI Case Study  
+  ([View case study](ai-case-studies/))
+
 ---
 
 ## About This Repository
