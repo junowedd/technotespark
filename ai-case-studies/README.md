@@ -1,4 +1,14 @@
 ##AI Case Studies
+
+### Production-Grade AI in Semiconductor Manufacturing
+**Why MLOps Was the Decisive Factor**
+
+This case study explains how AI moves from model-centric thinking
+to production-grade systems in a high-risk manufacturing environment.
+
+👉 [Read the full case study](./semiconductor-mlops-case.html)
+
+
 - [From AI Taxonomy to Production-Grade Systems](./README.md)
    → Semiconductor Manufacturing AI Case Study
 
