@@ -110,6 +110,20 @@ https://junowedd.github.io/technotespark/docs/eda-comparison.html
 
 ---
 
+## 🚀 Featured Case Study
+
+### Production-Grade AI in Semiconductor Manufacturing  
+**Why MLOps Was the Decisive Factor**
+
+A real-world case study on deploying AI in a high-risk manufacturing environment,
+focusing on system design, MLOps, and production trust — not just models.
+
+👉 Read the full case study  
+https://junowedd.github.io/technotespark/ai-case-studies/semiconductor-mlops-case.html
+
+
+---
+
 ## Design Philosophy
 
 > **Design tools create layouts.  
