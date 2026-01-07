@@ -1,5 +1,11 @@
 ##AI Case Studies
 
+### Semiconductor Manufacturing
+**Production-Grade AI: Why MLOps Matters**
+
+👉 Full case study  
+https://junowedd.github.io/technotespark/ai-case-studies/semiconductor-mlops-case.html
+
 ### Production-Grade AI in Semiconductor Manufacturing
 **Why MLOps Was the Decisive Factor**
 
