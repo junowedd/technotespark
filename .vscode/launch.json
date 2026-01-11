@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "FastAPI (Uvicorn) - New Debugger",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/venv/Scripts/uvicorn.exe",
+            "args": ["main:app", "--reload"],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
+
