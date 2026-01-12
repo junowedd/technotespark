@@ -163,6 +163,13 @@ nav a.active,
   text-decoration: none;
 }
 
+.site-nav {
+  font-size: 0.9rem;
+  color: #475569;
+  margin-bottom: 2.5rem;
+}
+
+
 /* ============================
    Hero layout (Option A)
    ============================ */
