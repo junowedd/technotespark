@@ -456,12 +456,13 @@ body > h2,
 body > h3,
 body > p,
 body > ul,
-body > ol {
+body > ol,
+body > a,
+body > pre,
+body > div {
   max-width: 860px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 96px;
-  padding-right: 72px;
+  padding-right: 96px;
 }
-
-
