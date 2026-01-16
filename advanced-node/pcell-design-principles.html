@@ -1,0 +1,30 @@
+<h1 id="pcell-design-principles-for-advanced-nodes">PCell Design
+Principles for Advanced Nodes</h1>
+<p>The primary responsibility of a PCell is not to generate layout
+quickly, but to <strong>prevent invalid layout from ever being
+created</strong>.</p>
+<h2 id="what-should-be-forbidden-at-the-pcell-level">What Should Be
+Forbidden at the PCell Level</h2>
+<ul>
+<li>Continuous transistor width</li>
+<li>Arbitrary gate length selection</li>
+<li>User-controlled gate cut placement</li>
+<li>Single-fin devices in product mode</li>
+<li>Fin pitch modification</li>
+<li>Arbitrary fin termination near active edges</li>
+<li>Free contact or via placement</li>
+</ul>
+<h2 id="why-forbid-instead-of-fix">Why Forbid Instead of Fix</h2>
+<p>OPC and DRC are verification tools. They are not design tools.</p>
+<p>If a structure must be corrected by OPC, it should not be generated
+by default.</p>
+<h2 id="pcm-vs-product-separation">PCM vs Product Separation</h2>
+<p>Exploration and production require different freedoms.</p>
+<p>if pcmMode: allow exploration else: strictly enforce rules</p>
+<h2 id="guiding-principle">Guiding Principle</h2>
+<blockquote>
+<p>A good PCell does not make designers smarter. It makes bad designs
+impossible.</p>
+</blockquote>
+<p>This principle scales teams, technologies, and manufacturing
+outcomes.</p>
