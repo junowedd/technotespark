@@ -28,6 +28,8 @@ It complements the external website below and is intended for **technical depth 
 🔗 **External Portfolio Website**  
 https://junowedd.github.io/technotespark/
 
+Internal GitHub
+https://junowedd.github.io/technotespark/index.html
 ---
 
 ## Repository Structure
