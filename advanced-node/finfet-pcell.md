@@ -1,3 +1,15 @@
+## Reference Implementation
+
+A simplified reference FinFET PCell implementation
+is provided to illustrate the discussed architecture.
+
+This code is intentionally technology-agnostic
+and should be interpreted as a methodology example,
+not a production-ready PCell.
+
+[Download reference FinFET PCell](../code/finfet/finfet_pcell.il)
+
+
 # FinFET PCell Architecture for 12nm and Below
 
 FinFET devices fundamentally break planar assumptions.
