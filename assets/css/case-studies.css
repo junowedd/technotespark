@@ -127,6 +127,12 @@ main.eda-portfolio > p:first-of-type {
   color: #374151;
 }
 
+main.eda-portfolio {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 56px;
+}
+
 /* ============================
    Header (Hero) fine tuning
    ============================ */
