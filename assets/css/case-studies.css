@@ -2,6 +2,15 @@
    Case Studies – Clean & Consolidated Stylesheet (FINAL)
    ========================================================= */
 
+
+
+/* ===== Global Page Layout ===== */
+body {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}   
+
 /* ===== Grid Layout ===== */
 .case-grid {
   display: grid;
