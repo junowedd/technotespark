@@ -457,4 +457,5 @@ main.doc-content {
   max-width: 860px;
   margin: 0 auto;
   padding: 0 72px;
+  border: 4px solid red;
 }
