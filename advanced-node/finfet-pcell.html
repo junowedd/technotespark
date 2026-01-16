@@ -8,12 +8,16 @@
 </head>
 <body>
 
+<main class="doc-content">
+
 <h2 id="reference-implementation">Reference Implementation</h2>
 <p>A simplified reference FinFET PCell implementation is provided to
 illustrate the discussed architecture.</p>
+
 <p>This code is intentionally technology-agnostic and should be
 interpreted as a methodology example, not a production-ready PCell.</p>
-<p><a href="../code/finfet/finfet_pcell.il">Download reference FinFET
+<p>
+<a href="../code/finfet/finfet_pcell.il">Download reference FinFET
 PCell</a></p>
 
 <h1 id="finfet-pcell-architecture-for-12nm-and-below">FinFET PCell
@@ -27,7 +31,6 @@ continuous transistor width. Electrical strength is defined by a
 incompatible with FinFET technologies.</p>
 
 <h2 id="why-planar-thinking-fails">Why Planar Thinking Fails</h2>
-
 <ul>
 <li>Width does not physically exist</li>
 <li>Fin pitch is fixed by the process</li>
@@ -51,16 +54,21 @@ be exposed:</p>
 
 <h2 id="skeleton-concept">Skeleton Concept</h2>
 <p>The FinFET PCell is structured as:</p>
+
 <p>User Params ↓ Fin / Gate Topology ↓ Technology Rule Queries ↓ DFM /
 OPC Guards ↓ Layout Shapes</p>
 <p>Topology is portable across nodes. Rules and layer mappings are
-not.</p>
+not.
+</p>
 
 <h2 id="design-philosophy">Design Philosophy</h2>
 <blockquote>
+
 <p>The goal of a FinFET PCell is not flexibility, but predictability and
 silicon relevance.</p>
 </blockquote>
+
+</main>
 
 </body>
 </html>
