@@ -80,6 +80,22 @@
     advanced ASIC and foundry programs.
   </p>
 
+  <p>
+  In advanced technology nodes (12nm and below),
+  my focus extends beyond verification execution
+  to <strong>layout architecture and methodology design</strong>.
+  This includes defining which layout freedoms must be exposed,
+  and more importantly, which must be <em>forbidden</em>
+  to ensure manufacturability, yield, and OPC convergence.
+  </p>
+
+  <p>
+  A key part of this work is the design of
+  <strong>PCell architectures</strong> for planar and FinFET technologies,
+  where topology, technology rules, and DFM constraints
+  are encoded directly into automation flows.
+  </p>
+
   <h2>My Role & Background</h2>
   <p>
     I am a senior semiconductor professional with over 29 years of experience spanning
@@ -96,11 +112,55 @@
     engagements with engineering and executive stakeholders.
   </p>
 
+  <p>
+  More recently, my work has emphasized
+  <strong>advanced-node layout methodology</strong>,
+  particularly the transition from geometry-driven design
+  to <strong>constraint- and topology-driven architectures</strong>.
+  This shift is essential for scaling layout quality
+  across FinFET-based nodes where OPC freedom is limited
+  and manufacturing variability is amplified.
+  </p>
+
+
   <h2>Design Philosophy</h2>
   <blockquote>
     <strong>Design tools create layouts.<br>
     Sign-off tools decide manufacturability.</strong>
   </blockquote>
+
+  <p>
+  In advanced nodes, this philosophy extends one step further:
+  manufacturability must be designed <em>before</em> sign-off.
+  Well-architected PCells and layout automation
+  should prevent invalid structures from being created at all,
+  rather than relying on downstream fixes.
+  </p>
+
+  <h2>Advanced-Node Layout Architecture</h2>
+
+<p>
+  Below 14nm, layout challenges are dominated not by rule complexity,
+  but by interacting constraints across lithography, process variability,
+  and limited OPC correction capability.
+</p>
+
+<p>
+  My approach to advanced-node layout architecture focuses on:
+</p>
+
+<ul>
+  <li>Eliminating non-physical degrees of freedom (e.g. continuous width in FinFETs)</li>
+  <li>Encoding DFM and OPC constraints directly at the PCell level</li>
+  <li>Separating exploration (PCM) from production-ready design rules</li>
+  <li>Designing layout automation that scales across teams and technologies</li>
+</ul>
+
+<p>
+  This architectural perspective complements traditional sign-off expertise
+  by shifting risk mitigation earlier in the design flow.
+</p>
+
 
   <h2>EDA Sign-off Landscape</h2>
   <p>
