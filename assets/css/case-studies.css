@@ -452,7 +452,10 @@ nav a.active,
 }
 
 
-/* Document-style pages (Markdown → HTML converted) */
+/* Document pages (Advanced Node, MD→HTML) */
 main.doc-content {
   display: block;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 72px;
 }
