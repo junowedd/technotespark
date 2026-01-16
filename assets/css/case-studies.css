@@ -451,10 +451,16 @@ nav a.active,
   text-decoration: none;
 }
 
-main {
+
+body > h1,
+body > p,
+body > ul,
+body > ol {
   max-width: 880px;
-  margin: 0 auto;
-  padding: 0 56px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 56px;
+  padding-right: 56px;
 }
 
 
