@@ -454,8 +454,5 @@ nav a.active,
 
 /* Document-style pages (Markdown → HTML converted) */
 main.doc-content {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 0 72px;
-
+  display: block;
 }
