@@ -451,11 +451,26 @@ nav a.active,
   text-decoration: none;
 }
 
+/* ============================
+   Document pages (Advanced Node)
+   ============================ */
 
-/* Document pages (Advanced Node, MD→HTML) */
 main.doc-content {
   display: block;
-  max-width: 860px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 0 72px;
+  padding: 2.5rem 3.5rem;
+  box-sizing: border-box;
+}
+
+/* 문서용 기본 타이포그래피 보정 */
+main.doc-content p,
+main.doc-content li {
+  line-height: 1.75;
+  font-size: 1rem;
+}
+
+main.doc-content h1,
+main.doc-content h2 {
+  margin-top: 2.2rem;
 }
