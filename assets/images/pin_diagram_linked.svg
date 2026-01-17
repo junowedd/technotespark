@@ -1,0 +1,48 @@
+<svg width="520" height="260" viewBox="0 0 520 260"
+ xmlns="http://www.w3.org/2000/svg"
+ font-family="Arial, Helvetica, sans-serif">
+
+ <style>
+  .od { fill:#e6f2ff; stroke:#333; stroke-width:1.2; }
+  .pinD { fill:#ffb3b3; stroke:#333; stroke-width:1.2; }
+  .pinS { fill:#b3ffb3; stroke:#333; stroke-width:1.2; }
+  .pinG { fill:#ffe699; stroke:#333; stroke-width:1.2; }
+  .pinB { fill:#d9d9d9; stroke:#333; stroke-width:1.2; }
+  .label { font-size:13px; fill:#111; pointer-events:none; }
+
+  a:hover rect {
+    stroke:#4c8bf5;
+    stroke-width:2.2;
+    cursor:pointer;
+  }
+ </style>
+
+ <!-- OD -->
+ <rect x="60" y="90" width="400" height="80" class="od"/>
+ <text x="65" y="85" class="label">OD (Active)</text>
+
+ <!-- Drain pin -->
+ <a href="#pin-d">
+   <rect x="380" y="60" width="60" height="30" class="pinD"/>
+ </a>
+ <text x="390" y="55" class="label">D</text>
+
+ <!-- Source pin -->
+ <a href="#pin-s">
+   <rect x="80" y="60" width="60" height="30" class="pinS"/>
+ </a>
+ <text x="90" y="55" class="label">S</text>
+
+ <!-- Gate pin -->
+ <a href="#pin-g">
+   <rect x="240" y="30" width="40" height="30" class="pinG"/>
+ </a>
+ <text x="247" y="25" class="label">G</text>
+
+ <!-- Bulk pin -->
+ <a href="#pin-b">
+   <rect x="240" y="190" width="40" height="30" class="pinB"/>
+ </a>
+ <text x="247" y="185" class="label">B</text>
+
+</svg>

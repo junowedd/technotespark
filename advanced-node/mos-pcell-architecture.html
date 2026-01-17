@@ -101,6 +101,13 @@
 
 <h2 id="geometry-creation">Core Geometry Creation</h2>
 
+
+<p><em>
+Note: This section focuses on OD geometry creation.
+Gate, contact, and metal shapes are described in earlier sections.
+</em></p>
+
+
 <pre><code class="language-skill">
 <span id="gc-1"></span>dbCreateRect(
 <span id="gc-2"></span>  cv
@@ -113,8 +120,27 @@
 
 <hr>
 
+<h2 id="pin-creation">Pin Creation</h2>
+
+<img src="../assets/images/pin_diagram_linked.svg"
+     alt="Pin creation diagram linked to code"
+     style="max-width:80%; margin:1.5rem 0;">
+
+<pre><code class="language-skill">
+<span id="pin-d"></span>dbCreatePin(cv "D" "metal1" list(dX0:dY0 dX1:dY1))
+<span id="pin-s"></span>dbCreatePin(cv "S" "metal1" list(sX0:sY0 sX1:sY1))
+<span id="pin-g"></span>dbCreatePin(cv "G" "poly"   list(gX0:gY0 gX1:gY1))
+<span id="pin-b"></span>dbCreatePin(cv "B" "metal1" list(bX0:bY0 bX1:bY1))
+</code></pre>
+
+<p class="backlink">
+  <a href="#architecture-diagram">↩ Back to architecture diagram</a>
+</p>
+
+<hr>
+
 <p>
-<strong>Author:</strong> Kyung W. Park<br>
+<strong>Author:</strong> Testchip and Electrical PCM Design Methodology Team<br>
 <a href="https://junowedd.github.io/technotespark/">https://junowedd.github.io/technotespark/</a>
 </p>
 
