@@ -1,0 +1,33 @@
+<svg width="600" height="220" viewBox="0 0 600 220"
+ xmlns="http://www.w3.org/2000/svg"
+ font-family="Arial, Helvetica, sans-serif">
+
+ <style>
+  .od { fill:#e6f2ff; stroke:#333; stroke-width:1.2; }
+  .poly { fill:#ffd966; stroke:#333; stroke-width:1.2; }
+  .label { font-size:14px; fill:#111; pointer-events:none; }
+  a:hover .poly { stroke:#4c8bf5; stroke-width:2; cursor:pointer; }
+  a:hover .od { stroke:#4c8bf5; stroke-width:2; cursor:pointer; }
+ </style>
+
+ <!-- OD region -> odLen / odWid -->
+ <a href="#dg-3">
+   <rect x="50" y="80" width="500" height="60" class="od"/>
+ </a>
+ <text x="60" y="75" class="label">OD (odLen / odWid)</text>
+
+ <!-- Gate finger 1 -> gatePitch / L -->
+ <a href="#dg-1">
+   <rect x="170" y="60" width="20" height="100" class="poly"/>
+ </a>
+
+ <!-- Gate finger 2 -> gatePitch -->
+ <a href="#dg-2">
+   <rect x="300" y="60" width="20" height="100" class="poly"/>
+ </a>
+
+ <text x="150" y="45" class="label">Gate fingers</text>
+ <text x="165" y="175" class="label">L</text>
+ <text x="250" y="175" class="label">gatePitch</text>
+
+</svg>

@@ -21,12 +21,17 @@
     code {
       font-family: Consolas, monospace;
     }
+    .note {
+      background: #eef6ff;
+      border-left: 4px solid #4c8bf5;
+      padding: 0.8rem;
+      margin: 1.5rem 0;
+    }
     :target {
       background-color: #fff3cd;
     }
     .backlink {
       font-size: 0.9rem;
-      margin-top: 0.5rem;
     }
   </style>
 </head>
@@ -46,7 +51,7 @@
 <h2 id="derived-geometry">Derived Geometry</h2>
 
 <img src="../assets/images/gate_finger_diagram_linked.svg"
-     alt="Gate and Finger Geometry"
+     alt="Gate and Finger Geometry linked to code"
      style="max-width:100%; margin:1.5rem 0;">
 
 <pre><code class="language-skill">
@@ -59,14 +64,16 @@
 <span id="dg-4"></span>(odWid w)
 </code></pre>
 
-<p class="backlink"><a href="#architecture-diagram">↩ Back to architecture diagram</a></p>
+<p class="backlink">
+<a href="#architecture-diagram">↩ Back to architecture diagram</a>
+</p>
 
 <hr>
 
 <h2 id="coordinate-frame">Coordinate Frame (Centered Origin)</h2>
 
 <img src="../assets/images/coordinate_frame_diagram_linked.svg"
-     alt="Coordinate frame diagram"
+     alt="Coordinate frame linked to code"
      style="max-width:80%; margin:1.5rem 0;">
 
 <pre><code class="language-skill">
@@ -76,26 +83,9 @@
 <span id="cf-4"></span>(y1 (+ (/ odWid 2.0)))
 </code></pre>
 
-<p class="backlink"><a href="#architecture-diagram">↩ Back to architecture diagram</a></p>
-
-<hr>
-
-<h2 id="contacts">Contact Rows (Source / Drain)</h2>
-
-<img src="../assets/images/contact_via_diagram_linked.svg"
-     alt="Contact and via placement"
-     style="max-width:100%; margin:1.5rem 0;">
-
-<pre><code class="language-skill">
-<span id="ct-1"></span>(contRowYclear (- (/ odWid 2.0) contEncOD))
-(contYmin (- contRowYclear contSize))
-(contYmax contRowYclear)
-
-<span id="ct-2"></span>(m1Ymin (- contYmin m1OverCont))
-(m1Ymax (+ contYmax m1OverCont))
-</code></pre>
-
-<p class="backlink"><a href="#architecture-diagram">↩ Back to architecture diagram</a></p>
+<p class="backlink">
+<a href="#architecture-diagram">↩ Back to architecture diagram</a>
+</p>
 
 <hr>
 
@@ -109,7 +99,9 @@
 <span id="gc-5"></span>)
 </code></pre>
 
-<p class="backlink"><a href="#architecture-diagram">↩ Back to architecture diagram</a></p>
+<p class="backlink">
+<a href="#architecture-diagram">↩ Back to architecture diagram</a>
+</p>
 
 <hr>
 
