@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MOS PCell Architecture (Cadence SKILL)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Use existing site-wide CSS -->
+  <link rel="stylesheet" href="../assets/css/case-studies.css">
+
+  <style>
+    /* Minimal local tweaks, rest handled by case-studies.css */
+    body {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem;
+    }
+    pre {
+      background: #f6f8fa;
+      padding: 1rem;
+      overflow-x: auto;
+    }
+    code {
+      font-family: Consolas, monospace;
+    }
+    .arch {
+      background: #f9fafb;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      margin: 2rem 0;
+    }
+    .note {
+      background: #eef6ff;
+      border-left: 4px solid #4c8bf5;
+      padding: 0.8rem;
+      margin: 1.5rem 0;
+    }
+  </style>
+</head>
+
+<body class="mos-pcell">
+
+<h1>MOS PCell Architecture (Cadence SKILL)</h1>
+
+<p>
+This document explains the internal architecture of a production-quality
+MOS PCell written in Cadence SKILL.
+</p>
+
+<p>
+The focus is on how user parameters are transformed into
+layout geometry using SKILL database functions.
+</p>
+
+<hr>
+
+<h2>Architecture Overview (Visual)</h2>
+
+<img src="../assets/images/mos_pcell_architecture.svg"
+     alt="MOS PCell Architecture"
+     style="max-width:100%;">
+
+<div class="note">
+The diagram above summarizes the logical flow of the PCell.
+Each block corresponds to a section explained below.
+</div>
+
+<h2>Architecture Map</h2>
+
+<div class="arch">
+<pre>
+MOS PCell
+│
+├─ Parameter Input (W, L, nf, rules)
+│
+├─ Derived Geometry
+│   ├─ Gate pitch
+│   ├─ Active length / width
+│   └─ Enclosure-based dimensions
+│
+├─ Coordinate Frame
+│   └─ Centered origin (rotation-safe)
+│
+├─ Contact Placement
+│   └─ Source / Drain rows
+│
+├─ Metal Routing
+│   └─ M1 straps over contacts
+│
+├─ Geometry Creation
+│   └─ dbCreateRect / loops
+│
+└─ Pin Generation
+    └─ D / G / S / B pins
+</pre>
+</div>
+
+<hr>
+
+<h2 id="derived-geometry">Derived Geometry</h2>
+
+<p>
+This block converts schematic parameters into physical layout dimensions.
+It is the mathematical core of the PCell.
+</p>
+
+<pre><code class="language-skill">
+;; Derived geometry
+
+(gatePitch (+ l polySpace 2*gateExt))
+
+(activeLen
+  (+ (* nf l)
+     (* (max 0 (- nf 1)) polySpace)
+     (* 2 gateExt)))
+
+(odLen (+ activeLen (* 2 sdExt)))
+(odWid w)
+</code></pre>
+
+<ul>
+  <li><b>gatePitch</b>: spacing between adjacent gate fingers</li>
+  <li><b>activeLen</b>: total diffusion length for multi-finger devices</li>
+  <li><b>odLen / odWid</b>: OD bounding box dimensions</li>
+</ul>
+
+<div class="note">
+Errors in derived geometry propagate to all subsequent layout generation.
+</div>
+
+<hr>
+
+<h2 id="coordinate-frame">Coordinate Frame (Centered Origin)</h2>
+
+<p>
+The layout is centered at the origin to ensure safe rotation,
+mirroring, and array placement.
+</p>
+
+<pre><code class="language-skill">
+(x0 (- (/ odLen 2.0)))
+(y0 (- (/ odWid 2.0)))
+(x1 (+ (/ odLen 2.0)))
+(y1 (+ (/ odWid 2.0)))
+</code></pre>
+
+<p>
+This is a best practice commonly observed in production PDK PCells.
+</p>
+
+<hr>
+
+<h2 id="contacts">Contact Rows (Source / Drain)</h2>
+
+<p>
+Contact rows are placed inside the OD region with proper enclosure rules applied.
+</p>
+
+<pre><code class="language-skill">
+(contRowYclear (- (/ odWid 2.0) contEncOD))
+(contYmin (- contRowYclear contSize))
+(contYmax contRowYclear)
+</code></pre>
+
+<hr>
+
+<h2 id="metal-routing">Metal 1 Straps</h2>
+
+<p>
+Metal straps connect contact rows and form low-resistance terminals.
+</p>
+
+<pre><code class="language-skill">
+(m1Ymin (- contYmin m1OverCont))
+(m1Ymax (+ contYmax m1OverCont))
+</code></pre>
+
+<hr>
+
+<h2 id="geometry-creation">Core Geometry Creation</h2>
+
+<p>
+After all derived values are defined, the PCell creates actual layout geometry
+using database functions such as <code>dbCreateRect</code>.
+</p>
+
+<h3>Active (OD)</h3>
+
+<pre><code class="language-skill">
+dbCreateRect(
+  cv
+  list("OD" "drawing")
+  list(x0:y0 x1:y1)
+)
+</code></pre>
+
+<h3>Poly Gate (Multi-Finger)</h3>
+
+<pre><code class="language-skill">
+for(i 0 nf-1
+  let((gx0 gx1)
+    gx0 = (- (/ activeLen 2.0)) + (* i gatePitch)
+    gx1 = (+ gx0 l)
+
+    dbCreateRect(
+      cv
+      list("POLY" "drawing")
+      list(gx0:(y0-gateExt) gx1:(y1+gateExt))
+    )
+  )
+)
+</code></pre>
+
+<hr>
+
+<h2 id="pin-creation">Pin Creation</h2>
+
+<p>
+Pins expose electrical connectivity between the layout and the schematic.
+</p>
+
+<pre><code class="language-skill">
+dbCreatePin(cv "D" ...)
+dbCreatePin(cv "G" ...)
+dbCreatePin(cv "S" ...)
+</code></pre>
+
+<hr>
+
+<h2>Design Best Practices Observed</h2>
+
+<ul>
+  <li>Centered coordinate system</li>
+  <li>Clear separation of calculation and creation</li>
+  <li>Finger-based gate replication</li>
+  <li>Rule-driven geometry</li>
+  <li>Clean ROD environment initialization</li>
+</ul>
+
+<div class="note">
+These practices are consistent with production-quality MOS PCells
+found in modern PDKs.
+</div>
+
+<hr>
+
+<p>
+<strong>Author:</strong> Jun O<br>
+<strong>Site:</strong>
+<a href="https://junowedd.github.io/technotespark/">
+https://junowedd.github.io/technotespark/
+</a>
+</p>
+
+</body>
+</html>
