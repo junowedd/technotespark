@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MOS PCell – Contacts & Vias</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/css/case-studies.css">
+</head>
+<body>
+
+<h1>Contact and Via Placement</h1>
+<p><a href="index.html">↩ Back to Index</a></p>
+
+<p>
+Contact placement is derived from the OD dimensions and enclosure
+rules. The SKILL code computes safe Y-ranges to ensure DRC compliance.
+</p>
+
+<pre><code>
+(contRowYclear (- (/ odWid 2.0) contEncOD))
+(contYmin (- contRowYclear contSize))
+(contYmax contRowYclear)
+</code></pre>
+
+<p>
+Metal-1 straps are then extended beyond the contact rows to
+guarantee sufficient enclosure.
+</p>
+
+</body>
+</html>

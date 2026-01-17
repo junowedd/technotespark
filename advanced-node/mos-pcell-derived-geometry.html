@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MOS PCell – Derived Geometry</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/css/case-studies.css">
+</head>
+<body>
+
+<h1>Derived Geometry</h1>
+<p><a href="index.html">↩ Back to Index</a></p>
+
+<p>
+In <code>mos_pcell.il</code>, derived geometry variables are computed
+before any layout objects are created. This stage converts abstract
+PCell parameters into concrete dimensions that will be reused
+consistently throughout the layout generation.
+</p>
+
+<h2>Gate Pitch</h2>
+<pre><code>
+(gatePitch (+ l polySpace (* 2 gateExt)))
+</code></pre>
+<p>
+This expression defines the center-to-center spacing between adjacent
+poly gates. The inclusion of <code>gateExt</code> ensures that poly
+extends beyond active diffusion symmetrically on both sides.
+</p>
+
+<h2>Active Length</h2>
+<pre><code>
+(activeLen
+  (+ (* nf l)
+     (* (max 0 (- nf 1)) polySpace)
+     (* 2 gateExt)))
+</code></pre>
+<p>
+For multi-finger devices, the active length scales linearly with
+the number of fingers. The <code>(max 0 (- nf 1))</code> term
+automatically suppresses poly spacing when <code>nf = 1</code>.
+</p>
+
+<h2>Diffusion Dimensions</h2>
+<pre><code>
+(odLen (+ activeLen (* 2 sdExt)))
+(odWid w)
+</code></pre>
+<p>
+The final OD rectangle fully encloses the active region and
+source/drain extensions. All downstream shapes reference these values.
+</p>
+
+</body>
+</html>

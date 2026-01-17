@@ -1,157 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>MOS PCell Architecture (Cadence SKILL)</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>MOS PCell Architecture (Cadence SKILL)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="../assets/css/case-studies.css">
+  <link rel="stylesheet" href="../assets/css/case-studies.css">
 
-<style>
-body { max-width:1000px; margin:auto; padding:2rem; }
-pre { background:#f6f8fa; padding:1rem; overflow-x:auto; }
-code { font-family:Consolas, monospace; }
-:target { background:#fff3cd; }
-.hover-highlight { background:#ffe9a8; transition:background-color .2s ease; }
-.backlink { font-size:.9rem; margin-top:.5rem; }
-
-svg a:hover rect, svg a:hover line {
-  stroke:#4c8bf5 !important;
-  stroke-width:2.2;
-  cursor:pointer;
-}
-</style>
+  <style>
+    body {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem;
+    }
+    pre {
+      background: #f6f8fa;
+      padding: 1rem;
+      overflow-x: auto;
+    }
+    code {
+      font-family: Consolas, monospace;
+    }
+    :target {
+      background-color: #fff3cd;
+    }
+    .hover-highlight {
+      background-color: #ffe9a8;
+      transition: background-color 0.2s ease;
+    }
+    .backlink {
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+  </style>
 </head>
 
-<body>
+<body class="mos-pcell">
 
 <h1>MOS PCell Architecture (Cadence SKILL)</h1>
 
-<h2 id="architecture-diagram">Architecture Overview</h2>
+<h2 id="architecture-diagram">Architecture Overview (Visual)</h2>
 
-<!-- FULL INLINE ARCHITECTURE SVG -->
-<svg width="800" height="900" viewBox="0 0 800 900"
-     xmlns="http://www.w3.org/2000/svg"
-     font-family="Arial, Helvetica, sans-serif">
-
-  <defs>
-    <style>
-      .box {
-        fill: #f9fafb;
-        stroke: #333;
-        stroke-width: 1.2;
-        rx: 8;
-        ry: 8;
-      }
-      .title {
-        font-size: 16px;
-        font-weight: bold;
-        fill: #111;
-      }
-      .text {
-        font-size: 14px;
-        fill: #222;
-      }
-      .arrow {
-        stroke: #333;
-        stroke-width: 1.2;
-        marker-end: url(#arrowhead);
-      }
-    </style>
-
-    <marker id="arrowhead" markerWidth="10" markerHeight="7"
-            refX="10" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
-    </marker>
-  </defs>
-
-  <text x="400" y="40" text-anchor="middle" class="title">
-    MOS PCell Architecture (Cadence SKILL)
-  </text>
-
-  <rect x="200" y="70" width="400" height="60" class="box"/>
-  <text x="400" y="105" text-anchor="middle" class="text">
-    Parameter Input (W, L, nf, rules)
-  </text>
-
-  <rect x="200" y="160" width="400" height="90" class="box"/>
-  <text x="400" y="195" text-anchor="middle" class="text">
-    Derived Geometry
-  </text>
-  <text x="400" y="220" text-anchor="middle" class="text">
-    gatePitch, activeLen, OD size
-  </text>
-
-  <rect x="200" y="290" width="400" height="60" class="box"/>
-  <text x="400" y="325" text-anchor="middle" class="text">
-    Coordinate Frame (Centered Origin)
-  </text>
-
-  <rect x="200" y="380" width="400" height="80" class="box"/>
-  <text x="400" y="415" text-anchor="middle" class="text">
-    Contact Placement
-  </text>
-  <text x="400" y="440" text-anchor="middle" class="text">
-    Source / Drain Rows
-  </text>
-
-  <rect x="200" y="500" width="400" height="80" class="box"/>
-  <text x="400" y="535" text-anchor="middle" class="text">
-    Metal Routing
-  </text>
-  <text x="400" y="560" text-anchor="middle" class="text">
-    M1 Straps over Contacts
-  </text>
-
-  <rect x="200" y="620" width="400" height="80" class="box"/>
-  <text x="400" y="655" text-anchor="middle" class="text">
-    Geometry Creation
-  </text>
-  <text x="400" y="680" text-anchor="middle" class="text">
-    dbCreateRect / Loops
-  </text>
-
-  <rect x="200" y="740" width="400" height="60" class="box"/>
-  <text x="400" y="775" text-anchor="middle" class="text">
-    Pin Creation (D / G / S / B)
-  </text>
-
-  <line x1="400" y1="130" x2="400" y2="160" class="arrow"/>
-  <line x1="400" y1="250" x2="400" y2="290" class="arrow"/>
-  <line x1="400" y1="350" x2="400" y2="380" class="arrow"/>
-  <line x1="400" y1="460" x2="400" y2="500" class="arrow"/>
-  <line x1="400" y1="580" x2="400" y2="620" class="arrow"/>
-  <line x1="400" y1="700" x2="400" y2="740" class="arrow"/>
-
-</svg>
-
+<img src="../assets/images/mos_pcell_architecture.svg"
+     alt="MOS PCell Architecture"
+     style="max-width:100%;">
 
 <hr>
 
 <h2 id="derived-geometry">Derived Geometry</h2>
-<pre><code>
+
+<img src="../assets/images/gate_finger_diagram_linked.svg"
+     alt="Gate and Finger Geometry"
+     style="max-width:100%; margin:1.5rem 0;">
+
+<pre><code class="language-skill">
 <span id="dg-1"></span>(gatePitch (+ l polySpace 2*gateExt))
-<span id="dg-2"></span>(activeLen (+ (* nf l) (* (max 0 (- nf 1)) polySpace) (* 2 gateExt)))
+<span id="dg-2"></span>(activeLen
+  (+ (* nf l)
+     (* (max 0 (- nf 1)) polySpace)
+     (* 2 gateExt)))
 <span id="dg-3"></span>(odLen (+ activeLen (* 2 sdExt)))
 <span id="dg-4"></span>(odWid w)
 </code></pre>
-<p class="backlink"><a href="#architecture-diagram">↩ Back to the architecture diagram</a></p>
+
+<p class="backlink"><a href="#architecture-diagram">↩ Back to architecture diagram</a></p>
 
 <hr>
 
-<h2 id="coordinate-frame">Coordinate Frame</h2>
-<pre><code>
+<h2 id="coordinate-frame">Coordinate Frame (Centered Origin)</h2>
+
+<img src="../assets/images/coordinate_frame_diagram_linked.svg"
+     alt="Coordinate frame diagram"
+     style="max-width:80%; margin:1.5rem 0;">
+
+<pre><code class="language-skill">
 <span id="cf-1"></span>(x0 (- (/ odLen 2.0)))
 <span id="cf-2"></span>(y0 (- (/ odWid 2.0)))
 <span id="cf-3"></span>(x1 (+ (/ odLen 2.0)))
 <span id="cf-4"></span>(y1 (+ (/ odWid 2.0)))
 </code></pre>
-<p class="backlink"><a href="#architecture-diagram">↩ Back to the architecture diagram</a></p>
+
+<p class="backlink"><a href="#architecture-diagram">↩ Back to architecture diagram</a></p>
 
 <hr>
 
 <h2 id="contacts">Contact Rows (Source / Drain)</h2>
-<pre><code>
+
+<img src="../assets/images/contact_via_diagram_linked.svg"
+     alt="Contact and via placement"
+     style="max-width:100%; margin:1.5rem 0;">
+
+<pre><code class="language-skill">
 <span id="ct-1"></span>(contRowYclear (- (/ odWid 2.0) contEncOD))
 (contYmin (- contRowYclear contSize))
 (contYmax contRowYclear)
@@ -159,62 +98,62 @@ svg a:hover rect, svg a:hover line {
 <span id="ct-2"></span>(m1Ymin (- contYmin m1OverCont))
 (m1Ymax (+ contYmax m1OverCont))
 </code></pre>
-<p class="backlink"><a href="#architecture-diagram">↩ Back to the architecture diagram</a></p>
+
+<p class="backlink"><a href="#architecture-diagram">↩ Back to architecture diagram</a></p>
 
 <hr>
 
 <h2 id="geometry-creation">Core Geometry Creation</h2>
+
 <p><em>
 Note: This section focuses on OD geometry creation.
 Gate, contact, and metal shapes are described in earlier sections.
 </em></p>
 
-<pre><code>
+<pre><code class="language-skill">
 <span id="gc-1"></span>dbCreateRect(
 <span id="gc-2"></span>  cv
 <span id="gc-3"></span>  list("OD" "drawing")
 <span id="gc-4"></span>  list(x0:y0 x1:y1)
 <span id="gc-5"></span>)
 </code></pre>
-<p class="backlink"><a href="#architecture-diagram">↩ Back to the architecture diagram</a></p>
+
+<p class="backlink"><a href="#architecture-diagram">↩ Back to architecture diagram</a></p>
 
 <hr>
 
 <h2 id="pin-creation">Pin Creation</h2>
-<pre><code>
+
+<img src="../assets/images/pin_diagram_linked.svg"
+     alt="Pin creation diagram"
+     style="max-width:80%; margin:1.5rem 0;">
+
+<pre><code class="language-skill">
 <span id="pin-d"></span>dbCreatePin(cv "D" "metal1" list(dX0:dY0 dX1:dY1))
 <span id="pin-s"></span>dbCreatePin(cv "S" "metal1" list(sX0:sY0 sX1:sY1))
 <span id="pin-g"></span>dbCreatePin(cv "G" "poly"   list(gX0:gY0 gX1:gY1))
 <span id="pin-b"></span>dbCreatePin(cv "B" "metal1" list(bX0:bY0 bX1:bY1))
 </code></pre>
-<p class="backlink"><a href="#architecture-diagram">↩ Back to the architecture diagram</a></p>
+
+<p class="backlink"><a href="#architecture-diagram">↩ Back to architecture diagram</a></p>
 
 <hr>
 
-<p><strong>Author:</strong> Kyung W. Park<br>
+<p>
+<strong>Author:</strong> Testchip & Electrical PCM Design Methodology Team<br>
 <a href="https://junowedd.github.io/technotespark/">https://junowedd.github.io/technotespark/</a>
 </p>
 
 <script>
 document.querySelectorAll('svg a[href^="#"]').forEach(link => {
-  const id = link.getAttribute('href').substring(1);
-
+  const targetId = link.getAttribute('href').substring(1);
   link.addEventListener('mouseenter', () => {
-    const el = document.getElementById(id);
+    const el = document.getElementById(targetId);
     if (el) el.classList.add('hover-highlight');
   });
-
   link.addEventListener('mouseleave', () => {
-    const el = document.getElementById(id);
+    const el = document.getElementById(targetId);
     if (el) el.classList.remove('hover-highlight');
-  });
-
-  link.addEventListener('click', e => {
-    const el = document.getElementById(id);
-    if (el) {
-      e.preventDefault();
-      el.scrollIntoView({ behavior:"smooth", block:"center" });
-    }
   });
 });
 </script>
