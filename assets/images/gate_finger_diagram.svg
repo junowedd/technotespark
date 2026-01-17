@@ -1,0 +1,17 @@
+<svg width="600" height="220" viewBox="0 0 600 220"
+ xmlns="http://www.w3.org/2000/svg">
+ <style>
+  .od { fill:#e6f2ff; stroke:#333; }
+  .poly { fill:#ffd966; stroke:#333; }
+  .label { font-size:14px; font-family:Arial; }
+ </style>
+
+ <rect x="50" y="80" width="500" height="60" class="od"/>
+ <rect x="170" y="60" width="20" height="100" class="poly"/>
+ <rect x="300" y="60" width="20" height="100" class="poly"/>
+
+ <text x="60" y="75" class="label">OD (Active)</text>
+ <text x="160" y="50" class="label">Gate fingers</text>
+ <text x="170" y="175" class="label">L</text>
+ <text x="240" y="175" class="label">gatePitch</text>
+</svg>

@@ -474,3 +474,7 @@ main.doc-content h1,
 main.doc-content h2 {
   margin-top: 2.2rem;
 }
+
+:target {
+  background-color: #fff3cd;
+}

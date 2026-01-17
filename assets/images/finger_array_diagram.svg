@@ -1,0 +1,19 @@
+<svg width="600" height="220" viewBox="0 0 600 220"
+ xmlns="http://www.w3.org/2000/svg">
+ <style>
+  .od { fill:#e6f2ff; stroke:#333; }
+  .poly { fill:#ffd966; stroke:#333; }
+  .label { font-size:14px; font-family:Arial; }
+ </style>
+
+ <rect x="60" y="80" width="480" height="60" class="od"/>
+
+ <rect x="120" y="60" width="18" height="100" class="poly"/>
+ <rect x="200" y="60" width="18" height="100" class="poly"/>
+ <rect x="280" y="60" width="18" height="100" class="poly"/>
+ <rect x="360" y="60" width="18" height="100" class="poly"/>
+
+ <text x="60" y="70" class="label">OD</text>
+ <text x="150" y="50" class="label">nf fingers</text>
+ <text x="200" y="180" class="label">uniform gatePitch</text>
+</svg>
