@@ -8,18 +8,18 @@
 <link rel="stylesheet" href="../assets/css/case-studies.css">
 
 <style>
-body {{ max-width:1000px; margin:auto; padding:2rem; }}
-pre {{ background:#f6f8fa; padding:1rem; overflow-x:auto; }}
-code {{ font-family:Consolas, monospace; }}
-:target {{ background:#fff3cd; }}
-.hover-highlight {{ background:#ffe9a8; transition:background-color .2s ease; }}
-.backlink {{ font-size:.9rem; margin-top:.5rem; }}
+body { max-width:1000px; margin:auto; padding:2rem; }
+pre { background:#f6f8fa; padding:1rem; overflow-x:auto; }
+code { font-family:Consolas, monospace; }
+:target { background:#fff3cd; }
+.hover-highlight { background:#ffe9a8; transition:background-color .2s ease; }
+.backlink { font-size:.9rem; margin-top:.5rem; }
 
-svg a:hover rect, svg a:hover line {{
+svg a:hover rect, svg a:hover line {
   stroke:#4c8bf5 !important;
   stroke-width:2.2;
   cursor:pointer;
-}}
+}
 </style>
 </head>
 
@@ -27,9 +27,9 @@ svg a:hover rect, svg a:hover line {{
 
 <h1>MOS PCell Architecture (Cadence SKILL)</h1>
 
-<h2 id="architecture-diagram">Architecture Overview (Full Inline SVG)</h2>
+<h2 id="architecture-diagram">Architecture Overview</h2>
 
-<!-- ===== FULL INLINE ARCHITECTURE SVG ===== -->
+<!-- FULL INLINE ARCHITECTURE SVG -->
 <svg width="800" height="900" viewBox="0 0 800 900"
      xmlns="http://www.w3.org/2000/svg"
      font-family="Arial, Helvetica, sans-serif">
@@ -129,66 +129,93 @@ svg a:hover rect, svg a:hover line {{
 <hr>
 
 <h2 id="derived-geometry">Derived Geometry</h2>
-
 <pre><code>
 <span id="dg-1"></span>(gatePitch (+ l polySpace 2*gateExt))
 <span id="dg-2"></span>(activeLen (+ (* nf l) (* (max 0 (- nf 1)) polySpace) (* 2 gateExt)))
 <span id="dg-3"></span>(odLen (+ activeLen (* 2 sdExt)))
 <span id="dg-4"></span>(odWid w)
 </code></pre>
+<p class="backlink"><a href="#architecture-diagram">↩ Back to the architecture diagram</a></p>
 
 <hr>
 
 <h2 id="coordinate-frame">Coordinate Frame</h2>
-
 <pre><code>
 <span id="cf-1"></span>(x0 (- (/ odLen 2.0)))
 <span id="cf-2"></span>(y0 (- (/ odWid 2.0)))
 <span id="cf-3"></span>(x1 (+ (/ odLen 2.0)))
 <span id="cf-4"></span>(y1 (+ (/ odWid 2.0)))
 </code></pre>
+<p class="backlink"><a href="#architecture-diagram">↩ Back to the architecture diagram</a></p>
 
 <hr>
 
-<h2 id="contacts">Contact Rows</h2>
-
+<h2 id="contacts">Contact Rows (Source / Drain)</h2>
 <pre><code>
 <span id="ct-1"></span>(contRowYclear (- (/ odWid 2.0) contEncOD))
+(contYmin (- contRowYclear contSize))
+(contYmax contRowYclear)
+
 <span id="ct-2"></span>(m1Ymin (- contYmin m1OverCont))
+(m1Ymax (+ contYmax m1OverCont))
 </code></pre>
+<p class="backlink"><a href="#architecture-diagram">↩ Back to the architecture diagram</a></p>
+
+<hr>
+
+<h2 id="geometry-creation">Core Geometry Creation</h2>
+<p><em>
+Note: This section focuses on OD geometry creation.
+Gate, contact, and metal shapes are described in earlier sections.
+</em></p>
+
+<pre><code>
+<span id="gc-1"></span>dbCreateRect(
+<span id="gc-2"></span>  cv
+<span id="gc-3"></span>  list("OD" "drawing")
+<span id="gc-4"></span>  list(x0:y0 x1:y1)
+<span id="gc-5"></span>)
+</code></pre>
+<p class="backlink"><a href="#architecture-diagram">↩ Back to the architecture diagram</a></p>
 
 <hr>
 
 <h2 id="pin-creation">Pin Creation</h2>
-
 <pre><code>
-<span id="pin-d"></span>dbCreatePin(... "D" ...)
-<span id="pin-s"></span>dbCreatePin(... "S" ...)
-<span id="pin-g"></span>dbCreatePin(... "G" ...)
-<span id="pin-b"></span>dbCreatePin(... "B" ...)
+<span id="pin-d"></span>dbCreatePin(cv "D" "metal1" list(dX0:dY0 dX1:dY1))
+<span id="pin-s"></span>dbCreatePin(cv "S" "metal1" list(sX0:sY0 sX1:sY1))
+<span id="pin-g"></span>dbCreatePin(cv "G" "poly"   list(gX0:gY0 gX1:gY1))
+<span id="pin-b"></span>dbCreatePin(cv "B" "metal1" list(bX0:bY0 bX1:bY1))
 </code></pre>
+<p class="backlink"><a href="#architecture-diagram">↩ Back to the architecture diagram</a></p>
+
+<hr>
+
+<p><strong>Author:</strong> Kyung W. Park<br>
+<a href="https://junowedd.github.io/technotespark/">https://junowedd.github.io/technotespark/</a>
+</p>
 
 <script>
-document.querySelectorAll('svg a[href^="#"]').forEach(link => {{
+document.querySelectorAll('svg a[href^="#"]').forEach(link => {
   const id = link.getAttribute('href').substring(1);
 
-  link.addEventListener('mouseenter', () => {{
+  link.addEventListener('mouseenter', () => {
     const el = document.getElementById(id);
     if (el) el.classList.add('hover-highlight');
-  }});
+  });
 
-  link.addEventListener('mouseleave', () => {{
+  link.addEventListener('mouseleave', () => {
     const el = document.getElementById(id);
     if (el) el.classList.remove('hover-highlight');
-  }});
+  });
 
-  link.addEventListener('click', e => {{
+  link.addEventListener('click', e => {
     const el = document.getElementById(id);
-    if (el) {{
+    if (el) {
       e.preventDefault();
-      el.scrollIntoView({{ behavior:"smooth", block:"center" }});
-    }}
-  }});
+      el.scrollIntoView({ behavior:"smooth", block:"center" });
+    }
+  });
 });
 </script>
 
