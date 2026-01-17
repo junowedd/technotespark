@@ -24,10 +24,6 @@
     :target {
       background-color: #fff3cd;
     }
-    .hover-highlight {
-      background-color: #ffe9a8;
-      transition: background-color 0.2s ease;
-    }
     .backlink {
       font-size: 0.9rem;
       margin-top: 0.5rem;
@@ -105,10 +101,12 @@
 
 <h2 id="geometry-creation">Core Geometry Creation</h2>
 
+
 <p><em>
 Note: This section focuses on OD geometry creation.
 Gate, contact, and metal shapes are described in earlier sections.
 </em></p>
+
 
 <pre><code class="language-skill">
 <span id="gc-1"></span>dbCreateRect(
@@ -125,7 +123,7 @@ Gate, contact, and metal shapes are described in earlier sections.
 <h2 id="pin-creation">Pin Creation</h2>
 
 <img src="../assets/images/pin_diagram_linked.svg"
-     alt="Pin creation diagram"
+     alt="Pin creation diagram linked to code"
      style="max-width:80%; margin:1.5rem 0;">
 
 <pre><code class="language-skill">
@@ -135,28 +133,16 @@ Gate, contact, and metal shapes are described in earlier sections.
 <span id="pin-b"></span>dbCreatePin(cv "B" "metal1" list(bX0:bY0 bX1:bY1))
 </code></pre>
 
-<p class="backlink"><a href="#architecture-diagram">↩ Back to architecture diagram</a></p>
+<p class="backlink">
+  <a href="#architecture-diagram">↩ Back to architecture diagram</a>
+</p>
 
 <hr>
 
 <p>
-<strong>Author:</strong> Kyung W. Park<br>
+<strong>Author:</strong> Testchip and Electrical PCM Design Methodology Team<br>
 <a href="https://junowedd.github.io/technotespark/">https://junowedd.github.io/technotespark/</a>
 </p>
-
-<script>
-document.querySelectorAll('svg a[href^="#"]').forEach(link => {
-  const targetId = link.getAttribute('href').substring(1);
-  link.addEventListener('mouseenter', () => {
-    const el = document.getElementById(targetId);
-    if (el) el.classList.add('hover-highlight');
-  });
-  link.addEventListener('mouseleave', () => {
-    const el = document.getElementById(targetId);
-    if (el) el.classList.remove('hover-highlight');
-  });
-});
-</script>
 
 </body>
 </html>

@@ -478,3 +478,7 @@ main.doc-content h2 {
 :target {
   background-color: #fff3cd;
 }
+
+.hover-highlight {
+  background-color: #ffe9a8;
+}
