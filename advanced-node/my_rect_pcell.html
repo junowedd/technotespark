@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Create ROD Rectangle (DIFF) PCell</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/css/case-studies.css">
+<style>
+body { max-width:1000px; margin:auto; padding:2rem; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+th, td { border: 1px solid #999; padding: 0.5rem; text-align: left; }
+th { background-color: #f2f2f2; }
+ul { line-height: 1.8; }
+</style>
+</head>
+<body>
+
+<h1>Create ROD Rectangle (DIFF) PCell</h1>
+
+<p>
+This document describes a minimal, production-quality ROD-based rectangular
+PCell implemented in Cadence SKILL. The example focuses on clean geometry
+creation, parameterization, and robust pin definition.
+</p>
+
+<h2>Overview</h2>
+<p>
+The <code>rect_pcell</code> generates a rectangular DIFF shape with a MET1 pin
+placed on the top edge. It is designed to be stretch-safe, LVS-clean, and
+compatible with modern DFM and verification flows.
+</p>
+
+<h2>PCell Parameters</h2>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>w</td>
+<td>float</td>
+<td>2.0</td>
+<td>Width of the rectangle (µm)</td>
+</tr>
+<tr>
+<td>h</td>
+<td>float</td>
+<td>1.0</td>
+<td>Height of the rectangle (µm)</td>
+</tr>
+<tr>
+<td>pinName</td>
+<td>string</td>
+<td>P</td>
+<td>Name of the MET1 pin</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Geometry Creation</h2>
+<p>
+A ROD rectangle is created on the DIFF layer using <code>rodCreateRect</code>.
+The rectangle origin is fixed at <code>(0,0)</code>, ensuring deterministic
+stretch behavior when parameters are modified.
+</p>
+
+<ul>
+<li>ROD-based geometry for stretch safety</li>
+<li>Fully parameterized width and height</li>
+<li>Deterministic coordinate frame</li>
+</ul>
+
+<h2>Pin Definition</h2>
+<p>
+A MET1 pin is created at the center of the top edge of the DIFF rectangle.
+The pin width and extension follow minimum metal rules to ensure LVS
+recognition and clean connectivity.
+</p>
+
+<ul>
+<li>Pin purpose: <code>terminal</code></li>
+<li>Centered horizontally on the rectangle</li>
+<li>Vertical extension above DIFF</li>
+</ul>
+
+<h2>Label and Stretch Behavior</h2>
+<p>
+A label is attached to the MET1 pin to support interactive stretching and
+clear identification.
+</p>
+
+<ul>
+<li>Alignment: <code>centerLeft</code></li>
+<li>Stretch mode: <code>stick</code></li>
+<li>Snap grid: 0.12 µm</li>
+</ul>
+
+<h2>Design Best Practices</h2>
+<ul>
+<li>Typed PCell parameters</li>
+<li>ROD-based geometry instead of raw db shapes</li>
+<li>Explicit pin creation (not label-based)</li>
+<li>Technology-rule-aware layout construction</li>
+</ul>
+
+<p>
+This document can be directly linked or embedded into technical documentation
+sites such as Tech Notes Park.
+</p>
+
+<hr>
+<p><a href="https://junowedd.github.io/technotespark/">Back to Home – Tech Notes Park</a></p>
+
+</body>
+</html>
