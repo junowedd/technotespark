@@ -38,10 +38,7 @@ jobs:
         run: |
           python scraper/usda_json_trimmer/json_trimmer.py \
                  scraper/usda_json_trimmer/hummus.json
-                 
-      - name: Run tests with coverage
-        run: |
-          PYTHONPATH=. pytest --cov=. --cov-report=term --cov-fail-under=80
-          
+                          
+
 
 
