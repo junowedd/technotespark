@@ -2861,7 +2861,7 @@
     "price": 0.35
   },
   {
-    "description": "Corn, sweet, yellow and white kernels, \u00a0fresh, raw",
+    "description": "Corn, sweet, yellow and white kernels, \u00c2\u00a0fresh, raw",
     "category": "Vegetables and Vegetable Products",
     "foodPortionValue": 100,
     "foodPortionUnit": "g",
@@ -3111,7 +3111,7 @@
     "price": 2.5
   },
   {
-    "description": "Beef,\u00a0tenderloin steak, raw",
+    "description": "Beef,\u00c2\u00a0tenderloin steak, raw",
     "category": "Beef Products",
     "foodPortionValue": 100,
     "foodPortionUnit": "g",
