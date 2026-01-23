@@ -33,14 +33,15 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
-      - name: Run tests with coverage
-        run: |
-          PYTHONPATH=. pytest --cov=. --cov-report=term --cov-fail-under=80
           
       - name: Smoke test json_trimmer
         run: |
           python scraper/usda_json_trimmer/json_trimmer.py \
                  scraper/usda_json_trimmer/hummus.json
+                 
+      - name: Run tests with coverage
+        run: |
+          PYTHONPATH=. pytest --cov=. --cov-report=term --cov-fail-under=80
           
+
 
