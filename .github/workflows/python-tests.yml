@@ -17,10 +17,11 @@ on:
       - ".github/workflows/python-tests.yml"
 
 jobs:
-  test:
+  Smoke test:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
       - uses: actions/checkout@v4
 
       - name: Set up Python
@@ -36,3 +37,10 @@ jobs:
       - name: Run tests with coverage
         run: |
           PYTHONPATH=. pytest --cov=. --cov-report=term --cov-fail-under=80
+          
+      - name: Smoke test json_trimmer
+        run: |
+          python scraper/usda_json_trimmer/json_trimmer.py \
+                 scraper/usda_json_trimmer/hummus.json
+          
+
