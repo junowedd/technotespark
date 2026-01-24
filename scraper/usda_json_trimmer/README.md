@@ -1,4 +1,4 @@
-python scraper/usda_json_trimmer/json_trimmer.py scraper/usda_json_trimmer/hummus.json
+python ./json_trimmer.py ./hummus.json
 
 [json_trimmer] Starting USDA JSON trimming
 [json_trimmer] Using input file: scraper/usda_json_trimmer/hummus.json
