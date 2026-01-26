@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kyung Wook Park | Senior EDA & Physical Verification Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Case Studies shared styles -->
+  <link rel="stylesheet" href="./assets/css/case-studies.css?v=20260209">
+
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      margin: 0;
+      background: #f5f7fa;
+      color: #1f2937;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 1400px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+    header {
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      color: #ffffff;
+      padding: 65px 20px 50px;
+    }
+    header h1 {
+      margin: 0 0 16px 0;
+      font-size: 2.6em;
+    }
+    header p {
+      font-size: 1.1em;
+      max-width: 950px;
+      opacity: 0.95;
+      margin-bottom: 0.7em;
+    }
+    section {
+      background: #ffffff;
+      margin-top: 50px;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.07);
+    }
+    h2 {
+      margin-top: 0;
+      color: #0f172a;
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 10px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      margin-top: 24px;
+    }
+    .card {
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 26px;
+      border: 1px solid #e5e7eb;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 34px rgba(0,0,0,0.1);
+    }
+    .card h4 {
+      margin-top: 0;
+      color: #1e3a8a;
+    }
+    a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      margin: 70px 0 30px;
+      font-size: 0.9em;
+      color: #6b7280;
+    }
+    nav {
+      padding: 12px 20px;
+      border-bottom: 1px solid #e5e7eb;
+      background: #ffffff;
+    }
+
+    /* ============================
+   Navigation – active link
+   ============================ */
+
+  nav a.active {
+  color: #1e3a8a;          /* 진한 네이비 (파랑과 확실히 구분) */
+  background: #e0e7ff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  }
+ 
+  /* ============================
+   Case Studies layout isolation
+   ============================ */
+
+.case-studies-section {
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.case-studies-section .case-grid {
+  margin-top: 24px;
+}
+
+
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <strong>TechNotesPark</strong> |
+  <a href="./" class="active">Home</a> |
+
+  <a href="./python/index.html" class="active">Python</a> |
+  <a href="./ai/claude-code/index.html" class="active">AI / Claude Code</a> |
+
+  <a href="projects/eda/">EDA Portfolio</a> |
+  <a href="projects/sales/">Sales & Customer Success</a> |
+  <a href="case-studies/">Case Studies</a> | 
+  <a href="advanced-node/index.html" target="_blank" rel="noopener noreferrer">Advanced-Node</a> |
+
+  <a href="./projects/career/career_timeline.pdf" target="_blank" rel="noopener noreferrer">Career (PDF)</a> |
+  <a href="./resume/KyungWookPark_CV.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a> |
+  <a href="docs/about.html">About</a>
+</nav>
+                          
+<header>
+  <div class="container">
+    <h1>Kyung Wook Park</h1>
+  
+<div class="hero-line">
+<p>
+Seasoned semiconductor professional with 29+ years of experience across EMEA and APAC,
+spanning advanced IC design, EDA verification, and design-to-mask flows.
+</p>
+</div>
+
+<div class="hero-line">
+  <p><strong>Engineering judgment, evolved through automation and AI-assisted workflows.</strong></p>
+</div>
+
+<div class="hero-line">
+<p>
+Proven expertise in complex, high-value B2B engagements, combining deep, sign-off-level technical
+credibility with strong commercial leadership and extensive APAC sales experience.
+</p>
+</div>
+
+<div class="hero-line">
+<p>
+Demonstrated ability to align customer business priorities with advanced semiconductor
+and EDA solutions, bridging design, verification, and manufacturing readiness.
+</p>
+</div>
+
+<div class="hero-line">
+<p>
+Recognized for close collaboration with senior management, engineering teams, and leading global
+foundries to mitigate risk, enable successful tape-outs, and drive sustained revenue growth across safety-
+critical and automotive programs.
+</p>
+</div>
+
+</div>
+
+</header>
+
+<div class="container">
+
+<section>
+  <h2>Advanced-Node PCell Architecture</h2>
+
+  <p>
+    Below 14nm, layout design is no longer about drawing shapes.
+    It is about <strong>constraining degrees of freedom</strong>
+    to ensure manufacturability, yield, and predictable OPC convergence.
+  </p>
+
+  <p>
+    This section documents my work and thinking around
+    <strong>FinFET PCell architecture</strong>,
+    <strong>DFM- and OPC-aware layout automation</strong>,
+    and <strong>testchip / PCM methodology</strong>.
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+      <h4>🧠 Architecture Overview</h4>
+      <p>
+        How layout thinking must change below 14nm:
+        from geometry-driven design to topology- and constraint-driven architecture.
+      </p>
+  <!-- 
+      <a href="advanced-node/overview.html" target="_blank" rel="noopener noreferrer">
+        Read overview → 
+      </a>
+  -->
+      <a href="advanced-node/index.html" target="_blank" rel="noopener noreferrer">
+        Read overview →
+      </a>
+    </div>
+
+    <div class="card">
+      <h4>🧩 Planar vs FinFET PCells</h4>
+      <p>
+        Why planar MOS PCell concepts fail in advanced nodes
+        and how FinFET PCell architecture must be structured.
+      </p>
+      <a href="advanced-node/finfet-pcell.html" target="_blank" rel="noopener noreferrer">
+        Explore FinFET PCell architecture →
+      </a>
+    </div>
+
+    <div class="card">
+      <h4>🧪 OPC & Manufacturability</h4>
+      <p>
+        Analysis of the most difficult OPC interactions
+        in FinFET layouts and how PCell-level constraints reduce risk.
+      </p>
+      <a href="advanced-node/opc-analysis.html" target="_blank" rel="noopener noreferrer">
+        Read OPC analysis →
+      </a>
+    </div>
+
+    <div class="card">
+    <h4>🚫 PCell Design Principles</h4>
+    <p>
+    What must be forbidden at the PCell level in advanced nodes
+    to ensure manufacturability, yield stability, and OPC convergence.
+    </p>
+    <a href="advanced-node/pcell-design-principles.html" target="_blank" rel="noopener noreferrer">
+    Read PCell design principles →
+    </a>
+    </div>
+
+   </div>
+</section>
+
+  
+<section>
+  <h2>Technical Ownership Highlights</h2>
+  <div class="grid">
+    <div class="card">
+      <h4>🔒 Sign-off Ownership</h4>
+      <p>End-to-end responsibility for physical verification and tape-out readiness.</p>
+      <a href="highlights/signoff_ownership.html">View highlight →</a>
+    </div>
+    <div class="card">
+      <h4>⚙ Automation & Flow Optimization</h4>
+      <p>Scalable automation improving verification predictability and turnaround time.</p>
+      <a href="highlights/automation_flow_optimization.html">View highlight →</a>
+    </div>
+    <div class="card">
+      <h4>🧠 Interview Discussion Guide</h4>
+      <p>STAR-based technical discussion guide mapped to real projects.</p>
+      <a href="interview_bridge.html">View guide →</a>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <h2>Main Technical Tracks</h2>
+  <p>
+    My current and future-facing technical focus areas.
+    These tracks represent how I actively evolve my engineering practice
+    beyond traditional domain boundaries.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <h4>🐍 Python Programming</h4>
+      <p>
+        Python as a core problem-solving language for data analysis,
+        automation, and structured experimentation.
+      </p>
+      <a href="./python/index.html">Explore Python track →</a>
+    </div>
+
+    <div class="card">
+      <h4>🤖 AI / Claude Code</h4>
+      <p>
+        AI-assisted engineering focused on reasoning,
+        prompt design, and workflow augmentation using Claude.
+      </p>
+      <a href="./ai/claude-code/index.html">Explore AI track →</a>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <h2>Career, Expertise & Technical Portfolios</h2>
+  <p>
+    Structured access to career progression, professional documents,
+    and in-depth technical portfolios. Each category is designed
+    for continuous expansion.
+  </p>
+  <p>
+    These career and technical portfolios are complemented by my ongoing
+    Python and AI tracks, which reflect how I actively extend my engineering
+    practice toward automation, analysis, and AI-assisted workflows.
+  </p>
+  <p>
+    <a href="case-studies/">→ View Case Studies</a>
+  </p>
+  <div class="grid">
+
+    <div class="card">
+      <h4>📈 Career Growth</h4>
+      <p>
+        Professional timeline highlighting role evolution,
+        technical depth, and leadership across semiconductor,
+        EDA, and manufacturing domains.
+      </p>
+      <a href="projects/career/career_timeline.pdf" target="_blank">
+        View career timeline (PDF) →
+      </a><br> 
+      <a href="projects/sales/elmos_sales_success.html">
+        View detailed case study →
+      </a>
+    </div>
+
+    <div class="card">
+      <h4>📄 CV & Resume</h4>
+      <p>
+        Downloadable CV and role-focused resume versions.
+      </p>
+      <a href="resume/KyungWookPark_CV.pdf" target="_blank">
+        Download CV (PDF) →
+      </a>
+    </div>
+
+    <div class="card">
+      <h4>🧩 EDA Physical Verification Expertise</h4>
+      <p>
+        Deep-dive portfolios covering physical verification,
+        sign-off ownership, automation, and methodology development.
+      </p>
+      <a href="projects/eda/">
+        Explore EDA portfolio →
+      </a>
+    </div>
+
+    <div class="card">
+      <h4>🤝 Sales & Customer Application Success</h4>
+      <p>
+        Customer-facing engineering and technical sales experience
+        enabling successful ASIC adoption from evaluation
+        through tape-out.
+      </p>
+      <a href="projects/sales/">
+        Explore sales & customer application success →
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<section class="case-studies-section">
+  <h2>Latest Case Studies</h2>
+  <p>
+    Selected case studies highlighting practical engineering
+    experience and real-world problem solving.
+  </p>
+
+  <div class="case-grid latest-cases">
+
+    <a class="case-card compact" href="case-studies/etri-amkor-chiplet.html">
+      <span class="badge featured">FEATURED</span>
+      <span class="label">CASE STUDY</span>
+      <span class="tag semiconductor">Semiconductor</span>
+      <span class="date">Dec 31 2025</span>
+      <h3>3D IC Chiplet-Based AI NPU Architecture</h3>
+      <p>
+        Advanced chiplet-based packaging for scalable AI systems.
+      </p>
+    </a>
+
+    <a class="case-card compact" href="case-studies/automation-application-engineering.html">
+      <span class="label">CASE STUDY</span>
+      <span class="tag automation">Automation</span>
+      <span class="date">Dec 30 2025</span>
+      <h3>Automation Application Engineering</h3>
+      <p>
+        Customer-focused automation system deployment
+        and application-driven engineering support.
+      </p>
+    </a>
+
+  <a class="case-card compact" href="case-studies/erc-whitepaper.html">
+    <span class="label">CASE STUDY</span>
+    <span class="tag semiconductor">Semiconductor</span>
+    <span class="date">Jan 2 2026</span>
+    <h3>Practical ERC for Foundry, Safety, and Reliability</h3>
+    <p>
+    A whitepaper-style case study explaining how Electrical Rule Checking (ERC)
+    captures design intent, voltage awareness, and safety constraints beyond
+    traditional DRC and LVS.
+    </p>
+  </a>
+
+
+  </div>
+
+  <p class="more-link">
+    <a href="case-studies/" class="view-all-link">→ View all case studies</a>
+  </p>
+</section>
+
+
+<section>
+  <h2>Contact</h2>
+  <ul>
+    <li>Email: <a href="mailto:junowedd@gmail.com">junowedd@gmail.com</a></li>
+    <li>Location: Munich, Germany</li>
+    <li>EU Long-Term Residence Permit (Daueraufenthalt-EU) - unrestricted labor market access</li>
+    <li>LinkedIn: <a href="https://www.linkedin.com/in/munichkpark/" target="_blank">linkedin.com/in/munichkpark</a></li>
+  </ul>
+</section>
+
+</div>
+
+<footer class="site-footer">
+  <div class="footer-content">
+
+    <div class="footer-brand">
+      <img src="assets/images/Logo-Pavix.png" alt="Pavix">
+      <p>Pavix — Engineering-driven execution framework</p>
+    </div>
+
+    <p class="footer-copy">
+      © Kyung Wook Park — Senior EDA & Physical Verification Engineering Portfolio
+    </p>
+
+  </div>
+</footer>
+
+</body>
+
+</html>
