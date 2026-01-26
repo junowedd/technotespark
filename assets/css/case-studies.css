@@ -483,7 +483,13 @@ main.doc-content h2 {
   background-color: #ffe9a8;
 }
 
-section:last-of-type {
+/* Highlight only intended summary blocks */
+.case-context:last-of-type {
   background: #f8fafc;
   border-left: 4px solid #1e3a8a;
 }
+
+section ul {
+  border-left: none;
+}
+
