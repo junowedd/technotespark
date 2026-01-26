@@ -67,155 +67,97 @@
 </head>
 <body>
 
+
 <main>
   <h1>About TechNotesPark</h1>
   <p class="subtitle">
-    Semiconductor Physical Verification & Manufacturing Readiness Portfolio
+    Engineering practice across EDA, automation, and AI-assisted workflows
   </p>
 
   <h2>Overview</h2>
   <p>
-    TechNotesPark is a personal technical portfolio covering physical verification,
-    EDA sign-off methodologies, and design-to-manufacturing workflows across
-    advanced ASIC and foundry programs.
+    TechNotesPark is my personal technical workspace documenting how long-standing
+    semiconductor and EDA experience evolves through modern automation,
+    data-driven analysis, and AI-assisted engineering workflows.
   </p>
 
   <p>
-  In advanced technology nodes (12nm and below),
-  my focus extends beyond verification execution
-  to <strong>layout architecture and methodology design</strong>.
-  This includes defining which layout freedoms must be exposed,
-  and more importantly, which must be <em>forbidden</em>
-  to ensure manufacturability, yield, and OPC convergence.
+    While the foundation of this site is rooted in physical verification,
+    sign-off ownership, and manufacturing readiness for advanced ASIC programs,
+    it also captures how these practices are continuously extended using
+    Python-based automation and structured experimentation with AI.
+  </p>
+
+  <h2>My Engineering Background</h2>
+  <p>
+    I am a senior semiconductor professional with over 29 years of experience
+    spanning physical verification, sign-off methodology, and design-to-manufacturing
+    enablement across EMEA and APAC.
   </p>
 
   <p>
-  A key part of this work is the design of
-  <strong>PCell architectures</strong> for planar and FinFET technologies,
-  where topology, technology rules, and DFM constraints
-  are encoded directly into automation flows.
+    My career has focused on advanced-node verification challenges including
+    DRC, LVS, PERC, RET, and foundry-facing sign-off, often acting as the bridge
+    between EDA technology, customer design teams, and executive stakeholders.
   </p>
 
-  <h2>My Role & Background</h2>
+  <h2>From Sign-off Expertise to Scalable Methodology</h2>
   <p>
-    I am a senior semiconductor professional with over 29 years of experience spanning
-    physical verification, sign-off ownership, and design-to-manufacturing enablement
-    across EMEA and APAC.
-  </p>
-  <p>
-    My work has focused on foundry-facing verification methodologies, including DRC,
-    LVS, PERC, RET, and manufacturing readiness at advanced and legacy nodes.
-  </p>
-  <p>
-    I have supported complex ASIC and packaging programs by bridging EDA technology,
-    customer design challenges, and business objectives, while leading high-value B2B
-    engagements with engineering and executive stakeholders.
+    In advanced technology nodes, layout quality is no longer determined
+    by geometry alone, but by how effectively design freedom is constrained.
+    My work emphasizes layout architecture and methodology design,
+    defining which degrees of freedom must be exposed—and which must be forbidden—
+    to ensure manufacturability, yield stability, and predictable OPC convergence.
   </p>
 
   <p>
-  More recently, my work has emphasized
-  <strong>advanced-node layout methodology</strong>,
-  particularly the transition from geometry-driven design
-  to <strong>constraint- and topology-driven architectures</strong>.
-  This shift is essential for scaling layout quality
-  across FinFET-based nodes where OPC freedom is limited
-  and manufacturing variability is amplified.
+    This perspective naturally extends into automation:
+    encoding engineering judgment into PCell architectures,
+    rule-aware flows, and repeatable verification frameworks
+    rather than relying on downstream sign-off correction.
   </p>
 
+  <h2>Why Python and AI</h2>
+  <p>
+    Python serves as a practical bridge between engineering intuition
+    and scalable execution. It enables rapid automation,
+    data exploration, and reproducible analysis rooted in real EDA problems.
+  </p>
+
+  <p>
+    In parallel, my AI and Claude Code explorations focus on augmenting
+    engineering reasoning—using large language models to clarify intent,
+    explore alternatives, and accelerate iteration without replacing
+    human judgment.
+  </p>
+
+  <p>
+    Together, Python and AI form an extension of my existing practice:
+    formalizing experience into workflows and amplifying structured thinking
+    in complex, constraint-driven engineering environments.
+  </p>
 
   <h2>Design Philosophy</h2>
   <blockquote>
-    <strong>Design tools create layouts.<br>
-    Sign-off tools decide manufacturability.</strong>
+    <strong>
+      Engineering quality is achieved when constraints are encoded early,
+      not enforced late.
+    </strong>
   </blockquote>
 
   <p>
-  In advanced nodes, this philosophy extends one step further:
-  manufacturability must be designed <em>before</em> sign-off.
-  Well-architected PCells and layout automation
-  should prevent invalid structures from being created at all,
-  rather than relying on downstream fixes.
+    Whether through PCell architecture, verification methodology,
+    Python automation, or AI-assisted reasoning,
+    my focus remains the same: reducing ambiguity,
+    improving predictability, and enabling scalable engineering execution.
   </p>
-
-  <h2>Advanced-Node Layout Architecture</h2>
-
-<p>
-  Below 14nm, layout challenges are dominated not by rule complexity,
-  but by interacting constraints across lithography, process variability,
-  and limited OPC correction capability.
-</p>
-
-<p>
-  My approach to advanced-node layout architecture focuses on:
-</p>
-
-<ul>
-  <li>Eliminating non-physical degrees of freedom (e.g. continuous width in FinFETs)</li>
-  <li>Encoding DFM and OPC constraints directly at the PCell level</li>
-  <li>Separating exploration (PCM) from production-ready design rules</li>
-  <li>Designing layout automation that scales across teams and technologies</li>
-</ul>
-
-<p>
-  This architectural perspective complements traditional sign-off expertise
-  by shifting risk mitigation earlier in the design flow.
-</p>
-
-
-  <h2>EDA Sign-off Landscape</h2>
-  <p>
-    The table below summarizes the positioning of major EDA vendors in digital
-    implementation and sign-off.
-  </p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Category</th>
-        <th>Cadence</th>
-        <th>Synopsys</th>
-        <th>Siemens (Calibre)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Primary Focus</td>
-        <td>Integrated digital implementation & sign-off</td>
-        <td>Integrated digital implementation & sign-off</td>
-        <td>Independent physical verification & manufacturing sign-off</td>
-      </tr>
-      <tr>
-        <td>Core P&amp;R Tool</td>
-        <td>Innovus</td>
-        <td>ICC2</td>
-        <td>Tool-neutral</td>
-      </tr>
-      <tr>
-        <td>DRC / LVS Engine</td>
-        <td>Pegasus</td>
-        <td>IC Validator</td>
-        <td>Calibre nmDRC / nmLVS</td>
-      </tr>
-      <tr>
-        <td>Foundry Certification</td>
-        <td>Node-dependent</td>
-        <td>Node-dependent</td>
-        <td>Universally certified</td>
-      </tr>
-      <tr>
-        <td>Best Fit Use Case</td>
-        <td>Fast integrated implementation</td>
-        <td>High-performance digital flows</td>
-        <td>Manufacturing-ready sign-off</td>
-      </tr>
-    </tbody>
-  </table>
 
   <div class="nav-back">
     <a href="../index.html">← Back to Home</a> |
-    <a href="../case-studies/index.html">Case Studies</a> 
+    <a href="../case-studies/index.html">Case Studies</a>
   </div>
 </main>
+
 
 </body>
 </html>

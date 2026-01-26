@@ -101,6 +101,20 @@
   border-radius: 6px;
   }
  
+  /* ============================
+   Case Studies layout isolation
+   ============================ */
+
+.case-studies-section {
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.case-studies-section .case-grid {
+  margin-top: 24px;
+}
+
 
   </style>
 </head>
@@ -109,18 +123,13 @@
 
 <nav>
   <strong>TechNotesPark</strong> |
-  <a href="./" class="active">Home</a> | 
-
-  <a href="./python/index.html" class="active">Python</a> |
-  <a href="./ai/claude-code/index.html" class="active">AI / Claude Code</a> |
-
-  <a href="advanced-node/index.html" target="_blank" rel="noopener noreferrer">Advanced-Node</a> |
+  <a href="./" class="active">Home</a> |
+  <a href="advanced-node/index.html" target="_blank" rel="noopener noreferrer">Advanced-Node PCell</a> |
+  <a href="./projects/career/career_timeline.pdf" target="_blank" rel="noopener noreferrer">Career (PDF)</a> |
+  <a href="./resume/KyungWookPark_CV.pdf" target="_blank" rel="noopener noreferrer">View Resume (PDF)</a> |
   <a href="projects/eda/">EDA Portfolio</a> |
   <a href="projects/sales/">Sales & Customer Success</a> |
   <a href="case-studies/">Case Studies</a> | 
-
-  <a href="./projects/career/career_timeline.pdf" target="_blank" rel="noopener noreferrer">Career (PDF)</a> |
-  <a href="./resume/KyungWookPark_CV.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a> |  
   <a href="docs/about.html">About</a>
 </nav>
                           
@@ -255,12 +264,48 @@ critical and automotive programs.
   </div>
 </section>
 
+
+<section>
+  <h2>Main Technical Tracks</h2>
+  <p>
+    My current and future-facing technical focus areas.
+    These tracks represent how I actively evolve my engineering practice
+    beyond traditional domain boundaries.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <h4>🐍 Python Programming</h4>
+      <p>
+        Python as a core problem-solving language for data analysis,
+        automation, and structured experimentation.
+      </p>
+      <a href="./python/index.html">Explore Python track →</a>
+    </div>
+
+    <div class="card">
+      <h4>🤖 AI / Claude Code</h4>
+      <p>
+        AI-assisted engineering focused on reasoning,
+        prompt design, and workflow augmentation using Claude.
+      </p>
+      <a href="./ai/claude-code/index.html">Explore AI track →</a>
+    </div>
+  </div>
+</section>
+
+
 <section>
   <h2>Career, Expertise & Technical Portfolios</h2>
   <p>
     Structured access to career progression, professional documents,
     and in-depth technical portfolios. Each category is designed
     for continuous expansion.
+  </p>
+  <p>
+    These career and technical portfolios are complemented by my ongoing
+    Python and AI tracks, which reflect how I actively extend my engineering
+    practice toward automation, analysis, and AI-assisted workflows.
   </p>
   <p>
     <a href="case-studies/">→ View Case Studies</a>
@@ -318,7 +363,7 @@ critical and automotive programs.
   </div>
 </section>
 
-<section>
+<section class="case-studies-section">
   <h2>Latest Case Studies</h2>
   <p>
     Selected case studies highlighting practical engineering
