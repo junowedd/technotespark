@@ -482,3 +482,8 @@ main.doc-content h2 {
 .hover-highlight {
   background-color: #ffe9a8;
 }
+
+section:last-of-type {
+  background: #f8fafc;
+  border-left: 4px solid #1e3a8a;
+}
