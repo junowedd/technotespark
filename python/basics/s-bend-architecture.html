@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>S-Bend Architecture — Cubic Bézier Based Implementation</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      margin: 40px;
+      color: #222;
+    }
+    h1, h2, h3 {
+      color: #003366;
+    }
+    code, pre {
+      background-color: #f4f6f8;
+      padding: 8px;
+      border-radius: 4px;
+      display: block;
+      overflow-x: auto;
+    }
+    .formula {
+      background: #eef2f7;
+      padding: 12px;
+      border-left: 4px solid #003366;
+      margin: 20px 0;
+      font-family: "Times New Roman", serif;
+      font-size: 1.05em;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>S-Bend Generation Architecture</h1>
+
+<p>
+This document describes the internal architecture and construction flow of an
+S-Bend geometry generator implemented in Python.  
+The S-Bend is constructed using cubic Bézier curves derived directly from
+their mathematical formulation.
+</p>
+
+<hr>
+
+<h2>1. Mathematical Foundation</h2>
+
+<p>
+The S-Bend geometry is based on the cubic Bézier curve, defined as:
+</p>
+
+<div class="formula">
+B(t) = (1 − t)<sup>3</sup>P<sub>0</sub> +
+3t(1 − t)<sup>2</sup>P<sub>1</sub> +
+3t<sup>2</sup>(1 − t)P<sub>2</sub> +
+t<sup>3</sup>P<sub>3</sub>, &nbsp; 0 ≤ t ≤ 1
+</div>
+
+<p>
+Each Bézier segment is fully defined by four control points:
+</p>
+<ul>
+  <li><strong>P<sub>0</sub></strong>: start point</li>
+  <li><strong>P<sub>1</sub>, P<sub>2</sub></strong>: shape control points</li>
+  <li><strong>P<sub>3</sub></strong>: end point</li>
+</ul>
+
+<hr>
+
+<h2>2. Geometric Architecture</h2>
+
+<p>
+The S-Bend is composed of <strong>two cubic Bézier segments</strong> connected
+continuously:
+</p>
+
+<ul>
+  <li>Segment 1: Input → Midpoint</li>
+  <li>Segment 2: Midpoint → Output</li>
+</ul>
+
+<p>
+The endpoint of the first segment is reused as the starting point of the
+second segment to guarantee geometric continuity.
+</p>
+
+<hr>
+
+<h2>3. Software Architecture</h2>
+
+<h3>3.1 Control Point Definition</h3>
+
+<p>
+Each Bézier segment is parameterized using NumPy vectors representing the
+control points in Cartesian space.
+</p>
+
+<pre><code>
+P0, P1, P2, P3   → First Bézier segment
+Q0, Q1, Q2, Q3   → Second Bézier segment
+</code></pre>
+
+<p>
+The midpoint <code>P3</code> of the first segment is reused as <code>Q0</code>
+for the second segment, ensuring a smooth transition.
+</p>
+
+<h3>3.2 Bézier Curve Evaluation</h3>
+
+<p>
+A dedicated function evaluates the cubic Bézier equation by sampling the
+parameter <code>t</code> uniformly in the range [0, 1].
+</p>
+
+<pre><code>
+def cubic_bezier(A, B, C, D, n):
+    t = linspace(0, 1, n)
+    return B(t)
+</code></pre>
+
+<p>
+Vectorized computation is used to efficiently generate curve points.
+</p>
+
+<hr>
+
+<h2>4. Construction Flow</h2>
+
+<ol>
+  <li>Define control points for both Bézier segments</li>
+  <li>Evaluate each segment independently</li>
+  <li>Merge the two curves while removing duplicate midpoint samples</li>
+  <li>Interpret the resulting polyline as a waveguide centerline</li>
+  <li>Visualize the curve and its control polygons</li>
+</ol>
+
+<hr>
+
+<h2>5. Visualization Layer</h2>
+
+<p>
+The generated curve is plotted using Matplotlib:
+</p>
+
+<ul>
+  <li>Thick line: waveguide centerline</li>
+  <li>Dashed lines: control polygons</li>
+  <li>Markers: control points</li>
+</ul>
+
+<p>
+This separation clearly illustrates the relationship between the mathematical
+model and the resulting physical geometry.
+</p>
+
+<hr>
+
+<h2>6. Summary</h2>
+
+<p>
+This architecture demonstrates a clean separation between:
+</p>
+
+<ul>
+  <li>Mathematical formulation (cubic Bézier curves)</li>
+  <li>Geometric modeling (control points and segments)</li>
+  <li>Numerical evaluation (sampling and vectorization)</li>
+  <li>Visualization (waveguide representation)</li>
+</ul>
+
+<p>
+Such an approach is well-suited for parametric photonic and semiconductor
+layout generation.
+</p>
+
+</body>
+</html>
