@@ -12,38 +12,116 @@ ol { line-height:1.8; }
 </head>
 <body>
 
-<h1>MOS PCell implementation – SKILL</h1>
+
+<h1>OPC / RET Technical Notes</h1>
 
 <p>
-This documentation explains the internal architecture and geometry
-construction flow of a MOS PCell implemented in Cadence SKILL.
+  This page contains technical notes related to OPC (Optical Proximity Correction),
+  RET (Resolution Enhancement Technology), and lithography process optimization.
 </p>
 
-<h2>Recommended Reading Order of a planar MOS PCell</h2>
-<ol>
-  <li><a href="mos-pcell-architecture.html">Architecture Overview</a></li>
-  <li><a href="mos-pcell-derived-geometry.html">Derived Geometry</a></li>
-  <li><a href="mos-pcell-coordinate-frame.html">Coordinate Frame</a></li>
-  <li><a href="mos-pcell-contacts.html">Contact & Via Placement</a></li>
-  <li><a href="mos-pcell-pin-creation.html">Pin Creation</a></li>
-</ol>
+<hr>
 
-<h2>Recommended Reading Order of a FinFET PCell</h2>
+<h2>Lithography Simulation Software</h2>
+
+<ul>
+  <li>
+    <strong>Overview</strong>
+    <ul>
+      <li>
+        Lithography simulation software is used to model and predict photolithography
+        processes in semiconductor manufacturing, including pattern printing,
+        resolution limits, and process optimization.
+      </li>
+      <li>
+        Common applications include OPC/RET optimization, mask verification,
+        and design-for-manufacturability (DFM).
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    <strong>Common Tools</strong>
+    <ul>
+      <li><strong>Synopsys</strong>
+        <ul>
+          <li>Sentaurus Lithography – OPC, mask optimization, and process simulation</li>
+          <li>Proteus – Full-chip lithography simulation and hotspot detection</li>
+          <li>Dr.LiTHO – Photoresist and focus/DOF simulation</li>
+        </ul>
+      </li>
+      <li><strong>ASML</strong>
+        <ul>
+          <li>Brion Lithography Simulation – Mask and scanner modeling</li>
+          <li>TWINSCAN OPC Tools – Scanner-linked lithography simulation</li>
+        </ul>
+      </li>
+      <li><strong>Siemens EDA (Mentor)</strong>
+        <ul>
+          <li>Calibre LFD – Lithography-friendly design verification</li>
+          <li>Calibre OPC / RVE – Mask verification and OPC simulation</li>
+        </ul>
+      </li>
+      <li><strong>KLA / Applied Materials</strong>
+        <ul>
+          <li>PROLITH – Photoresist and optical imaging simulation</li>
+          <li>LithoAnalyzer / CLiC – OPC and resist modeling</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    <strong>Advantages of Sentaurus Lithography</strong>
+    <ul>
+      <li>Accurate optical and photoresist modeling for advanced nodes</li>
+      <li>OPC and RET optimization with hotspot detection</li>
+      <li>Supports full-chip and critical-layer simulations</li>
+      <li>Automation via Python, Perl, or TCL scripting</li>
+      <li>Compatible with EUV and ArF immersion lithography</li>
+    </ul>
+  </li>
+
+  <li>
+    <strong>Related Engineering Knowledge</strong>
+    <ul>
+      <li>
+        <strong>Risk Analysis & FMEA</strong> – Identification of failure modes,
+        impact assessment, and corrective actions to improve yield and reliability
+      </li>
+      <li>
+        <strong>Micro-Lithography & Optical Imaging</strong> – Understanding of
+        resolution, numerical aperture, diffraction, and depth of focus
+      </li>
+      <li>
+        <strong>Process Trials & Reticle Characterization</strong> – Exposure/focus
+        optimization and mask performance evaluation
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr>
+
+
+<h2>Recommended Reading Order of OPC1</h2>
 <ol>
-  <li><a href="overview.html">Architecture Overview</a></li>
-  <li><a href="finfet-pcell.html">Planar vs FinFET PCells</a></li>
-  <li><a href="opc-analysis.html"> OPC & Manufacturability</a></li>
-  <li><a href="pcell-design-principles.html">PCell Design Principles</a></li>
+  <li><a href="litho-simul.html">Lithography simulation software</a></li>
   <li><a href="./FinFETOnly.pdf" target="_blank" rel="noopener noreferrer">FinFET Stucture (PDF)</a></li>
 </ol>
 
 <hr>
+
 
 <h2>Create ROD Rectangle (DIFF) PCell</h2>
 <ol>
   <li><a href="my_rect_pcell.html">Architecture Overview</a></li>
   <li><a href="./my_rect_pcell_doc.pdf" target="_blank" rel="noopener noreferrer">Practice PCell (PDF)</a></li>
 </ol>
+
+<p>
+  <em>Last updated: January 2026</em>
+</p>
 
 
 
