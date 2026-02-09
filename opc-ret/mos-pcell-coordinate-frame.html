@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MOS PCell – Coordinate Frame</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/css/case-studies.css">
+</head>
+<body>
+
+<h1>Coordinate Frame</h1>
+<p><a href="index.html">↩ Go to Advanced-Node</a></p>
+
+<p>
+The coordinate system is centered at the origin to simplify
+symmetry handling. All layout objects are generated relative
+to this centered frame.
+</p>
+
+<pre><code>
+(x0 (- (/ odLen 2.0)))
+(y0 (- (/ odWid 2.0)))
+(x1 (+ (/ odLen 2.0)))
+(y1 (+ (/ odWid 2.0)))
+</code></pre>
+
+<p>
+This approach ensures that mirroring, abutment, and arraying
+operations behave predictably.
+</p>
+
+</body>
+</html>

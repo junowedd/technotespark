@@ -1,0 +1,18 @@
+<h1 id="advanced-node-layout-architecture">Advanced-Node Layout
+Architecture</h1>
+<p>Below 14nm, layout design is no longer about drawing shapes. It is
+about <strong>constraining degrees of freedom</strong> to ensure
+manufacturability, yield, and predictable OPC convergence.</p>
+<p>In advanced technology nodes, many geometries that are DRC-clean are
+fundamentally non-manufacturable. Therefore, the role of layout
+automation and PCells must shift from geometry generation to
+<strong>encoding manufacturing intent</strong>.</p>
+<h2 id="architectural-view">Architectural View</h2>
+<p>User Parameters ↓ Topology Definition ↓ Technology Rules (PDK) ↓ DFM
+/ OPC Guards ↓ Layout Geometry</p>
+<p>A well-designed PCell does not rely on post-layout fixes. Instead, it
+prevents invalid structures from being generated in the first place.</p>
+<blockquote>
+<p><strong>Good layout architecture removes freedom, not adds
+it.</strong></p>
+</blockquote>

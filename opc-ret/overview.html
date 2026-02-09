@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="../../assets/css/case-studies.css?v=20260209">
+</head>
+
+<body>
+
+<nav style="margin-bottom: 20px;">
+  <strong>TechNotesPark</strong>  |
+  <a href="../">Home</a>  | 
+  <a href="../projects/career/career_timeline.pdf" target="_blank" rel="noopener noreferrer">Career (PDF)</a>  | 
+  <a href="../resume/KyungWookPark_CV.pdf" target="_blank" rel="noopener noreferrer">View Resume (PDF)</a>  |
+  <a href="../projects/eda/">EDA Portfolio</a> |
+  <a href="../highlights/automation_flow_optimization.html">Automation & Flow Optimization</a>  |
+  <a href="../projects/sales/">Sales & Customer Success</a>  |
+  <a href="../case-studies/">Case Studies</a> |
+  <a href="../advanced-node/index.html">Advanced-Node</a>
+</nav>
+
+<main class="eda-portfolio">
+
+<h1 id="advanced-node-layout-architecture">Advanced-Node Layout
+Architecture</h1>
+<p>Below the 14nm node, layout design is no longer about <em>drawing
+shapes</em>.</p>
+<p>It is about <strong>explicitly constraining degrees of
+freedom</strong><br />
+to ensure <strong>manufacturability</strong>, <strong>yield
+stability</strong>,<br />
+and <strong>predictable OPC convergence</strong>.</p>
+<p>At advanced technology nodes, a large class of geometries can be
+<strong>fully DRC-clean yet fundamentally non-manufacturable</strong>.
+This disconnect exposes the limits of traditional rule-based layout
+validation.</p>
+<p>As a result, the role of layout automation and PCells must
+fundamentally change.</p>
+<p>PCells must move beyond parameterized geometry generation<br />
+and instead <strong>encode manufacturing intent directly into the layout
+architecture</strong>.</p>
+<hr />
+<h2 id="architectural-perspective">Architectural Perspective</h2>
+<p>A robust advanced-node layout architecture follows a strictly ordered
+pipeline:</p>
+<p>User Parameters<br />
+↓<br />
+Topology Definition<br />
+↓<br />
+Technology Rules (PDK)<br />
+↓<br />
+DFM / OPC Guards<br />
+↓<br />
+Layout Geometry</p>
+<p>Each stage deliberately <em>removes freedom</em> rather than adding
+it.</p>
+<p>Invalid structures are not fixed after the fact —<br />
+they are <strong>architecturally impossible to generate</strong>.</p>
+<blockquote>
+<p><strong>Good layout architecture removes freedom, not adds
+it.</strong></p>
+</blockquote>
+<hr />
+<h2 id="refactored-finfet-12nm-pcell-architecture">Refactored FinFET
+(12nm) PCell Architecture</h2>
+<h3 id="whiteboard-overview">Whiteboard Overview</h3>
+<figure>
+<img src="../assets/images/finfet_pcell_whiteboard.png"
+alt="Refactored FinFET (12nm) PCell Architecture" />
+<figcaption aria-hidden="true">Refactored FinFET (12nm) PCell
+Architecture</figcaption>
+</figure>
+<p>This diagram illustrates a <strong>topology-driven PCell
+architecture</strong> designed for <strong>advanced FinFET nodes (12nm
+and below)</strong>.</p>
+<p>The central principle is simple but critical:</p>
+<p><strong>Topology is defined first.<br />
+Technology constraints are applied second.<br />
+Geometry is created last.</strong></p>
+<p>This ordering ensures that all generated layout is inherently
+manufacturable.</p>
+<hr />
+<h3 id="architecture-flow">Architecture Flow</h3>
+<p><strong>User Parameters</strong><br />
+High-level design intent and device configuration</p>
+<p>↓</p>
+<p><strong>Topology Generator</strong><br />
+- Fin grid definition<br />
+- Gate topology<br />
+- Active region structure</p>
+<p>↓</p>
+<p><strong>Technology Rule Layer</strong><br />
+- PDK-driven pitch enforcement<br />
+- Spacing constraints<br />
+- Cut and coloring rules</p>
+<p>↓</p>
+<p><strong>DFM / OPC Guard Layer</strong><br />
+- Forbidden pattern prevention<br />
+- Lithography-aware checks<br />
+- Yield-driven constraints</p>
+<p>↓</p>
+<p><strong>Geometry Creation</strong><br />
+- Rectangles<br />
+- Paths<br />
+- Vias</p>
+<p>Geometry is treated as a <em>final artifact</em>,<br />
+not a design space.</p>
+<hr />
+<blockquote>
+<p><strong>Key Message</strong><br />
+At advanced nodes, effective PCells do not generate shapes.<br />
+They encode <strong>manufacturing intent</strong>,<br />
+enforce <strong>topological correctness</strong>,<br />
+and prevent non-manufacturable structures <strong>by
+construction</strong>.</p>
+</blockquote>
+
+<hr>
+
+<p>
+  <a href="../advanced-node/index.html">← Go to Advanced-Node</a> |
+  <a href="../">← Go to Home</a>
+</p>
+
+</main>
+
+</body>
+</html>

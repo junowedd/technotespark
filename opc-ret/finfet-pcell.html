@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FinFET PCell</title>
+  <link rel="stylesheet" href="../css/case-studies.css?v=999">
+  <p><a href="index.html">↩ Go to Advanced-Node</a></p>
+  
+</head>
+<body>
+
+<main class="doc-content">  
+
+<h2 id="reference-implementation">Reference Implementation</h2>
+<p>
+  A simplified reference FinFET PCell implementation is provided to
+illustrate the discussed architecture.
+</p>
+
+<p>
+  This code is intentionally technology-agnostic and should be
+interpreted as a methodology example, not a production-ready PCell.
+</p>
+
+<p>
+<a href="../code/finfet/finfet_pcell.il.PDF" target="_blank" rel="noopener noreferrer">Download reference FinFET PCell (PDF)</a>  
+</p>
+
+<h1 id="finfet-pcell-architecture-for-12nm-and-below">FinFET PCell
+Architecture for 12nm and Below</h1>
+
+<p>
+  FinFET devices fundamentally break planar assumptions. There is no
+continuous transistor width. Electrical strength is defined by a
+<strong>discrete number of fins</strong>.
+</p>
+
+<p>Any PCell that exposes continuous width parameters is architecturally
+incompatible with FinFET technologies.
+</p>
+
+<h2 id="why-planar-thinking-fails">Why Planar Thinking Fails</h2>
+<ul>
+<li>Width does not physically exist</li>
+<li>Fin pitch is fixed by the process</li>
+<li>Gate length is defined by cut patterns</li>
+<li>OPC freedom is extremely limited</li>
+</ul>
+
+<h2 id="architectural-shift">Architectural Shift</h2>
+<p>
+  Planar PCell: Parameters → Rectangles
+</p>
+<p>FinFET PCell: Parameters → Topology → Constraints → Geometry</p>
+<h2 id="user-visible-parameters">User-Visible Parameters</h2>
+<p>Only parameters that map to real physical degrees of freedom should
+be exposed:
+</p>
+<ul>
+<li><code>nFin</code> – number of fins (discrete)</li>
+<li><code>gateLength</code> – grid-locked</li>
+<li><code>deviceType</code> – NMOS / PMOS</li>
+<li><code>pcmMode</code> – exploration vs production</li>
+</ul>
+
+<h2 id="skeleton-concept">Skeleton Concept</h2>
+<p>The FinFET PCell is structured as:
+</p>
+
+<p>User Params ↓ Fin / Gate Topology ↓ Technology Rule Queries ↓ DFM /
+OPC Guards ↓ Layout Shapes
+</p>
+<p>Topology is portable across nodes. Rules and layer mappings are
+not.
+</p>
+
+<h2 id="design-philosophy">Design Philosophy</h2>
+<blockquote>
+<p>The goal of a FinFET PCell is not flexibility, but predictability and
+silicon relevance.
+</p>
+</blockquote> 
+
+<p><a href="index.html">↩ Go to Advanced-Node</a></p>
+
+</main>
+
+</body>
+</html>

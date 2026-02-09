@@ -1,0 +1,29 @@
+<h1 id="planar-mos-pcell-technology-agnostic-structure">Planar MOS PCell
+– Technology-Agnostic Structure</h1>
+<p>Planar MOS PCells have historically been effective for testchip and
+PCM applications, especially in mature technology nodes.</p>
+<p>Their strength lies in parameterized geometry generation that allows
+rapid sweep of width, length, and spacing.</p>
+<h2 id="typical-structure">Typical Structure</h2>
+<p>User Parameters → Geometry Generation → DRC Check</p>
+<h2 id="strengths">Strengths</h2>
+<ul>
+<li>Simple parameter model (W/L)</li>
+<li>Easy automation</li>
+<li>Suitable for PCM and early characterization</li>
+</ul>
+<h2 id="fundamental-limitations">Fundamental Limitations</h2>
+<ul>
+<li>Continuous width is assumed</li>
+<li>Heavy reliance on OPC to fix geometry</li>
+<li>Limited scalability below 14nm</li>
+</ul>
+<p>In planar technologies, OPC can often compensate for poor layout
+choices. This assumption no longer holds for FinFET and beyond.</p>
+<h2 id="key-takeaway">Key Takeaway</h2>
+<blockquote>
+<p>Planar PCells are geometry-driven. Advanced-node PCells must be
+topology-driven.</p>
+</blockquote>
+<p>This realization motivates the transition from planar MOS PCells to
+FinFET-aware PCell architectures.</p>
