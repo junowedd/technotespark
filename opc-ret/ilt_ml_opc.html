@@ -11,9 +11,6 @@
       background: #f9fafb;
       color: #111;
     }
-    h1, h2, h3 {
-      color: #1f2937;
-    }
     h1 {
       border-bottom: 3px solid #2563eb;
       padding-bottom: 10px;
@@ -24,34 +21,25 @@
       padding-left: 10px;
     }
     h3 {
-      margin-top: 25px;
+      margin-top: 24px;
       color: #374151;
     }
-    pre {
-      background: #111827;
-      color: #e5e7eb;
-      padding: 16px;
-      border-radius: 8px;
-      overflow-x: auto;
-    }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin-top: 15px;
-    }
-    th, td {
-      border: 1px solid #d1d5db;
-      padding: 10px;
-      text-align: left;
-    }
-    th {
-      background: #e5e7eb;
+    ul li {
+      margin-bottom: 6px;
     }
     .highlight {
       background: #eff6ff;
       border-left: 6px solid #3b82f6;
-      padding: 15px;
+      padding: 14px;
       margin: 20px 0;
+      font-weight: 500;
+    }
+    .quote {
+      background: #f9fafb;
+      border-left: 6px solid #9ca3af;
+      padding: 14px;
+      margin: 20px 0;
+      font-style: italic;
     }
   </style>
 </head>
@@ -61,8 +49,126 @@
 <h1>ILT and Machine Learning OPC</h1>
 
 <p>
-As semiconductor manufacturing approaches fundamental lithographic limits,
-traditional OPC methods face increasing computational and accuracy challenges.
-This has led to the integration of <strong>Machine Learning (ML)</strong>
-with <strong>Inverse Lithography Technology (ILT)</strong>
-to enable faster and more scalable solutions.
+As lithography approaches fundamental resolution limits,
+<strong>Inverse Lithography Technology (ILT)</strong> and
+<strong>Machine Learning (ML)</strong> are increasingly combined
+to address the growing complexity of OPC in advanced technology nodes.
+</p>
+
+<div class="highlight">
+ILT provides maximum pattern fidelity, while ML enables scalability.
+</div>
+
+<hr>
+
+<h2>1. Why ILT Needs Machine Learning</h2>
+
+<ul>
+  <li>ILT formulates mask synthesis as a global optimization problem</li>
+  <li>Provides superior CD control and process window</li>
+  <li>But suffers from extreme runtime and mask complexity</li>
+</ul>
+
+<p>
+Machine learning is introduced not to replace ILT,
+but to <strong>reduce computational cost and guide optimization</strong>.
+</p>
+
+<hr>
+
+<h2>2. Role of Machine Learning in ILT-based OPC</h2>
+
+<ul>
+  <li>Hotspot identification</li>
+  <li>Initial mask guess generation</li>
+  <li>Optimization convergence acceleration</li>
+  <li>Flow-level decision support</li>
+</ul>
+
+<div class="highlight">
+ML acts as an accelerator and advisor, while physics-based models
+remain the source of truth.
+</div>
+
+<hr>
+
+<h2>3. How Machine Learning Is Used in Calibre-based OPC</h2>
+
+<h3>3.1 ML-based Hotspot Detection</h3>
+
+<ul>
+  <li>Analyzes 2D layout context and pattern complexity</li>
+  <li>Predicts regions likely to fail CD or process window targets</li>
+  <li>Reduces unnecessary ILT or excessive OPC iterations</li>
+</ul>
+
+<h3>3.2 ML-generated Initial Guess for OPC / ILT</h3>
+
+<ul>
+  <li>Predicts near-optimal initial mask corrections</li>
+  <li>Stabilizes convergence of model-based OPC</li>
+  <li>Significantly reduces iteration count</li>
+</ul>
+
+<h3>3.3 Runtime Prediction and Flow Control</h3>
+
+<ul>
+  <li>Estimates expected OPC or ILT runtime per region</li>
+  <li>Enables selective ILT application</li>
+  <li>Supports adaptive flow decisions</li>
+</ul>
+
+<h3>3.4 ML as a Surrogate Model (Non Sign-off)</h3>
+
+<ul>
+  <li>Approximates wafer contour or CD for fast evaluation</li>
+  <li>Used only for internal acceleration</li>
+  <li>Never used for lithography sign-off</li>
+</ul>
+
+<hr>
+
+<h2>4. Why There Is No “Standalone ML OPC Tool”</h2>
+
+<ul>
+  <li>Strong dependence on fab-specific process conditions</li>
+  <li>Black-box nature incompatible with sign-off responsibility</li>
+  <li>High maintenance cost under process drift</li>
+</ul>
+
+<div class="highlight">
+In production, ML is integrated into the OPC flow — not exposed as a replacement tool.
+</div>
+
+<hr>
+
+<h2>5. Industry Practice</h2>
+
+<ul>
+  <li><strong>Calibre OPC</strong>: physics-based execution engine</li>
+  <li><strong>Machine Learning</strong>: decision and acceleration layer</li>
+  <li><strong>Human sign-off</strong>: final responsibility</li>
+</ul>
+
+<div class="quote">
+“In production OPC, machine learning improves efficiency,
+but physics-based lithography models remain mandatory for accuracy and sign-off.”
+</div>
+
+<hr>
+
+<h2>6. Interview-ready Summary</h2>
+
+<div class="quote">
+Machine learning in Calibre-based OPC does not replace physics-based models.
+Instead, it accelerates hotspot detection, provides better initial guesses
+for OPC or ILT, and supports flow-level decisions,
+while lithography sign-off remains fully physics-driven.
+</div>
+
+<hr>
+<p><a href="index.html">↩ Go to OPC / RET Technical Notes</a></p>
+<p><a href="https://junowedd.github.io/technotespark/">Go to Home – Tech Notes Park</a></p>
+
+</body>
+</html>
