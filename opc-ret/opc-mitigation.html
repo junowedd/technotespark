@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OPC Mitigation of Stochastic Effects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      color: #222;
+    }
+    h1, h2 {
+      color: #003366;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    .note {
+      background: #f5f7fa;
+      padding: 15px;
+      border-left: 4px solid #003366;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+<h1>How OPC Mitigates Stochastic Effects</h1>
+
+<p>
+Optical Proximity Correction (OPC) was originally developed to correct
+deterministic optical distortions.
+For advanced nodes, OPC has evolved to address stochastic variability
+by improving robustness rather than attempting perfect correction.
+</p>
+
+<h2>Design Philosophy</h2>
+
+<div class="note">
+<strong>OPC does not eliminate randomness.</strong><br>
+Instead, it reduces sensitivity to randomness and minimizes the probability
+of failure in the tails of the distribution.
+</div>
+
+<h2>Targeting the Center of a Safe Distribution</h2>
+
+<p>
+Rather than targeting the nominal mean critical dimension (CD),
+OPC may intentionally bias the target toward the
+<strong>center of the process-safe distribution</strong>.
+This reduces the likelihood that stochastic variations push features
+beyond manufacturing limits.
+</p>
+
+<h2>Mitigating Photon Shot Noise</h2>
+<ul>
+  <li>Reducing CD sensitivity to dose variations</li>
+  <li>Optimizing assist features to improve exposure uniformity</li>
+  <li>Stabilizing edge placement under local dose fluctuations</li>
+</ul>
+
+<h2>Mitigating Resist Stochastic Variability</h2>
+<ul>
+  <li>Smoothing edge fragmentation to avoid amplifying local randomness</li>
+  <li>Favoring robust feature shapes over aggressive correction</li>
+  <li>Optimizing for CD distribution rather than single-value accuracy</li>
+</ul>
+
+<h2>Handling Failure-Prone Patterns</h2>
+
+<p>
+Certain layout patterns are statistically more likely to fail due to
+stochastic effects.
+These <em>failure-prone patterns</em> may not fail deterministically,
+but exhibit higher probabilities of defects.
+</p>
+
+<ul>
+  <li>Applying conservative bias to known weak patterns</li>
+  <li>Reducing necking and marginal geometries</li>
+  <li>Focusing optimization on high-risk hotspots</li>
+</ul>
+
+<div class="note">
+<strong>Summary:</strong><br>
+Modern OPC is a statistical optimization process.
+Success is measured by reduced variability, improved robustness,
+and lower defect probability rather than perfect pattern fidelity.
+</div>
+
+<p>
+↩ <a href="../eda/index.html">Go to EDA Portfolio</a><br>
+↩ <a href="../index.html">Go to Home – Tech Notes Park</a>
+</p>
+
+</body>
+</html>
