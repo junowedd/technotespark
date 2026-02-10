@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calibre-based OPC Flow</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+      background: #f9fafb;
+      color: #111;
+    }
+    h1, h2, h3 {
+      color: #1f2937;
+    }
+    h1 {
+      border-bottom: 3px solid #2563eb;
+      padding-bottom: 10px;
+    }
+    h2 {
+      margin-top: 40px;
+      border-left: 6px solid #2563eb;
+      padding-left: 10px;
+    }
+    h3 {
+      margin-top: 25px;
+      color: #374151;
+    }
+    pre {
+      background: #111827;
+      color: #e5e7eb;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      background: #e5e7eb;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 15px;
+    }
+    th, td {
+      border: 1px solid #d1d5db;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background: #e5e7eb;
+    }
+    .highlight {
+      background: #eff6ff;
+      border-left: 6px solid #3b82f6;
+      padding: 15px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Calibre-based OPC Flow (Production Perspective)</h1>
+
+<p>
+This document describes the <strong>actual production OPC flow</strong>
+used in Siemens EDA Calibre, reflecting industry-standard practices
+for advanced semiconductor manufacturing.
+</p>
+
+<hr>
+
+<h2>1. Overall OPC Flow Diagram</h2>
+
+<pre>
+[GDS Layout]
+     |
+     v
+[Design Preparation / Fracturing]
+     |
+     v
+[Rule-based OPC]
+(Coarse bias, serif, hammerhead)
+     |
+     v
+[Model-based OPC]
+(Lithography simulation & edge correction)
+     |
+     v
+[ILT (Optional / Hotspots only)]
+(Global optimization)
+     |
+     v
+[OPC Verification / Sign-off]
+(Process window, PV band)
+     |
+     v
+[Mask Data Preparation (MDP)]
+     |
+     v
+[Tape-out]
+</pre>
+
+<div class="highlight">
+The Calibre OPC flow is inherently <strong>hierarchical</strong>:
+speed is achieved through rule-based OPC,
+while accuracy is achieved through model-based OPC and selective ILT.
+</div>
+
+<hr>
+
+<h2>2. Input Layout: GDS</h2>
+
+<ul>
+  <li>Standard cells</li>
+  <li>Memory arrays</li>
+  <li>Custom logic blocks</li>
+</ul>
+
+<p>
+At this stage, no lithography effects are considered.
+The layout represents the <strong>ideal target geometry</strong>.
+</p>
+
+<hr>
+
+<h2>3. Design Preparation / Fracturing</h2>
+
+<p>
+The layout polygons are converted into an edge-based representation
+that can be manipulated by the OPC engine.
+</p>
+
+<ul>
+  <li>Polygon-to-edge decomposition</li>
+  <li>Segment length control</li>
+  <li>Corner classification</li>
+</ul>
+
+<div class="highlight">
+<strong>Key concept:</strong> OPC operates on <em>edges</em>, not polygons.
+</div>
+
+<hr>
+
+<h2>4. Rule-based OPC (Coarse Correction)</h2>
+
+<p>
+Rule-based OPC applies predefined geometric corrections
+based on pattern type and local context.
+</p>
+
+<ul>
+  <li>Line biasing</li>
+  <li>Hammerhead insertion</li>
+  <li>Serif generation</li>
+  <li>Simple SRAF placement</li>
+</ul>
+
+<table>
+  <tr>
+    <th>Characteristic</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>Speed</td>
+    <td>Very fast</td>
+  </tr>
+  <tr>
+    <td>Accuracy</td>
+    <td>Limited</td>
+  </tr>
+  <tr>
+    <td>Prediction</td>
+    <td>No wafer simulation</td>
+  </tr>
+</table>
+
+<p>
+<strong>Goal:</strong> Remove large systematic lithographic errors early.
+</p>
+
+<hr>
+
+<h2>5. Model-based OPC (Core Step)</h2>
+
+<p>
+Model-based OPC uses calibrated lithography models
+to predict wafer contours and iteratively correct mask edges.
+</p>
+
+<pre>
+Mask
+ ↓
+Optical Model (Hopkins)
+ ↓
+Aerial Image
+ ↓
+Resist Model (Mack)
+ ↓
+Wafer Contour
+ ↓
+Error to Target
+ ↓
+Edge Adjustment (Iterative)
+</pre>
+
+<ul>
+  <li>Physics-based prediction</li>
+  <li>High CD accuracy</li>
+  <li>Computationally expensive</li>
+</ul>
+
+<div class="highlight">
+This step determines the final pattern fidelity on silicon.
+</div>
+
+<hr>
+
+<h2>6. ILT – Inverse Lithography Technology (Optional)</h2>
+
+<p>
+ILT is selectively applied to <strong>critical hotspots</strong>
+where conventional OPC cannot meet process window requirements.
+</p>
+
+<ul>
+  <li>Global optimization approach</li>
+  <li>Pixel- or level-set-based mask representation</li>
+  <li>Very high computational cost</li>
+</ul>
+
+<p>
+ILT is <strong>not</strong> applied to full-chip layouts in production.
+</p>
+
+<hr>
+
+<h2>7. OPC Verification and Sign-off</h2>
+
+<p>
+The OPC-corrected mask is verified using full lithography simulation.
+</p>
+
+<

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OPC Model Parameters and Methodology</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+      background: #f9fafb;
+      color: #111;
+    }
+    h1, h2, h3 {
+      color: #1f2937;
+    }
+    h1 {
+      border-bottom: 3px solid #2563eb;
+      padding-bottom: 10px;
+    }
+    h2 {
+      margin-top: 40px;
+      border-left: 6px solid #2563eb;
+      padding-left: 10px;
+    }
+    h3 {
+      margin-top: 25px;
+      color: #374151;
+    }
+    code {
+      background: #e5e7eb;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    pre {
+      background: #111827;
+      color: #e5e7eb;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 15px;
+    }
+    th, td {
+      border: 1px solid #d1d5db;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background: #e5e7eb;
+    }
+    .highlight {
+      background: #eff6ff;
+      border-left: 6px solid #3b82f6;
+      padding: 15px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>OPC Model Parameters and OPC Methodology</h1>
+
+<p>
+This document summarizes the <strong>model-based OPC framework</strong>,
+including its mathematical foundations and a clear comparison between
+<strong>Rule-based OPC</strong> and <strong>Model-based OPC</strong>,
+from a practical semiconductor manufacturing perspective.
+</p>
+
+<hr>
+
+<h2>1. OPC Model Parameters and Practical Usage</h2>
+
+<h3>1.1 Overall OPC Modeling Structure</h3>
+
+<p>
+OPC models the transfer of mask geometry to wafer patterns using
+a combination of <strong>optical imaging</strong>,
+<strong>photoresist response</strong>, and <strong>process effects</strong>.
+</p>
+
+<p>
+$$
+\text{Mask}
+\;\xrightarrow{\text{Optics}}\;
+\text{Aerial Image}
+\;\xrightarrow{\text{Resist}}\;
+\text{Wafer Contour}
+$$
+</p>
+
+<hr>
+
+<h3>1.2 Optical Model – Hopkins Formulation</h3>
+
+<p>
+Under partially coherent illumination, the aerial image intensity
+on the wafer is described by the Hopkins equation:
+</p>
+
+<p>
+$$
+I(x,y)
+=
+\iint
+TCC(u_1,v_1,u_2,v_2)
+M(u_1,v_1) M^*(u_2,v_2)
+e^{i2\pi[(u_1-u_2)x+(v_1-v_2)y]}
+du_1 dv_1 du_2 dv_2
+$$
+</p>
+
+<ul>
+  <li><strong>M(u,v)</strong>: Fourier spectrum of the mask</li>
+  <li><strong>TCC</strong>: Transmission Cross Coefficient (NA, σ, illumination, aberrations)</li>
+</ul>
+
+<div class="highlight">
+In practical OPC tools, the TCC is decomposed using SVD,
+allowing the Hopkins formulation to be approximated as a sum of
+coherent imaging systems to reduce computational cost.
+</div>
+
+<hr>
+
+<h3>1.3 Resist Model – Mack Model</h3>
+
+<h4>(1) Acid diffusion blur</h4>
+
+<p>
+$$
+E_{\text{eff}} = E * G, \quad
+G(r)=\frac{1}{2\pi\sigma^2}e^{-r^2/2\sigma^2}
+$$
+</p>
+
+<h4>(2) Nonlinear resist response</h4>
+
+<p>
+$$
+R(E_{\text{eff}})
+=
+\frac{1}{1 + \left(\frac{E_0}{E_{\text{eff}}}\right)^\gamma}
+$$
+</p>
+
+<ul>
+  <li><strong>E₀</strong>: Dose-to-clear threshold</li>
+  <li><strong>γ</strong>: Resist contrast</li>
+</ul>
+
+<p>
+In OPC, the wafer pattern edge is defined as the contour
+satisfying <code>R = R<sub>th</sub></code>.
+</p>
+
+<hr>
+
+<h3>1.4 OPC Model Calibration Flow</h3>
+
+<pre>
+1. Test mask fabrication
+2. Wafer exposure
+3. CD-SEM measurement
+4. Simulation vs. measurement comparison
+5. Parameter optimization
+6. Error minimization
+</pre>
+
+<hr>
+
+<h2>2. Rule-based OPC vs. Model-based OPC</h2>
+
+<h3>2.1 Conceptual Comparison</h3>
+
+<table>
+  <tr>
+    <th>Category</th>
+    <th>Rule-based OPC</th>
+    <th>Model-based OPC</th>
+  </tr>
+  <tr>
+    <td>Foundation</td>
+    <td>Empirical rules</td>
+    <td>Physics-based models</td>
+  </tr>
+  <tr>
+    <td>Prediction capability</td>
+    <td>None</td>
+    <td>Wafer contour prediction</td>
+  </tr>
+  <tr>
+    <td>2D pattern handling</td>
+    <td>Limited</td>
+    <td>Strong</td>
+  </tr>
+  <tr>
+    <td>Computation cost</td>
+    <td>Low</td>
+    <td>High</td>
+  </tr>
+</table>
+
+<hr>
+
+<h3>2.2 Rule-based OPC</h3>
+
+<ul>
+  <li>Lookup-table driven geometric corrections</li>
+  <li>Biasing, hammerheads, and serif insertion</li>
+  <li>Fast and robust for simple, repetitive patterns</li>
+  <li>Limited adaptability to process changes</li>
+</ul>
+
+<hr>
+
+<h3>2.3 Model-based OPC</h3>
+
+<p>
+The objective of model-based OPC is to minimize the wafer contour error:
+</p>
+
+<p>
+$$
+\min_M \| C_{\text{wafer}}(M) - C_{\text{target}} \|^2
+$$
+</p>
+
+<ul>
+  <li>Inverse lithography problem</li>
+  <li>High accuracy for advanced nodes</li>
+  <li>Requires well-calibrated lithography models</li>
+</ul>
+
+<hr>
+
+<h3>2.4 Industry Standard: Hybrid OPC</h3>
+
+<pre>
+Rule-based OPC  →  Coarse correction
+Model-based OPC →  Fine tuning
+Verification    →  Sign-off
+</pre>
+
+<div class="highlight">
+In production environments, <strong>Rule-based and Model-based OPC are always combined</strong>
+to achieve both high throughput and high accuracy.
+</div>
+
+<hr>
+
+<h2>3. Key Takeaways</h2>
+
+<ul>
+  <li>Hopkins formulation models optical image formation</li>
+  <li>Mack model captures nonlinear photoresist behavior</li>
+  <li>Model-based OPC provides high accuracy through simulation</li>
+  <li>Rule-based OPC enables fast, empirical corrections</li>
+</ul>
+
+<p>
+<strong>Modern OPC is inherently hybrid.</strong>
+</p>
+
+<hr>
+
+<h2>4. Inverse Lithography Technology (ILT)</h2>
+
+<h3>4.1 What is ILT?</h3>
+
+<p>
+Inverse Lithography Technology (ILT) is an advanced computational
+lithography technique that formulates mask synthesis as a
+<strong>global optimization problem</strong>, rather than applying
+local geometric corrections.
+</p>
+
+<p>
+While traditional OPC modifies mask shapes heuristically,
+ILT directly computes the optimal mask pattern that produces
+the desired wafer image.
+</p>
+
+<div class="highlight">
+<strong>OPC asks:</strong> “How should I tweak this edge?”<br>
+<strong>ILT asks:</strong> “What mask gives me the best wafer result?”
+</div>
+
+<hr>
+
+<h3>4.2 Mathematical Formulation of ILT</h3>
+
+<p>
+ILT solves an inverse problem by minimizing a cost function:
+</p>
+
+<p>
+$$
+\min_M
+\Big(
+\| C_{\text{wafer}}(M) - C_{\text{target}} \|^2
++ \lambda \cdot R(M)
+\Big)
+$$
+</p>
+
+<ul>
+  <li><strong>M</strong>: mask representation (often pixel-based)</li>
+  <li><strong>C<sub>wafer</sub></strong>: simulated wafer contour</li>
+  <li><strong>C<sub>target</sub></strong>: target wafer pattern</li>
+  <li><strong>R(M)</strong>: regularization term</li>
+  <li><strong>λ</strong>: trade-off parameter</li>
+</ul>
+
+<p>
+The regularization term enforces manufacturability, such as:
+</p>
+
+<ul>
+  <li>Minimum feature size</li>
+  <li>Mask complexity constraints</li>
+  <li>SRAF suppression</li>
+</ul>
+
+<hr>
+
+<h3>4.3 ILT vs. Model-based OPC (Key Difference)</h3>
+
+<table>
+  <tr>
+    <th>Aspect</th>
+    <th>Model-based OPC</th>
+    <th>ILT</th>
+  </tr>
+  <tr>
+    <td>Optimization scope</td>
+    <td>Local (edge-based)</td>
+    <td>Global (mask-level)</td>
+  </tr>
+  <tr>
+    <td>Mask representation</td>
+    <td>Polygon edges</td>
+    <td>Pixel / level-set</td>
+  </tr>
+  <tr>
+    <td>Solution type</td>
+    <td>Heuristic iterative</td>
+    <td>Mathematical optimum</td>
+  </tr>
+  <tr>
+    <td>Mask complexity</td>
+    <td>Controlled</td>
+    <td>Very high</td>
+  </tr>
+</table>
+
+<hr>
+
+<h3>4.4 Typical ILT Workflow</h3>
+
+<pre>
+1. Target wafer pattern definition
+2. Initial mask guess (often binary)
+3. Lithography simulation (Hopkins + resist)
+4. Gradient-based optimization
+5. Mask regularization
+6. Verification and manufacturability check
+</pre>
+
+<hr>
+
+<h3>4.5 Why ILT Produces Better Results</h3>
+
+<ul>
+  <li>Simultaneous optimization of all features</li>
+  <li>Superior CD uniformity</li>
+  <li>Improved process window</li>
+  <li>Better handling of complex 2D patterns</li>
+</ul>
+
+<hr>
+
+<h3>4.6 Why ILT Is Not Fully Deployed in Production</h3>
+
+<ul>
+  <li>Extremely high computational cost</li>
+  <li>Highly complex mask shapes</li>
+  <li>Mask write time explosion</li>
+  <li>Inspection and repair challenges</li>
+</ul>
+
+<div class="highlight">
+As a result, ILT is often applied selectively
+(e.g., critical layers or hotspots),
+rather than full-chip deployment.
+</div>
+
+<hr>
+
+<h3>4.7 Industry Practice: Hybrid OPC + ILT</h3>
+
+<pre>
+Rule-based OPC     → Initial bias and simplification
+Model-based OPC    → Fine contour correction
+ILT                → Hotspot / critical region optimization
+Verification       → Sign-off
+</pre>
+
+<hr>
+
+<h3>4.8 Interview-ready Summary Statement</h3>
+
+<p>
+<strong>
+“Inverse Lithography Technology formulates mask synthesis as a global
+optimization problem using physics-based lithography models.
+While it offers superior pattern fidelity and process window,
+its computational and manufacturing costs limit its use to
+selected critical regions in production.”
+</strong>
+</p>
+
+<hr>
+
+<h2>5. Final Takeaway</h2>
+
+<ul>
+  <li>Rule-based OPC: Fast, empirical, local</li>
+  <li>Model-based OPC: Accurate, physics-driven</li>
+  <li>ILT: Global optimization, highest fidelity</li>
+</ul>
+
+<p>
+<strong>
+Modern computational lithography uses a hierarchical combination
+of all three approaches.
+</strong>
+</p>
+
+</body>
+</html>
