@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OPC / ILT / ML – One Page Interview Summary</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      margin: 32px;
+      line-height: 1.5;
+      background: #ffffff;
+      color: #111;
+    }
+    h1 {
+      border-bottom: 3px solid #2563eb;
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+    }
+    h2 {
+      margin-top: 22px;
+      color: #1f2937;
+    }
+    ul {
+      margin: 6px 0 10px 18px;
+    }
+    li {
+      margin-bottom: 4px;
+    }
+    .key {
+      background: #eff6ff;
+      border-left: 5px solid #2563eb;
+      padding: 10px 14px;
+      margin: 12px 0;
+      font-weight: 600;
+    }
+    .quote {
+      background: #f9fafb;
+      border-left: 5px solid #9ca3af;
+      padding: 10px 14px;
+      margin: 12px 0;
+      font-style: italic;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>OPC / ILT / Machine Learning – One Page Interview Summary</h1>
+
+<!-- SECTION 1 -->
+<h2>1. What OPC Really Does</h2>
+
+<ul>
+  <li>OPC compensates for lithography distortions between mask and wafer</li>
+  <li>Goal: <strong>target wafer contour after lithography</strong></li>
+</ul>
+
+<div class="key">
+OPC = predicting wafer patterns and modifying the mask accordingly.
+</div>
+
+<ul>
+  <li><strong>Rule-based OPC</strong>: fast, empirical geometric corrections</li>
+  <li><strong>Model-based OPC</strong>: physics-based (Hopkins + resist model)</li>
+</ul>
+
+---
+
+<!-- SECTION 2 -->
+<h2>2. Rule-based vs Model-based OPC</h2>
+
+<ul>
+  <li><strong>Rule-based</strong>: bias, serif, hammerhead (no simulation)</li>
+  <li><strong>Model-based</strong>: simulate → compare → iterate</li>
+</ul>
+
+<div class="key">
+Production OPC always uses a <strong>hybrid flow</strong>:
+rule-based for speed, model-based for accuracy.
+</div>
+
+---
+
+<!-- SECTION 3 -->
+<h2>3. What ILT Is (and Why It’s Different)</h2>
+
+<ul>
+  <li>ILT formulates mask synthesis as a <strong>global optimization problem</strong></li>
+  <li>Not edge tweaking, but mask-level optimization</li>
+</ul>
+
+<div class="key">
+ILT asks: “What mask gives the best wafer image?”
+</div>
+
+<ul>
+  <li>Highest accuracy and process window</li>
+  <li>Extremely high computational and mask cost</li>
+</ul>
+
+---
+
+<!-- SECTION 4 -->
+<h2>4. Why ASML / TSMC Use Partial ILT</h2>
+
+<ul>
+  <li>Full-chip ILT → weeks of runtime</li>
+  <li>ILT masks → curvilinear, hard to write & inspect</li>
+  <li>Most patterns already work with model-based OPC</li>
+</ul>
+
+<div class="key">
+Partial ILT = apply ILT only to lithography hotspots.
+</div>
+
+<div class="quote">
+“ILT everywhere is unnecessary. ILT where it matters is optimal.”
+</div>
+
+---
+
+<!-- SECTION 5 -->
+<h2>5. Why ML Is Added to OPC / ILT</h2>
+
+<ul>
+  <li>Physics-based OPC is accurate but slow</li>
+  <li>ML provides fast pattern recognition and prediction</li>
+</ul>
+
+<div class="key">
+ML does not replace physics — it accelerates it.
+</div>
+
+<ul>
+  <li>Hotspot detection</li>
+  <li>Initial guess for ILT</li>
+  <li>Runtime reduction (5×–20×)</li>
+</ul>
+
+---
+
+<!-- SECTION 6 -->
+<h2>6. ML + ILT in Production</h2>
+
+<ul>
+  <li>ML identifies difficult patterns</li>
+  <li>ILT refines only those regions</li>
+  <li>Physics-based verification remains mandatory</li>
+</ul>
+
+<div class="key">
+Future OPC = Physics-based models + ML acceleration.
+</div>
+
+---
+
+<!-- SECTION 7 -->
+<h2>7. Interview-Ready Answer (Memorize This)</h2>
+
+<div class="quote">
+“Modern OPC combines rule-based and model-based approaches.
+ILT provides the best pattern fidelity but is too expensive for full-chip use,
+so companies like ASML and TSMC apply partial ILT to critical hotspots.
+Machine learning accelerates this flow by enabling fast hotspot detection
+and near-optimal initial mask solutions, while physics-based models
+remain essential for accuracy and sign-off.”
+</div>
+
+---
+
+<h2>Final Takeaway</h2>
+
+<ul>
+  <li>Rule-based OPC → speed</li>
+  <li>Model-based OPC → accuracy</li>
+  <li>ILT → maximum fidelity (selective)</li>
+  <li>ML → scalability</li>
+</ul>
+
+<div class="key">
+This is not theory — this is how production OPC is actually done.
+</div>
+
+</body>
+</html>

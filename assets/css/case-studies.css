@@ -493,3 +493,8 @@ section ul {
   border-left: none;
 }
 
+<style>
+  li { margin-bottom: 10px; }
+  .section-gap { margin-top: 22px; }
+</style>
+
