@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Single-Layer OPC Recipes and EUV Gate vs Contact Differences</title>
+  <style>
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      margin: 40px;
+      line-height: 1.6;
+      color: #111;
+      background: #fff;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    h2 {
+      margin-top: 42px;
+    }
+    h3 {
+      margin-top: 28px;
+    }
+    p {
+      max-width: 900px;
+    }
+    ul {
+      max-width: 900px;
+    }
+    pre {
+      background: #f6f6f6;
+      padding: 14px;
+      border-left: 4px solid #444;
+      overflow-x: auto;
+    }
+    hr {
+      margin: 36px 0;
+    }
+    .note {
+      background: #f5f7fa;
+      padding: 16px;
+      border-left: 4px solid #003366;
+      max-width: 900px;
+      margin: 24px 0;
+    }
+    .meta {
+      font-size: 14px;
+      font-style: italic;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Single-Layer OPC Recipes in EUV Lithography</h1>
+
+<p>
+In modern EUV lithography, OPC is no longer a purely deterministic correction
+process. Instead, it is a layer-specific strategy for managing
+process variability, stochastic effects, and yield risk.
+This note summarizes how a <strong>single-layer OPC recipe</strong> is structured
+and why <strong>gate and contact layers require fundamentally different approaches</strong>.
+</p>
+
+<hr>
+
+<h2>What Does a Single-Layer OPC Recipe Mean?</h2>
+
+<p>
+A single-layer OPC recipe is not a loose collection of correction rules.
+It is a coherent definition of how one specific layer is corrected,
+validated, and signed off under realistic manufacturing conditions.
+</p>
+
+<div class="note">
+<strong>Conceptually, a single-layer OPC recipe combines:</strong>
+<ul>
+  <li>Target CD definition</li>
+  <li>Fragmentation strategy</li>
+  <li>Biasing and context rules</li>
+  <li>Assist feature strategy</li>
+  <li>Handling of failure-prone patterns</li>
+  <li>Verification and sign-off criteria</li>
+</ul>
+</div>
+
+<p>
+Owning a layer means understanding how these elements interact
+and knowing which lever to adjust when yield or printability issues appear.
+</p>
+
+<hr>
+
+<h2>How OPC Commands Are Combined into a Layer Recipe</h2>
+
+<p>
+In practice, OPC commands are grouped logically rather than applied independently.
+A simplified conceptual structure is shown below.
+</p>
+
+<pre>
+OPCSET LAYER_OPC {
+  TARGET        CD
+  ITERATE / STOP
+  FRAGMENT
+  CONTEXT RULES
+  SRAF STRATEGY
+  FILTER (weak patterns)
+  VERIFY
+}
+</pre>
+
+<p>
+This structure reflects how OPC engineers think about the problem:
+not as isolated commands, but as a closed-loop system that balances
+accuracy, robustness, and runtime.
+</p>
+
+<hr>
+
+<h2>Why EUV Gate and Contact Layers Are Fundamentally Different</h2>
+
+<p>
+Although both gate and contact layers are critical, their physical shapes
+and failure modes differ significantly.
+As a result, their OPC recipes follow different optimization philosophies.
+</p>
+
+<h3>Physical and Failure Mode Differences</h3>
+
+<ul>
+  <li><strong>Gate layers</strong> consist of long, continuous lines where
+      CD accuracy and edge placement directly impact device performance.</li>
+  <li><strong>Contact layers</strong> consist of small, isolated holes where
+      the primary risk is complete printing failure (missing contacts).</li>
+</ul>
+
+<div class="note">
+<strong>Key distinction:</strong><br>
+Gate OPC optimizes <em>precision</em>, while contact OPC optimizes <em>survival probability</em>.
+</div>
+
+<hr>
+
+<h2>EUV Gate Layer OPC Recipe Characteristics</h2>
+
+<ul>
+  <li>Target CD is close to the nominal design value</li>
+  <li>Fine fragmentation to control edge placement and LER</li>
+  <li>Aggressive context-aware biasing for dense vs isolated patterns</li>
+  <li>Active use of assist features to stabilize imaging</li>
+  <li>Tight verification criteria on CD and EPE</li>
+</ul>
+
+<p>
+For gate layers, OPC aims to produce uniform, repeatable shapes.
+Small deviations may be tolerated electrically, but variability must be minimized.
+</p>
+
+<hr>
+
+<h2>EUV Contact Layer OPC Recipe Characteristics</h2>
+
+<ul>
+  <li>Target CD is intentionally biased toward the safe side</li>
+  <li>Coarser fragmentation to avoid amplifying stochastic noise</li>
+  <li>Minimal or no use of assist features</li>
+  <li>Simple, conservative bias rules</li>
+  <li>Special handling of known failure-prone patterns</li>
+</ul>
+
+<p>
+For contact layers, a slightly oversized contact is acceptable,
+but a missing contact is catastrophic.
+Therefore, OPC sacrifices nominal accuracy to reduce tail-risk failures.
+</p>
+
+<hr>
+
+<h2>Summary</h2>
+
+<div class="note">
+<ul>
+  <li>A single-layer OPC recipe is a complete risk-management strategy.</li>
+  <li>Gate OPC prioritizes CD control and edge fidelity.</li>
+  <li>Contact OPC prioritizes printability and defect probability reduction.</li>
+  <li>Understanding these differences is essential for owning a critical layer.</li>
+</ul>
+</div>
+
+<p class="meta">
+Author focus: production OPC, EUV lithography robustness, and layer-level sign-off responsibility
+</p>
+
+<p class="meta">
+Last updated: February 2026
+</p>
+
+<p>
+↩ <a href="../eda/index.html">Go to EDA Portfolio</a><br>
+↩ <a href="../index.html">Go to Home – Tech Notes Park</a>
+</p>
+
+</body>
+</html>
