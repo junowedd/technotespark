@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calibre OPC Flow Diagram</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      margin: 30px;
+      background: #f9fafb;
+      color: #111;
+    }
+    h1 {
+      border-bottom: 3px solid #2563eb;
+      padding-bottom: 10px;
+    }
+    .note {
+      margin-top: 20px;
+      background: #eff6ff;
+      border-left: 6px solid #3b82f6;
+      padding: 12px;
+    }
+    svg text {
+      font-size: 14px;
+      fill: #111827;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Calibre-based OPC Flow (SVG Diagram)</h1>
+
+<svg width="900" height="820" viewBox="0 0 900 820">
+
+  <!-- Arrow definition -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3"
+            orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#374151"/>
+    </marker>
+  </defs>
+
+  <!-- Box style -->
+  <style>
+    .box {
+      fill: #ffffff;
+      stroke: #374151;
+      stroke-width: 1.5;
+      rx: 8;
+      ry: 8;
+    }
+    .highlight {
+      fill: #e0f2fe;
+      stroke: #2563eb;
+      stroke-width: 2;
+    }
+    .optional {
+      fill: #fef3c7;
+      stroke: #d97706;
+      stroke-width: 2;
+    }
+    .arrow {
+      stroke: #374151;
+      stroke-width: 2;
+      fill: none;
+      marker-end: url(#arrow);
+    }
+  </style>
+
+  <!-- Boxes -->
+  <rect x="300" y="30" width="300" height="60" class="box"/>
+  <text x="450" y="65" text-anchor="middle">GDS Layout</text>
+
+  <rect x="300" y="120" width="300" height="70" class="box"/>
+  <text x="450" y="155" text-anchor="middle">
+    Design Prep / Fracturing
+  </text>
+
+  <rect x="300" y="220" width="300" height="90" class="box"/>
+  <text x="450" y="255" text-anchor="middle">
+    Rule-based OPC
+  </text>
+  <text x="450" y="275" text-anchor="middle" font-size="12">
+    Bias · Serif · Hammerhead
+  </text>
+
+  <rect x="300" y="350" width="300" height="110" class="highlight"/>
+  <text x="450" y="385" text-anchor="middle" font-weight="bold">
+    Model-based OPC
+  </text>
+  <text x="450" y="405" text-anchor="middle" font-size="12">
+    Litho Simulation
+  </text>
+  <text x="450" y="425" text-anchor="middle" font-size="12">
+    Hopkins + Mack Model
+  </text>
+
+  <rect x="300" y="500" width="300" height="90" class="optional"/>
+  <text x="450" y="535" text-anchor="middle" font-weight="bold">
+    ILT (Optional)
+  </text>
+  <text x="450" y="555" text-anchor="middle" font-size="12">
+    Hotspots / Critical Regions
+  </text>
+
+  <rect x="300" y="630" width="300" height="80" class="box"/>
+  <text x="450" y="665" text-anchor="middle">
+    OPC Verification
+  </text>
+  <text x="450" y="685" text-anchor="middle" font-size="12">
+    CD · PV Band · Process Window
+  </text>
+
+  <rect x="300" y="740" width="300" height="60" class="box"/>
+  <text x="450" y="775" text-anchor="middle">
+    Mask Data Prep & Tape-out
+  </text>
+
+  <!-- Arrows -->
+  <line x1="450" y1="90" x2="450" y2="120" class="arrow"/>
+  <line x1="450" y1="190" x2="450" y2="220" class="arrow"/>
+  <line x1="450" y1="310" x2="450" y2="350" class="arrow"/>
+  <line x1="450" y1="460" x2="450" y2="500" class="arrow"/>
+  <line x1="450" y1="590" x2="450" y2="630" class="arrow"/>
+  <line x1="450" y1="710" x2="450" y2="740" class="arrow"/>
+
+</svg>
+
+<div class="note">
+<strong>Reading guide:</strong><br>
+• Blue box: Core accuracy driver (Model-based OPC)<br>
+• Yellow box: Optional high-cost optimization (ILT)<br>
+• Gray boxes: Standard production steps
+</div>
+
+</body>
+</html>
