@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Why ASML & TSMC Use Partial ILT</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+      background: #f9fafb;
+      color: #111;
+    }
+    h1, h2, h3 {
+      color: #1f2937;
+    }
+    h1 {
+      border-bottom: 3px solid #2563eb;
+      padding-bottom: 10px;
+    }
+    h2 {
+      margin-top: 40px;
+      border-left: 6px solid #2563eb;
+      padding-left: 10px;
+    }
+    h3 {
+      margin-top: 25px;
+      color: #374151;
+    }
+    pre {
+      background: #111827;
+      color: #e5e7eb;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 15px;
+    }
+    th, td {
+      border: 1px solid #d1d5db;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background: #e5e7eb;
+    }
+    .highlight {
+      background: #eff6ff;
+      border-left: 6px solid #3b82f6;
+      padding: 15px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Why ASML and TSMC Use Partial ILT</h1>
+
+<p>
+Inverse Lithography Technology (ILT) provides the highest pattern fidelity
+in computational lithography. However, despite its theoretical advantages,
+<strong>full-chip ILT is not used in high-volume manufacturing</strong>.
+This document explains why industry leaders such as ASML and TSMC
+adopt <strong>partial ILT</strong> instead.
+</p>
+
+<hr>
+
+<h2>1. What ILT Really Is</h2>
+
+<p>
+ILT formulates mask synthesis as a <strong>global optimization problem</strong>:
+</p>
+
+<pre>
+Minimize wafer contour error
+while enforcing mask manufacturability
+</pre>
+
+<p>
+Unlike traditional OPC, ILT does not rely on local edge corrections.
+Instead, it computes the optimal mask shape that best reproduces
+the target wafer pattern.
+</p>
+
+<div class="highlight">
+ILT provides the best possible lithographic solution — at a very high cost.
+</div>
+
+<hr>
+
+<h2>2. What “Partial ILT” Means in Production</h2>
+
+<p>
+Partial ILT refers to the selective application of ILT
+<strong>only to critical lithography hotspots</strong>,
+rather than to the entire chip.
+</p>
+
+<pre>
+Rule-based OPC   → Full chip
+Model-based OPC  → Full chip
+ILT              → Selected hotspots only
+</pre>
+
+<p>
+Typically, hotspot regions represent less than 1% of the total layout area.
+</p>
+
+<hr>
+
+<h2>3. Why ASML and TSMC Use Partial ILT</h2>
+
+<h3>3.1 Computational Cost Explosion</h3>
+
+<p>
+ILT uses pixel- or level-set-based mask representations,
+which dramatically increase the number of optimization variables.
+</p>
+
+<ul>
+  <li>Full-chip ILT runtime: weeks to months</li>
+  <li>Hotspot ILT runtime: hours to days</li>
+</ul>
+
+<p>
+From a return-on-investment perspective, applying ILT only where it matters
+provides maximum benefit at minimal cost.
+</p>
+
+<hr>
+
+<h3>3.2 Mask Write and Inspection Limitations</h3>
+
+<p>
+ILT masks tend to be:
+</p>
+
+<ul>
+  <li>Highly curvilinear</li>
+  <li>Extremely fragmented</li>
+  <li>Dense with sub-resolution features</li>
+</ul>
+
+<p>
+This results in:
+</p>
+
+<ul>
+  <li>Excessive mask write time</li>
+  <li>Increased mask cost</li>
+  <li>Difficult inspection and repair</li>
+</ul>
+
+<div class="highlight">
+Mask shops cannot reliably support full-chip ILT masks at production scale.
+</div>
+
+<hr>
+
+<h3>3.3 Diminishing Returns Compared to Model-based OPC</h3>
+
+<p>
+For the majority of layout patterns, well-calibrated model-based OPC
+already meets CD and process window requirements.
+</p>
+
+<p>
+ILT provides significant improvement only for:
+</p>
+
+<ul>
+  <li>Complex 2D patterns</li>
+  <li>Forbidden pitch regions</li>
+  <li>Severe process window limiters</li>
+</ul>
+
+<p>
+Applying ILT everywhere yields little additional benefit
+while dramatically increasing cost.
+</p>
+
+<hr>
+
+<h3>3.4 Process Window Optimization Strategy</h3>
+
+<p>
+ILT is most effective when used to recover process window
+in the most lithographically sensitive regions.
+</p>
+
+<p>
+Since process window margin is not uniformly required across the chip,
+selective ILT is the most efficient strategy.
+</p>
+
+<hr>
+
+<h2>4. Why ILT Is Not Fully Used in Production</h2>
+
+<table>
+  <tr>
+    <th>Limitation</th>
+    <th>Impact on Production</th>
+  </tr>
+  <tr>
+    <td>Runtime</td>
+    <td>Violates tape-out schedules</td>
+  </tr>
+  <tr>
+    <td>Mask manufacturability</td>
+    <td>High risk of mask write failure</td>
+  </tr>
+  <tr>
+    <td>Inspection & repair</td>
+    <td>Yield and reliability risk</td>
+  </tr>
+  <tr>
+    <td>Cost vs. benefit</td>
+    <td>Economically unjustifiable</td>
+  </tr>
+</table>
+
+<hr>
+
+<h2>5. ASML vs. TSMC Perspective</h2>
+
+<h3>ASML (Tool and Platform Provider)</h3>
+
+<ul>
+  <li>Focus on extending lithographic limits</li>
+  <li>Develops full ILT and curvilinear mask solutions</li>
+  <li>Research-driven approach</li>
+</ul>
+
+<h3>TSMC (High-Volume Manufacturer)</h3>
+
+<ul>
+  <li>Focus on throughput and yield stability</li>
+  <li>Cost-sensitive decision making</li>
+  <li>Production-driven approach</li>
+</ul>
+
+<div class="highlight">
+ASML asks: “Is it physically possible?”<br>
+TSMC asks: “Can we manufacture it reliably at scale?”
+</div>
+
+<hr>
+
+<h2>6. Production-Proven Strategy</h2>
+
+<pre>
+Most layout patterns      → Model-based OPC
+Difficult hotspots        → Partial ILT
+Extreme cases             → Layout re-design
+</pre>
+
+<hr>
+
+<h2>7. Interview-ready Summary</h2>
+
+<p>
+<strong>
+Although ILT delivers superior pattern fidelity, its computational cost
+and mask manufacturability challenges prevent full-chip deployment.
+Therefore, companies like ASML and TSMC use partial ILT, applying it
+selectively to lithography hotspots where conventional OPC cannot meet
+process window requirements.
+</strong>
+</p>
+
+<hr>
+
+<h2>8. Final Takeaway</h2>
+
+<ul>
+  <li>ILT is the most powerful computational lithography technique</li>
+  <li>Full-chip ILT is impractical for high-volume manufacturing</li>
+  <li>Partial ILT offers the best balance between accuracy and cost</li>
+</ul>
+
+<p>
+<strong>
+Partial ILT is not a compromise — it is an optimized production strategy.
+</strong>
+</p>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Physics-Informed Neural Networks for OPC</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; background:#f9fafb; }
+    h1 { border-bottom:3px solid #2563eb; }
+    h2 { margin-top:35px; }
+    .box { background:#eff6ff; border-left:6px solid #3b82f6; padding:15px; margin:20px 0; }
+  </style>
+</head>
+<body>
+
+<h1>Physics-Informed Neural Networks (PINN) for OPC</h1>
+
+<p>
+Physics-Informed Neural Networks (PINNs) integrate
+<strong>lithography physics</strong> directly into neural network training
+by embedding physical laws into the loss function.
+</p>
+
+<h2>Why PINN for OPC?</h2>
+<ul>
+  <li>Pure ML lacks physical guarantees</li>
+  <li>Lithography is governed by known physics (Hopkins, resist models)</li>
+  <li>PINNs reduce data dependency and improve generalization</li>
+</ul>
+
+<h2>Concept</h2>
+<div class="box">
+Total Loss = Data Loss + Physics Loss
+</div>
+
+<p>
+Physics loss enforces consistency with:
+</p>
+<ul>
+  <li>Optical imaging equations</li>
+  <li>Resist diffusion constraints</li>
+  <li>Process window behavior</li>
+</ul>
+
+<h2>Benefits</h2>
+<ul>
+  <li>Better extrapolation to unseen patterns</li>
+  <li>Reduced retraining for process drift</li>
+  <li>Higher physical reliability</li>
+</ul>
+
+<h2>Key Takeaway</h2>
+<p>
+<strong>PINNs bridge the gap between physics-based OPC and data-driven ML.</strong>
+</p>
+
+</body>
+</html>

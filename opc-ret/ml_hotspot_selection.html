@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ML-based Hotspot Selection for OPC</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; background:#f9fafb; }
+    h1 { border-bottom:3px solid #2563eb; }
+    h2 { margin-top:35px; }
+    table { border-collapse: collapse; width:100%; }
+    th,td { border:1px solid #ccc; padding:10px; }
+    th { background:#e5e7eb; }
+  </style>
+</head>
+<body>
+
+<h1>ML-based Hotspot Selection for OPC / ILT</h1>
+
+<p>
+Hotspot selection determines <strong>where expensive ILT should be applied</strong>.
+Machine learning enables fast and accurate hotspot identification.
+</p>
+
+<h2>Input Features</h2>
+<ul>
+  <li>Local pitch and density</li>
+  <li>2D pattern complexity</li>
+  <li>Historical CD error</li>
+  <li>Process window sensitivity</li>
+</ul>
+
+<h2>ML Decision Output</h2>
+
+<table>
+<tr><th>Region</th><th>Action</th></tr>
+<tr><td>Low risk</td><td>Model-based OPC only</td></tr>
+<tr><td>Medium risk</td><td>Extra OPC iterations</td></tr>
+<tr><td>High risk</td><td>Partial ILT</td></tr>
+</table>
+
+<h2>Advantages</h2>
+<ul>
+  <li>Reduces unnecessary ILT usage</li>
+  <li>Improves runtime predictability</li>
+  <li>Maximizes ROI of ILT</li>
+</ul>
+
+<h2>Key Takeaway</h2>
+<p>
+<strong>ML hotspot selection is the gatekeeper for scalable ILT.</strong>
+</p>
+
+</body>
+</html>
