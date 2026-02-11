@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPC & MDP Guide</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; background-color: #f5f5f5; }
+        h1, h2, h3 { color: #2a5d9f; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        table, th, td { border: 1px solid #aaa; }
+        th, td { padding: 8px; text-align: left; }
+        pre { background-color: #eaeaea; padding: 10px; overflow-x: auto; }
+        .diagram { font-family: monospace; white-space: pre; background-color: #e0e0e0; padding: 10px; }
+    </style>
+</head>
+<body>
+
+<h1>OPC & Mask Data Preparation (MDP) Guide</h1>
+
+<h2>1. MDP Overview</h2>
+<p>Mask Data Preparation (MDP) converts OPC-corrected layouts into mask writer-ready formats (MEBES/OASIS). Key tasks include polygon fracture, sliver removal, shot count optimization, and mask layer mapping.</p>
+
+<h2>2. Pegasus vs Calibre MDP Comparison</h2>
+<table>
+    <tr>
+        <th>Feature</th>
+        <th>Cadence Pegasus MDP</th>
+        <th>Calibre MDP</th>
+    </tr>
+    <tr>
+        <td>Main Purpose</td>
+        <td>OPC layout → Mask writer format, fracture, shot optimization, layer mapping</td>
+        <td>Same, tightly integrated with OPC/RET workflow</td>
+    </tr>
+    <tr>
+        <td>Fracture</td>
+        <td>Rectangle / Trapezoid, shot merge automation</td>
+        <td>Rectangle / Trapezoid, iterative merge</td>
+    </tr>
+    <tr>
+        <td>Sliver Handling</td>
+        <td>Automatic removal + merge, min width configurable</td>
+        <td>Automatic removal + merge</td>
+    </tr>
+    <tr>
+        <td>Shot Count Optimization</td>
+        <td>Hierarchy reuse, trapezoid fracture, OPC-aware local optimization</td>
+        <td>Hierarchy reuse, incremental OPC-aware optimization</td>
+    </tr>
+    <tr>
+        <td>Layer Mapping</td>
+        <td>GDS → Mask layer, OPC/SRAF included</td>
+        <td>GDS → Mask layer, OPC/SRAF included</td>
+    </tr>
+    <tr>
+        <td>Output Format</td>
+        <td>MEBES / OASIS</td>
+        <td>MEBES / OASIS</td>
+    </tr>
+    <tr>
+        <td>Strength</td>
+        <td>Mask-centric, shot optimization automation</td>
+        <td>Tightly integrated with OPC & RET verification</td>
+    </tr>
+</table>
+
+<h2>3. Pegasus MDP Step-by-Step Flow</h2>
+<div class="diagram">
+OPC Corrected Layout (GDS)
+       │
+       ▼
++---------------------------+
+| MDP: Fracture             |
+|  - Rectangle / Trapezoid  |
++---------------------------+
+       │
+       ▼
++---------------------------+
+| MDP: Sliver Cleanup       |
+|  - Remove width < 10nm    |
+|  - Merge adjacent edges   |
++---------------------------+
+       │
+       ▼
++---------------------------+
+| MDP: Shot Optimization    |
+|  - Merge shots            |
+|  - Hierarchy reuse        |
+|  - Trapezoid fracture     |
++---------------------------+
+       │
+       ▼
++---------------------------+
+| MDP: Mask Layer Mapping   |
+|  - OPC / SRAF layers      |
+|  - Priority / print check |
++---------------------------+
+       │
+       ▼
++---------------------------+
+| Output Mask File          |
+|  - MEBES / OASIS          |
+|  - Shot count report       |
+|  - File size report       |
++---------------------------+
+       │
+       ▼
+[Mask Writer / Tape-out]
+</div>
+
+<h2>4. Key Concepts</h2>
+<ul>
+    <li><strong>Sliver:</strong> Very small polygon fragments, typically <10nm, removed to prevent write errors and reduce shot count.</li>
+    <li><strong>Shot Count:</strong> Number of e-beam shots required to write the mask; optimization reduces write time and mask cost.</li>
+    <li><strong>Fracture:</strong> Polygon splitting into rectangles or trapezoids for mask writer compatibility.</li>
+</ul>
+
+<h2>5. Pegasus MDP Shell Example</h2>
+<pre>#!/bin/bash
+CALIBRE_HOME=/tools/pegasus
+RULE=../rule/mdp.rule
+
+$CALIBRE_HOME/bin/pegasus_mdp 
+-64 
+-turbo 32 
+-mdp 
+-hier 
+-runset $RULE 
+-log mdp.log</pre>
+
+<h2>6. Pegasus MDP Rule Deck Example</h2>
+<pre>LAYOUT SYSTEM GDSII
+LAYOUT PATH "../output/opc_corrected.gds"
+LAYOUT PRIMARY top
+
+MASK WRITE MEBES
+MASK MEBES GRID 5nm
+MASK MEBES FORMAT 4
+
+FRACTURE ENABLE
+FRACTURE GRID 5nm
+FRACTURE MAX_VERTICES 6
+FRACTURE TRAPEZOID YES
+
+SLIVER REMOVE YES
+SLIVER MIN_WIDTH 10nm
+
+HIERARCHY OPTIMIZE YES
+HIERARCHY CELL REUSE YES
+
+SHOT OPTIMIZE YES
+SHOT MERGE YES
+
+MASK OUTPUT "../output/mask_mebes.mebes"
+REPORT SHOTCOUNT YES
+REPORT FILESIZE YES</pre>
+
+<h2>7. Interview One-Liner</h2>
+<p><strong>English:</strong> In Cadence Pegasus MDP, we fracture OPC polygons into rectangles and trapezoids, remove slivers, optimize shot count, map mask layers, and generate MEBES or OASIS files for mask writer submission.</p>
+<p><strong>Korean:</strong> Cadence Pegasus MDP에서는 OPC polygon을 rectangle/trapezoid로 fracture하고, sliver를 제거하며, shot count를 최적화하고, mask layer를 매핑한 후 MEBES/OASIS 파일로 mask shop에 전달합니다.</p>
+
+</body>
+</html>
