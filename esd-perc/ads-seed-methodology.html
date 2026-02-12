@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADS & SEED Methodology - Park</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: auto; padding: 20px; }
+        h1 { color: #008577; border-bottom: 2px solid #008577; padding-bottom: 10px; }
+        h2 { color: #005a50; background: #f4f4f4; padding: 10px; border-left: 5px solid #008577; }
+        .experience-box { background: #094386; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #d1e9ff; }
+        code { background: #eee; padding: 2px 5px; border-radius: 3px; }
+        .highlight { color: #008577; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>System-Efficient ESD Design (SEED) using ADS</h1>
+    <p><strong>Focus:</strong> Bridging Device-Level Protection with System-Level Reliability for High-Speed Interfaces.</p>
+
+    <h2>1. Why ADS for Infineon TVS?</h2>
+    <div class="experience-box">
+        <p>In high-speed ecosystems (USB4, HDMI 2.1, Automotive Ethernet), a TVS diode is not a standalone component. It interacts with PCB parasitics and the protected IC. ADS (Advanced Design System) is the primary tool for this <strong>Co-Design</strong> approach.</p>
+        <ul>
+            <li><strong>S-Parameter Integration:</strong> Integrating PCB trace and package models via S-parameters to analyze Signal Integrity (SI).</li>
+            <li><strong>Transient Protection Analysis:</strong> Simulating how a 100ns TLP pulse or IEC 61000-4-2 stress propagates through the system.</li>
+            <li><strong>Harmonic Balance & EM Simulation:</strong> Using Momentum to capture electromagnetic interference caused by ESD discharge.</li>
+        </ul>
+    </div>
+
+    <h2>2. The SEED Workflow</h2>
+    <p>System-Efficient ESD Design (SEED) is a simulation-based approach to predict the ESD robustness of a complete system.</p>
+    
+    <ol>
+        <li><strong>TVS Model (Non-linear):</strong> Creating a behavioral Spice/ADS model of the TVS based on <strong>TLP measurements</strong> ($V_{t1}, V_h, R_{dyn}$).</li>
+        <li><strong>IC IO Model:</strong> Incorporating the quasi-static IV characteristics of the protected IC's internal ESD cells.</li>
+        <li><strong>Board/Package Model:</strong> Using ADS to extract the parasitic L and C of the PCB traces and connectors.</li>
+        <li><strong>Co-Simulation:</strong> Analyzing the voltage/current seen at the IC pin to ensure it stays within the <strong>Safe Operating Area (SOA)</strong>.</li>
+    </ol>
+
+    <h2>3. Correlation: Lab to Simulation</h2>
+    <div class="experience-box" style="background: #fff9db; border-color: #ffe066;">
+        <p class="highlight">The Key to First-Silicon Success:</p>
+        <p>"Ensuring that the <strong>TLP-measured Dynamic Resistance ($R_{dyn}$)</strong> is accurately calibrated in the ADS environment is critical. If simulation predicts a 10V clamping voltage but the lab shows 12V due to unaccounted trace inductance, the IC may fail. My expertise lies in <strong>closing this gap</strong> through precise model calibration."</p>
+    </div>
+
+    <h2>4. Advanced Signal Integrity (SI) Analysis</h2>
+    <ul>
+        <li><strong>Insertion Loss (S21):</strong> Ensuring the TVS parasitic capacitance ($C_{para}$) doesn't attenuate high-frequency signals.</li>
+        <li><strong>Eye Diagram Simulation:</strong> Using ADS to verify that the TVS implementation meets the jitter and voltage swing requirements of automotive standards.</li>
+    </ul>
+
+    <div style="margin-top: 30px; text-align: center;">
+        <a href="trl-reliability-arch.html" style="color: #008577; text-decoration: none; font-weight: bold;">&larr; Back to TRL Reliability Architecture</a>
+    </div>
+
+</body>
+</html>
