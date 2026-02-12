@@ -95,8 +95,40 @@
         </ul>
     </div>
 
+    <h2>7. Technical Implementation: Model-based SmartFILL</h2>
+    <p><em>Strategy: Demonstrate deep technical command over tool logic and process physics.</em></p>
+    <div class="experience-box">
+        <p><strong>Advanced SVRF Methodology:</strong> To ensure TVS device performance, I customize the SmartFILL flow beyond simple density rules:</p>
+        <pre style="background: #ffffff; padding: 15px; border-radius: 5px; border: 1px solid #ccc; font-family: 'Consolas', monospace; font-size: 0.9em; overflow-x: auto;">
+// Step 1: Analyze density gaps based on CMP profile
+DENSITY_MAP = DENSITY METAL1 < 0.50 WINDOW 50 STEP 25
+
+// Step 2: Execute Model-based SmartFILL with Parasitic Constraints
+METAL1_FILL = SMARTFILL METAL1
+    TARGET_DENSITY 0.50            // Target density based on CMP model
+    MIN_FILL_WIDTH 0.1             // Prevents lithography hotspots
+    MAX_FILL_WIDTH 0.5             // Controls parasitic capacitance (C_para)
+    SPACE_TO_NET 0.2               // Parasitic-aware keep-out zone
+    STEP 25 WINDOW 50
+    EXTENT M1_BOUNDARY</pre>
+        <ul>
+            <li><strong>Expert Insight:</strong> "By tuning the <code>SPACE_TO_NET</code> and <code>MAX_FILL_WIDTH</code>, I prevent unintended electric field interference with the TVS high-current path, maintaining the device's <strong>clamping efficiency</strong> while ensuring <strong>TRL 7+ manufacturability</strong>."</li>
+        </ul>
+    </div>
+
+    <h2>8. Core Strategy Summary for DT Interview</h2>
+    <div class="experience-box" style="background: #fdf2f2; border-left: 5px solid #d9534f;">
+        <p><strong>Key Message:</strong> You are not just a tool user, but a <strong>"Reliability Guardian"</strong> who bridges Design and Fab.</p>
+        <ul>
+            <li><strong>Bridging TRL 3 to 7+:</strong> My 29-year journey (Hynix &rarr; Siemens &rarr; Bosch) ensures that concept designs don't just work in simulation, but survive mass production.</li>
+            <li><strong>Shift-Left Reliability:</strong> By establishing <strong>Calibre PERC and DFM standards</strong>, I mitigate risks at TRL 4-5 before they become costly failures at TRL 7.</li>
+            <li><strong>Data-Driven Correlation:</strong> I focus on the <strong>Correlation</strong> between TLP measurements and TCAD models to reduce the iteration cycle between lab and production.</li>
+        </ul>
+    </div>
+
     <hr>
-    <p style="text-align: center; color: #777;"><em>Generated for INTV Preparation, 2026</em></p>
+    <p style="text-align: center; color: #777;"><em>Updated with Technical Deep-Dive for INTV Preparation, 2026</em></p>
+
 
 </body>
 </html>
