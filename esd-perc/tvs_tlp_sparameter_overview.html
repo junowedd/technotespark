@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TVS Characterization: TLP vs S-Parameter</title>
+
+<style>
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    margin: 40px;
+    line-height: 1.65;
+    max-width: 1000px;
+    color: #111;
+  }
+  h1 { font-size: 30px; margin-bottom: 10px; }
+  h2 { margin-top: 40px; }
+  h3 { margin-top: 25px; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 15px;
+  }
+  table, th, td {
+    border: 1px solid #ccc;
+  }
+  th, td {
+    padding: 10px;
+    text-align: left;
+  }
+  th {
+    background-color: #f4f4f4;
+  }
+  .highlight {
+    font-weight: bold;
+  }
+  .meta {
+    margin-top: 40px;
+    font-size: 14px;
+    font-style: italic;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>TVS Characterization Framework: TLP vs S-Parameter</h1>
+
+<p>
+This document summarizes the fundamental differences between 
+<strong>TLP-based large-signal characterization</strong> and 
+<strong>S-parameter small-signal analysis</strong>, 
+and explains why <strong>VF-TLP and S-parameters are complementary</strong> 
+in modern TVS (Transient Voltage Suppressor) product development.
+</p>
+
+<hr>
+
+<h2>1. TLP vs S-Parameter – Core Differences</h2>
+
+<table>
+  <tr>
+    <th>Aspect</th>
+    <th>TLP (Transmission Line Pulse)</th>
+    <th>S-Parameter</th>
+  </tr>
+  <tr>
+    <td>Domain</td>
+    <td>Time-domain (ns pulse)</td>
+    <td>Frequency-domain (AC sweep)</td>
+  </tr>
+  <tr>
+    <td>Signal Level</td>
+    <td>Large-signal, high current</td>
+    <td>Small-signal, linear region</td>
+  </tr>
+  <tr>
+    <td>Purpose</td>
+    <td>Protection robustness evaluation</td>
+    <td>Signal integrity evaluation</td>
+  </tr>
+  <tr>
+    <td>Key Metrics</td>
+    <td>Trigger voltage, snapback, clamping voltage, It2</td>
+    <td>S11 (reflection), S21 (insertion loss), bandwidth</td>
+  </tr>
+  <tr>
+    <td>Main Question</td>
+    <td>Does the TVS survive ESD stress?</td>
+    <td>Does the TVS degrade high-speed signals?</td>
+  </tr>
+</table>
+
+<h3>TLP Focus</h3>
+<p>
+TLP evaluates the large-signal behavior of a TVS under ESD-like stress.
+It provides:
+</p>
+<ul>
+  <li>Trigger voltage and snapback validation</li>
+  <li>Clamping voltage characterization</li>
+  <li>Dynamic resistance extraction</li>
+  <li>Failure current (It2) determination</li>
+</ul>
+
+<p class="highlight">
+TLP answers: “Is the device robust under high-current stress?”
+</p>
+
+---
+
+<h3>S-Parameter Focus</h3>
+<p>
+S-parameters describe small-signal frequency response behavior.
+They quantify:
+</p>
+<ul>
+  <li>Return loss (S11)</li>
+  <li>Insertion loss (S21)</li>
+  <li>Impedance matching</li>
+  <li>Bandwidth limitations</li>
+</ul>
+
+<p class="highlight">
+S-parameters answer: “Does the TVS preserve signal integrity?”
+</p>
+
+<hr>
+
+<h2>2. What is VF-TLP?</h2>
+
+<p>
+VF-TLP (Very Fast Transmission Line Pulse) is an ultra-fast pulse 
+measurement technique with rise times in the ~100 ps range.
+It mimics CDM-like stress conditions and captures early transient behavior.
+</p>
+
+<ul>
+  <li>Ultra-fast trigger behavior</li>
+  <li>Overshoot and dynamic clamping</li>
+  <li>Transient snapback dynamics</li>
+  <li>Early-time failure mechanisms</li>
+</ul>
+
+<p class="highlight">
+VF-TLP captures non-linear transient behavior under extreme stress.
+</p>
+
+<hr>
+
+<h2>3. Why VF-TLP and S-Parameters are Complementary</h2>
+
+<table>
+  <tr>
+    <th>Normal Operation</th>
+    <th>ESD Event</th>
+  </tr>
+  <tr>
+    <td>S-Parameter</td>
+    <td>VF-TLP / TLP</td>
+  </tr>
+  <tr>
+    <td>Small-signal</td>
+    <td>Large transient</td>
+  </tr>
+  <tr>
+    <td>Linear region</td>
+    <td>Non-linear region</td>
+  </tr>
+  <tr>
+    <td>Frequency-domain</td>
+    <td>Fast time-domain</td>
+  </tr>
+</table>
+
+<p>
+TVS devices operate in two fundamentally different regimes:
+</p>
+
+<ul>
+  <li><strong>Linear regime</strong> during normal signal transmission</li>
+  <li><strong>Non-linear regime</strong> during ESD events</li>
+</ul>
+
+<p>
+S-parameters define the linear operating envelope and quantify
+signal integrity impact, while VF-TLP reveals ultra-fast non-linear
+response under stress.
+</p>
+
+<p class="highlight">
+Together, they provide a complete system-level and protection-level evaluation.
+</p>
+
+<hr>
+
+<h2>4. Interview-Ready Summary (30-Second Answer)</h2>
+
+<p>
+“TLP evaluates the large-signal protection capability of a TVS under ESD-like stress,
+focusing on trigger voltage, snapback behavior, dynamic resistance, and failure current.
+S-parameter analysis evaluates small-signal frequency-domain behavior,
+quantifying insertion loss and reflection to assess signal integrity impact.
+VF-TLP further captures ultra-fast non-linear transient response.
+Together, these methods ensure an optimized trade-off between protection robustness
+and high-speed signal integrity.”
+</p>
+
+<hr>
+
+<p class="meta">
+Focus: TVS device characterization, pulsed I-V, TLP, VF-TLP, 
+S-parameter integration, and system-level evaluation
+</p>
+
+</body>
+</html>
