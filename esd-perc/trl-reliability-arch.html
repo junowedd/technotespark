@@ -120,11 +120,30 @@ METAL1_FILL = SMARTFILL METAL1
     <div class="experience-box" style="background: #fdf2f2; border-left: 5px solid #d9534f;">
         <p><strong>Key Message:</strong> You are not just a tool user, but a <strong>"Reliability Guardian"</strong> who bridges Design and Fab.</p>
         <ul>
-            <li><strong>Bridging TRL 3 to 7+:</strong> My 29-year journey (Hynix &rarr; Siemens &rarr; Bosch) ensures that concept designs don't just work in simulation, but survive mass production.</li>
+            <li><strong>Bridging TRL 3 to 7+:</strong> My 30-year journey (Korea &rarr; Taiwan &rarr; Germany) ensures that concept designs don't just work in simulation, but survive mass production.</li>
             <li><strong>Shift-Left Reliability:</strong> By establishing <strong>Calibre PERC and DFM standards</strong>, I mitigate risks at TRL 4-5 before they become costly failures at TRL 7.</li>
             <li><strong>Data-Driven Correlation:</strong> I focus on the <strong>Correlation</strong> between TLP measurements and TCAD models to reduce the iteration cycle between lab and production.</li>
         </ul>
     </div>
+
+    <h2>9. Technical Deep-Dive: TLP (Transmission Line Pulsing) Measurement Methodology</h2>
+    <p><em>Strategy: Demonstrate your hands-on expertise in characterizing snapback devices and extracting safe operating areas.</em></p>
+    <div class="experience-box">
+        <p><strong>Step-by-Step Characterization Process:</strong></p>
+        <ol>
+            <li><strong>Pulse Generation:</strong> Charge a transmission line to a specific high voltage. Use a 100ns pulse width (HBM equivalent) with a fast rise time (0.2ns to 10ns) to simulate ESD events.</li>
+            <li><strong>Pulse Application & Overlapping:</strong> Discharge the pulse into the Device Under Test (DUT). Use an oscilloscope to capture the transient voltage ($V_{TLP}$) and current ($I_{TLP}$) waveforms.</li>
+            <li><strong>Data Averaging:</strong> Average the $V$ and $I$ values within a stable window (typically the last 70-90% of the pulse) to create a single point on the I-V curve.</li>
+            <li><strong>In-situ Leakage Monitoring:</strong> Perform a DC leakage test at a low bias voltage after every pulse to detect the exact moment of physical failure ($I_{t2}$).</li>
+            <li><strong>I-V Curve Construction:</strong> Increment the pulse voltage step-by-step until the device fails, mapping out the <strong>Trigger Voltage ($V_{t1}$)</strong>, <strong>Holding Voltage ($V_h$)</strong>, and <strong>Dynamic Resistance ($R_{dyn}$)</strong>.</li>
+        </ol>
+        
+        <p><strong>Expert Correlation Insight:</strong></p>
+        <blockquote style="border-left: 3px solid #008577; padding-left: 15px; font-style: italic;">
+            "My approach focuses on the <strong>correlation</strong> between TLP-measured $R_{dyn}$ and TCAD/Spice simulations. By matching the snapback slope, I ensure the <strong>Calibre PERC P2P</strong> analysis accurately reflects the real-world ESD protection capability."
+        </blockquote>
+    </div>
+
 
     <hr>
     <p style="text-align: center; color: #777;"><em>Updated with Technical Deep-Dive for INTV Preparation, 2026</em></p>
