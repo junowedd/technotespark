@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>OPC / RET Technical Notes</title>
+  <title>TVS Concept Engineering & Reliability Architecture</title>
   <style>
     body {
       font-family: Georgia, "Times New Roman", serif;
@@ -26,10 +26,7 @@
       margin: 30px 0;
     }
     ol li {
-      margin-bottom: 10px;
-    }
-    .section-gap {
-      margin-top: 24px;
+      margin-bottom: 14px;
     }
     .meta {
       font-size: 14px;
@@ -47,170 +44,89 @@
 
 <body>
 
-<h1>OPC / RET Technical Notes</h1>
+<h1>TVS Concept Engineering & Reliability Architecture</h1>
 
 <p style="font-size:18px; max-width:900px; margin-top:10px;">
   <strong>
-    Production-oriented notes on OPC and RET,
-    covering Calibre-based flows, partial ILT strategies,
-    and ML-assisted computational lithography used in advanced nodes.
+    Product-driven methodologies for TVS (Transient Voltage Suppressor) device development,
+    ESD robustness, and TRL-based reliability realization.
   </strong>
 </p>
 
 <p class="intro">
-This page curates a collection of <strong>production-oriented technical notes</strong>
-on <strong>OPC (Optical Proximity Correction)</strong>,
-<strong>RET (Resolution Enhancement Technology)</strong>,
-and <strong>advanced lithography optimization</strong>.
-The content is organized to reflect how OPC is actually developed,
-validated, and deployed in modern semiconductor manufacturing,
-with emphasis on Calibre-based flows, ILT strategies, and ML-assisted techniques.
+This page documents engineering-oriented notes focused on 
+<strong>TVS derivative product development</strong>,
+<strong>ESD protection architecture</strong>, and
+<strong>TRL maturation from concept to production (TRL3–TRL7+)</strong>.
+
+The content reflects how protection concepts are translated into 
+physically implemented semiconductor products — 
+from device topology adaptation and layout variation,
+to electrical and pulsed characterization,
+technology evaluation, variant optimization,
+and production-ready qualification.
+
+Emphasis is placed on bridging
+semiconductor device physics,
+physical design ownership,
+and reliability validation workflows
+used in modern semiconductor R&D environments.
 </p>
 
 <hr>
 
-<h2>Recommended Reading Order of Concept Engineer TVS — Hover over each topic number to see the details</h2>
+<h2>Concept Engineer TVS — Development & TRL Execution Roadmap</h2>
 
 <ol>
   <li>
     <a href="trl-reliability-arch.html">
-      Strategic Guide: Concept Engineer TVS
+      TRL-Based Reliability Architecture for TVS Product Development
     </a>
-    – TRL Execution Roadmap (Concept to Production)
+    – Concept adaptation, device variants, physical implementation,
+      characterization strategy, and production ramp alignment
   </li>
 
   <li>
     <a href="ads-seed-methodology.html">
-      System-Efficient ESD Design (SEED) using ADS
+      System-Efficient ESD Design (SEED) Methodology & Pulsed Characterization Framework ADS
     </a>
-    – Co-design approach for TVS in high-speed systems
-  </li>
-
-  <li>
-    <a href="calibre_opc_flow.html">
-      Calibre-based OPC Flow (Text Explanation)
-    </a>
-    – Practical explanation of rule-based, model-based OPC and verification
-  </li>
-
-  <li class="section-gap">
-    <a href="Euv-Arf-litho.html">
-      EUV vs ArF Immersion Lithography
-    </a>
-    – Lithography constraints driving OPC complexity in advanced nodes
-  </li>
-
-  <li>
-    <a href="why_partial_ilt_asml_tsmc.html">
-      Why Partial ILT in ASML / TSMC
-    </a>
-    – Why full-chip ILT is impractical and how ILT is used selectively
-  </li>
-
-  <li>
-    <a href="opc_ilt_ml_one_page.html">
-      OPC / ILT / ML – One Page Summary
-    </a>
-    – Interview-ready overview of modern computational lithography
-  </li>
-
-  <li class="section-gap">
-    <a href="ml_hotspot_selection.html">
-      ML-based Hotspot Selection
-    </a>
-    – Using machine learning to identify OPC and ILT critical regions
-  </li>
-
-  <li>
-    <a href="pinn_for_opc.html">
-      Physics-Informed Neural Networks for OPC
-    </a>
-    – Embedding lithography physics into ML-based OPC acceleration
-  </li>
-
-  <li>
-    <a href="ml_opc_euv.html">
-      Machine Learning in EUV OPC
-    </a>
-    – Addressing stochastic effects beyond deterministic OPC models
-  </li>
-
-  <li class="section-gap">
-  <a href="single_layer_opc_recipe_euv.html">
-    Single-Layer OPC Recipes: EUV Gate vs Contact
-  </a>
-  – How OPC recipes are structured at the layer level,
-    and why EUV gate and contact layers require fundamentally different strategies
-  </li>
- 
-
-  <!-- 🔹 NEW CONTENT ADDED -->
-  <li class="section-gap">
-    <a href="stochastic.html">
-      Stochastic Effects in Advanced Lithography
-    </a>
-    – Photon shot noise, resist stochastic variability,
-      and random defect formation in critical layers
-  </li>
-
-  <li>
-    <a href="opc-mitigation.html">
-      How OPC Mitigates Stochastic Effects
-    </a>
-    – Distribution-aware targeting, robustness optimization,
-      and failure-prone pattern handling
-  </li>
-
-  <li class="section-gap">
-    <a href="opc_runtime_comparison.html">
-      OPC Runtime Comparison
-    </a>
-    – Performance trade-offs between classic and ML-assisted OPC
-  </li>
-
-  <li>
-    <a href="litho-simul.html">
-      Lithography Simulation Software
-    </a>
-    – Overview of tools supporting OPC model calibration and verification
-  </li>
-
-  <li class="section-gap">
-    <a href="./highlights/signoff_ownership.html">
-      Sign-off Ownership Highlight
-    </a>
-    – Responsibility boundaries between OPC, lithography, and manufacturing
-  </li>
-
-  <li>
-    <a href="../projects/eda/Manufacturing-oriented-Engineering.pdf"
-       target="_blank" rel="noopener noreferrer">
-      OPC Flows (PDF)
-    </a>
-    – Manufacturing-oriented perspective on OPC and RET
+    – Evaluation of TVS devices using pulsed I-V, TLP, and VF-TLP methodologies,
+      enabling clamping behavior analysis, snapback validation,
+      dynamic resistance extraction, and failure current assessment
   </li>
 </ol>
+
 
 <hr>
 
-<h2>Create OPC (Layer) Excellence</h2>
+<h2>Engineering Focus Areas</h2>
+
+<p class="intro">
+Key technical domains covered within this framework:
+</p>
 
 <ol>
-  <li><a href="../advanced-node/opc-analysis.html">OPC Bottlenecks in FinFET Layout</a></li>
-  <li><a href="../advanced-node/FinFETOnly.pdf">FinFET Structure (PDF)</a></li>
-  <li><a href="mdp-comp.html">MDP Overview: Cadence vs. Calibre Comparison</a></li>
+  <li>Derivative TVS product design and variant sparing strategy</li>
+  <li>Physical layout ownership and design implementation flow</li>
+  <li>DC and pulsed electrical characterization methodology</li>
+  <li>Protection concept translation into silicon-realizable structures</li>
+  <li>Reliability validation aligned with qualification and ramp</li>
+  <li>Cross-functional execution across concept, technology, and product teams</li>
 </ol>
+
+<hr>
 
 <p class="meta">
 Last updated: February 2026
 </p>
 
 <p class="meta">
-Author focus: test chips, lithography sign-off, and electrical process control monitors (PCM)
+Focus: TVS concept engineering, ESD device development, TRL maturation,
+device characterization, and reliability qualification
 </p>
 
+
 <p>
-↩ <a href="../eda/index.html">Go to EDA Portfolio</a><br>
 ↩ <a href="../index.html">Go to Home – Tech Notes Park</a>
 </p>
 
