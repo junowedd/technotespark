@@ -1,147 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Critical Area Analysis and Morphological Dilation</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            line-height: 1.6;
-            background-color: #f4f6f8;
-            color: #222;
-        }
-        h1, h2 {
-            color: #1a4f8b;
-        }
-        .section {
-            background: white;
-            padding: 25px;
-            margin-bottom: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-        code {
-            background: #eef2f7;
-            padding: 4px 8px;
-            border-radius: 4px;
-        }
-        .formula {
-            background: #f0f4fa;
-            padding: 10px;
-            border-left: 4px solid #1a4f8b;
-            margin: 15px 0;
-            font-family: Consolas, monospace;
-        }
-        ul {
-            margin-left: 20px;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Critical Area Analysis & Morphological Dilation</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+        line-height: 1.6;
+        background-color: #f4f6f8;
+        color: #222;
+    }
+    h1, h2 {
+        color: #1a4f8b;
+    }
+    .section {
+        background: white;
+        padding: 25px;
+        margin-bottom: 40px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .formula {
+        background: #eef2f7;
+        padding: 10px;
+        border-left: 4px solid #1a4f8b;
+        font-family: Consolas, monospace;
+        margin: 15px 0;
+    }
+    svg {
+        margin-top: 20px;
+        background: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+    }
+</style>
 </head>
 <body>
 
-    <h1>Critical Area Analysis (CAA) & Morphological Dilation</h1>
+<h1>Critical Area Analysis (CAA) & Morphological Dilation</h1>
 
-    <div class="section">
-        <h2>1. What is Critical Area Analysis (CAA)?</h2>
+<div class="section">
+    <h2>1. Critical Area Analysis (CAA)</h2>
 
-        <p>
-            Critical Area Analysis (CAA) is a yield modeling technique used in semiconductor manufacturing 
-            to quantify the layout area where a defect can cause a circuit failure 
-            (short or open).
-        </p>
+    <p>
+        Critical Area Analysis (CAA) is a yield modeling technique used to quantify
+        the layout area where a defect can cause a circuit failure (short or open).
+    </p>
 
-        <p>
-            Instead of only checking spacing rules, CAA calculates the <strong>actual area</strong> 
-            where a particle defect would create an electrical failure.
-        </p>
-
-        <h3>Yield Model</h3>
-
-        <div class="formula">
-            Y = exp(-D₀ · A<sub>c</sub>)
-        </div>
-
-        <ul>
-            <li><strong>D₀</strong> = defect density</li>
-            <li><strong>A<sub>c</sub></strong> = critical area</li>
-            <li><strong>Y</strong> = yield</li>
-        </ul>
-
-        <p>
-            Larger critical area results in lower yield.
-        </p>
-
-        <h3>Main Steps in CAA</h3>
-
-        <ul>
-            <li>Import layout (GDSII/OASIS)</li>
-            <li>Select failure type (Short / Open)</li>
-            <li>Sweep defect sizes</li>
-            <li>Apply geometric operations</li>
-            <li>Compute weighted critical area</li>
-            <li>Estimate yield</li>
-        </ul>
-
-        <p>
-            CAA is typically performed using tools such as Calibre YieldAnalyzer.
-        </p>
+    <div class="formula">
+        Y = exp(-D₀ · A<sub>c</sub>)
     </div>
 
-    <div class="section">
-        <h2>2. Morphological Dilation</h2>
+    <p>
+        Larger critical area leads to lower yield.
+    </p>
 
-        <p>
-            Morphological Dilation is a geometric operation that expands a polygon 
-            outward by a defined distance (typically the defect radius).
-        </p>
+    <h3>Short CAA Concept (Defect Bridging)</h3>
 
-        <div class="formula">
-            A ⊕ B
-        </div>
+    <svg width="600" height="260">
+        <!-- Metal lines -->
+        <rect x="100" y="100" width="150" height="30" fill="#1a4f8b"/>
+        <rect x="320" y="100" width="150" height="30" fill="#1a4f8b"/>
 
-        <ul>
-            <li><strong>A</strong> = original polygon</li>
-            <li><strong>B</strong> = structuring element (usually a circle)</li>
-        </ul>
+        <!-- Defect radius expansion -->
+        <rect x="80" y="80" width="190" height="70" fill="#1a4f8b" opacity="0.2"/>
+        <rect x="300" y="80" width="190" height="70" fill="#1a4f8b" opacity="0.2"/>
 
-        <p>
-            In semiconductor layout analysis, dilation is used to simulate the effect 
-            of particle defects.
-        </p>
+        <!-- Overlap region -->
+        <rect x="270" y="80" width="30" height="70" fill="red" opacity="0.5"/>
 
-        <h3>Why Dilation is Used in CAA</h3>
+        <!-- Labels -->
+        <text x="130" y="95" font-size="14">Metal 1</text>
+        <text x="350" y="95" font-size="14">Metal 2</text>
+        <text x="250" y="60" font-size="14" fill="red">Critical Area (Overlap)</text>
+        <text x="180" y="220" font-size="14">Expanded by defect radius (r)</text>
+    </svg>
 
-        <p>
-            Instead of dropping a defect at every possible location, 
-            we expand layout polygons by the defect radius. 
-            If expanded polygons overlap, that region represents a potential short.
-        </p>
+    <p>
+        Metal lines are expanded by the defect radius. The overlapping region represents
+        the critical area where a particle can create a short.
+    </p>
+</div>
 
-        <h3>Mathematical Definition</h3>
+<div class="section">
+    <h2>2. Morphological Dilation</h2>
 
-        <div class="formula">
-            A<sub>r</sub> = { x | distance(x, A) ≤ r }
-        </div>
+    <p>
+        Morphological Dilation expands a polygon outward by a defined distance r.
+    </p>
 
-        <p>
-            This represents all points within distance <strong>r</strong> of polygon A.
-        </p>
-
-        <h3>Related Morphological Operations</h3>
-
-        <ul>
-            <li><strong>Dilation</strong> – Grow geometry (used for Short CAA)</li>
-            <li><strong>Erosion</strong> – Shrink geometry (used for Open CAA)</li>
-            <li><strong>Boolean AND</strong> – Extract overlapping regions</li>
-            <li><strong>XOR</strong> – Edge difference analysis</li>
-        </ul>
-
-        <p>
-            In practice, tools perform polygon grow operations followed by Boolean 
-            intersections to extract critical regions.
-        </p>
+    <div class="formula">
+        A ⊕ B
     </div>
+
+    <h3>Dilation Example</h3>
+
+    <svg width="600" height="260">
+        <!-- Original polygon -->
+        <rect x="200" y="90" width="120" height="60" fill="#1a4f8b"/>
+        <text x="215" y="80" font-size="14">Original Polygon (A)</text>
+
+        <!-- Dilated polygon -->
+        <rect x="170" y="60" width="180" height="120" 
+              fill="#1a4f8b" opacity="0.2" stroke="#1a4f8b" stroke-dasharray="5,5"/>
+
+        <!-- Radius arrows -->
+        <line x1="200" y1="120" x2="170" y2="120" stroke="red" stroke-width="2"/>
+        <text x="150" y="115" font-size="14" fill="red">r</text>
+
+        <text x="150" y="200" font-size="14">
+            Dilated Region: All points within distance r
+        </text>
+    </svg>
+
+    <p>
+        In CAA, dilation is used to simulate defect impact by expanding polygons
+        before performing Boolean intersection.
+    </p>
+
+</div>
 
 </body>
 </html>
