@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Critical Area Analysis & Morphological Dilation</title>
+<title>Critical Area Analysis, Morphological Dilation & TVS Protection</title>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -34,11 +34,19 @@
         border: 1px solid #ddd;
         border-radius: 6px;
     }
+    img {
+        margin-top: 20px;
+        max-width: 100%;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+    }
 </style>
 </head>
 <body>
 
-<h1>Critical Area Analysis (CAA) & Morphological Dilation</h1>
+<h1>Critical Area Analysis (CAA), Morphological Dilation & TVS Protection</h1>
+
+<!-- ===================== CAA SECTION ===================== -->
 
 <div class="section">
     <h2>1. Critical Area Analysis (CAA)</h2>
@@ -76,12 +84,9 @@
         <text x="250" y="60" font-size="14" fill="red">Critical Area (Overlap)</text>
         <text x="180" y="220" font-size="14">Expanded by defect radius (r)</text>
     </svg>
-
-    <p>
-        Metal lines are expanded by the defect radius. The overlapping region represents
-        the critical area where a particle can create a short.
-    </p>
 </div>
+
+<!-- ===================== DILATION SECTION ===================== -->
 
 <div class="section">
     <h2>2. Morphological Dilation</h2>
@@ -105,7 +110,7 @@
         <rect x="170" y="60" width="180" height="120" 
               fill="#1a4f8b" opacity="0.2" stroke="#1a4f8b" stroke-dasharray="5,5"/>
 
-        <!-- Radius arrows -->
+        <!-- Radius arrow -->
         <line x1="200" y1="120" x2="170" y2="120" stroke="red" stroke-width="2"/>
         <text x="150" y="115" font-size="14" fill="red">r</text>
 
@@ -113,11 +118,29 @@
             Dilated Region: All points within distance r
         </text>
     </svg>
+</div>
+
+<!-- ===================== TVS SECTION ===================== -->
+
+<div class="section">
+    <h2>3. TVS (Transient Voltage Suppressor) Protection</h2>
 
     <p>
-        In CAA, dilation is used to simulate defect impact by expanding polygons
-        before performing Boolean intersection.
+        A TVS diode protects sensitive circuits from transient voltage spikes 
+        by clamping excessive voltage and diverting surge current to ground.
     </p>
+
+    <div class="formula">
+        When V > V<sub>BR</sub> → Avalanche conduction → Surge diverted to GND
+    </div>
+
+    <p>
+        During normal operation, the TVS remains off. 
+        When a transient spike occurs, it rapidly conducts and clamps the voltage.
+    </p>
+
+    <!-- TVS Protection Image -->
+    <img src="tvs_protection.png" alt="TVS Protection Diagram">
 
 </div>
 
