@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Silicon Controlled Rectifier (SCR) for ESD Protection</title>
+
+<style>
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 40px auto;
+    max-width: 1000px;
+    line-height: 1.6;
+    color: #222;
+    background-color: #fafafa;
+}
+
+h1 {
+    font-size: 34px;
+    color: #1f3c88;
+}
+
+h2 {
+    margin-top: 40px;
+    color: #2d6cdf;
+}
+
+h3 {
+    color: #444;
+}
+
+.section {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    margin-bottom: 35px;
+}
+
+.highlight {
+    background: #eef4ff;
+    padding: 10px;
+    border-left: 4px solid #2d6cdf;
+    margin: 15px 0;
+}
+
+img {
+    max-width: 100%;
+    margin-top: 15px;
+    border-radius: 6px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 15px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f6ff;
+    padding: 10px;
+}
+
+td {
+    padding: 8px;
+}
+
+a {
+    color: #2d6cdf;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Silicon Controlled Rectifier (SCR) in ESD Protection</h1>
+
+<div class="section">
+<h2>1. Introduction</h2>
+
+<p>
+Silicon Controlled Rectifiers (SCRs) are widely used for high-performance on-chip ESD protection.
+They are particularly suitable for high-speed, RF, low-capacitance, and compact ESD solutions across
+CMOS, SOI, and FinFET technologies.
+</p>
+
+<div class="highlight">
+SCR structures can conduct very high ESD currents if properly triggered and biased.
+</div>
+
+</div>
+
+<div class="section">
+<h2>2. SCR Physical Structure</h2>
+
+<p>
+An SCR consists of a 4-layer PNPN structure formed by parasitic PNP and NPN bipolar transistors.
+</p>
+
+<img src="https://monthly-pulse.com/wp-content/uploads/2023/02/scr_fig1.png" alt="SCR Structure">
+
+<p>
+In CMOS, the SCR is inherently present between the PMOS and NMOS wells.
+</p>
+
+<ul>
+<li>PNP transistor</li>
+<li>NPN transistor</li>
+<li>Coupled through well resistances</li>
+<li>Forms regenerative feedback loop</li>
+</ul>
+
+</div>
+
+<div class="section">
+<h2>3. Operating Principle</h2>
+
+<p>
+Under positive anode-to-cathode bias:
+</p>
+
+<ol>
+<li>Forward diode</li>
+<li>Reverse well-well junction</li>
+<li>Forward diode</li>
+</ol>
+
+<p>
+When the well junction undergoes avalanche breakdown, base currents are generated
+in both parasitic bipolar transistors.
+</p>
+
+<div class="highlight">
+If β<sub>PNP</sub> × β<sub>NPN</sub> &gt; 1, regenerative feedback occurs and the SCR turns fully on.
+</div>
+
+<img src="https://monthly-pulse.com/wp-content/uploads/2023/02/scr_fig4.png" alt="SCR Operation">
+
+</div>
+
+<div class="section">
+<h2>4. Snapback Behavior</h2>
+
+<p>
+Unlike simple avalanche devices, SCRs exhibit strong snapback behavior.
+</p>
+
+<ul>
+<li>Trigger Voltage (Vt1)</li>
+<li>Holding Voltage (Vh)</li>
+<li>Very low On-Resistance</li>
+<li>High Current Capability</li>
+</ul>
+
+<img src="https://monthly-pulse.com/wp-content/uploads/2023/02/scr_iv_curve.png" alt="SCR IV Curve">
+
+<p>
+Once triggered, the voltage collapses while current increases rapidly.
+</p>
+
+</div>
+
+<div class="section">
+<h2>5. Current Capability</h2>
+
+<p>
+SCRs provide significantly higher ESD robustness compared to standard MOS-based protection.
+</p>
+
+<img src="https://monthly-pulse.com/wp-content/uploads/2023/02/scr_current_capability.png" alt="SCR Current Capability">
+
+<table>
+<tr>
+<th>Protection Type</th>
+<th>Current Capability</th>
+<th>Area Efficiency</th>
+</tr>
+<tr>
+<td>NMOS Snapback</td>
+<td>Moderate</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>SCR</td>
+<td>Very High</td>
+<td>High</td>
+</tr>
+</table>
+
+</div>
+
+<div class="section">
+<h2>6. Design Considerations</h2>
+
+<ul>
+<li>Trigger control (avoid premature latch)</li>
+<li>Holding voltage optimization</li>
+<li>Parasitic inductance minimization</li>
+<li>Thermal stability</li>
+<li>Leakage control</li>
+</ul>
+
+<div class="highlight">
+Proper SCR design ensures strong ESD robustness while avoiding latch-up during normal operation.
+</div>
+
+</div>
+
+<div class="section">
+<h2>7. Application Domains</h2>
+
+<ul>
+<li>High-speed digital interfaces</li>
+<li>RF systems</li>
+<li>SOI and FinFET technologies</li>
+<li>Low-capacitance I/O protection</li>
+</ul>
+
+</div>
+
+<hr>
+
+<p>
+Technical Reference:
+<a href="https://monthly-pulse.com/2023/02/10/esd-basic-silicon-control-rectifier-scr/">
+Monthly Pulse – SCR ESD Article
+</a>
+</p>
+
+</body>
+</html>
