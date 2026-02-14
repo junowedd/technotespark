@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Local ESD Protection in Analog I/Os</title>
+
+<style>
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 40px auto;
+    max-width: 1050px;
+    line-height: 1.6;
+    background-color: #fafbfd;
+    color: #222;
+}
+
+h1 {
+    font-size: 34px;
+    color: #1f3c88;
+}
+
+h2 {
+    margin-top: 40px;
+    color: #2d6cdf;
+}
+
+.section {
+    background: #ffffff;
+    padding: 25px;
+    margin-bottom: 35px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.highlight {
+    background: #eef4ff;
+    padding: 12px;
+    border-left: 4px solid #2d6cdf;
+    margin: 15px 0;
+}
+
+img {
+    max-width: 100%;
+    margin-top: 15px;
+    border-radius: 6px;
+}
+
+ul {
+    margin-top: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 15px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f6ff;
+    padding: 10px;
+}
+
+td {
+    padding: 8px;
+}
+
+a {
+    color: #2d6cdf;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Local ESD Protection in Analog I/Os</h1>
+
+<div class="section">
+<h2>1. Introduction</h2>
+
+<p>
+High-speed communication interfaces require minimal parasitic capacitance and strong ESD robustness.
+Traditional dual-diode protection often becomes insufficient for sensitive analog and high-speed I/Os.
+</p>
+
+<div class="highlight">
+For high-speed interfaces, ESD protection must provide:
+<ul>
+<li>Low capacitance</li>
+<li>Low leakage</li>
+<li>High voltage tolerance</li>
+<li>High robustness (HBM / IEC)</li>
+</ul>
+</div>
+
+</div>
+
+<div class="section">
+<h2>2. Traditional Dual-Diode ESD Approach</h2>
+
+<p>
+The conventional approach consists of:
+</p>
+
+<ul>
+<li>Diode from I/O to VSS</li>
+<li>Diode from I/O to VDD</li>
+<li>Rail clamp between VDD and VSS</li>
+</ul>
+
+<img src="./png/dual_diode_esd.png" alt="Traditional Dual Diode ESD">
+
+<h3>Limitations</h3>
+
+<ul>
+<li>Isolation resistance adds noise and degrades signal integrity</li>
+<li>Excess parasitic capacitance</li>
+<li>Voltage drop may exceed failure voltage of sensitive circuits</li>
+<li>Diode to VDD may not be allowed (fail-safe, hot-swap, overvoltage tolerant)</li>
+</ul>
+
+</div>
+
+<div class="section">
+<h2>3. Isolation Resistance & Secondary Clamp</h2>
+
+<p>
+Sometimes a series resistance and a secondary clamp are added to protect sensitive nodes.
+</p>
+
+<img src="./png/secondary_clamp.png" alt="Isolation Resistance with Secondary Clamp">
+
+<p>
+However, this increases signal distortion and is not ideal for high-speed interfaces.
+</p>
+
+</div>
+
+<div class="section">
+<h2>4. Local Clamp ESD Concept</h2>
+
+<p>
+The local clamp approach replaces the traditional dual-diode concept with a dedicated clamp in the I/O region.
+</p>
+
+<img src="./png/local_clamp.png" alt="Local Clamp ESD Concept">
+
+<div class="highlight">
+Key advantage: The diode between I/O and VDD can be removed when functionally required.
+</div>
+
+</div>
+
+<div class="section">
+<h2>5. Technical Advantages of Local Clamp</h2>
+
+<ul>
+<li>Reduced dependence on bus resistance</li>
+<li>Lower voltage drop during ESD stress</li>
+<li>No need for isolation resistor</li>
+<li>Lower parasitic capacitance</li>
+<li>Improved signal integrity</li>
+<li>Optimized per I/O pad</li>
+</ul>
+
+<table>
+<tr>
+<th>Feature</th>
+<th>Traditional Dual Diode</th>
+<th>Local Clamp</th>
+</tr>
+<tr>
+<td>Parasitic Capacitance</td>
+<td>Moderate to High</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Voltage Tolerance</td>
+<td>Limited</td>
+<td>High</td>
+</tr>
+<tr>
+<td>High-Speed Suitability</td>
+<td>Limited</td>
+<td>Excellent</td>
+</tr>
+<tr>
+<td>Isolation Resistor Needed</td>
+<td>Often Yes</td>
+<td>No</td>
+</tr>
+</table>
+
+</div>
+
+<div class="section">
+<h2>6. Applications</h2>
+
+<ul>
+<li>SerDes</li>
+<li>HDMI / DisplayPort</li>
+<li>USB interfaces</li>
+<li>Automotive electronics</li>
+<li>Medical systems</li>
+<li>Cold-spare / Fail-safe systems</li>
+</ul>
+
+</div>
+
+<div class="section">
+<h2>7. Design Considerations</h2>
+
+<ul>
+<li>Optimize clamp trigger voltage</li>
+<li>Minimize parasitic capacitance</li>
+<li>Control leakage current</li>
+<li>Ensure compatibility with overvoltage tolerant interfaces</li>
+<li>Support high IEC robustness</li>
+</ul>
+
+<div class="highlight">
+Local clamp architecture enables high-speed performance while maintaining strong ESD protection.
+</div>
+
+</div>
+
+<hr>
+
+<p>
+Technical reference based on:
+<a href="https://monthly-pulse.com/2021/01/05/local-esd-protection-in-analog-ios/">
+Local ESD Protection in Analog I/Os – Monthly Pulse
+</a>
+</p>
+
+</body>
+</html>
