@@ -600,3 +600,145 @@ SCR susceptibility
 를 종합적으로 검증하는 과정이다.
 
 구조적 검증(PERC LDL)과 물리적 측정(Lab)이 함께 작동해야 한다.
+
+TVS / ESD R&D 환경에서 실제로 많이 쓰이는 TLP / VF-TLP 장비 벤더 및 시스템 이름을 정리해 드릴게요.
+
+(연구소·파운드리·자동차용 TVS 개발 기준)
+
+🔵 1️⃣ TLP (Transmission Line Pulse) Systems
+🔹 Barth Electronics
+
+가장 많이 언급되는 벤더 중 하나입니다.
+
+Barth Model 4002 TLP System
+
+Barth Model 4012 TLP System
+
+Custom TLP platforms (100 ns class)
+
+특징
+
+JEDEC-compatible ESD pulse emulation
+
+100 ns pulse width (HBM correlation 목적)
+
+자동 step-stress 가능
+
+Waveform acquisition integrated
+
+🔹 Thermo Fisher Scientific (구 Thermo TLP)
+
+Thermo Scientific TLP Systems
+
+Integrated TLP + VF-TLP platforms
+
+특징
+
+High repeatability
+
+Automotive-grade validation 환경에 적합
+
+🔹 HPPI (High Power Pulse Instruments)
+
+HPPI TLP Systems
+
+High-current capable systems
+
+특징
+
+수십 Amp pulse capability
+
+Power TVS 및 Automotive TVS 평가에 적합
+
+🔹 ESDEMC Technology
+
+TLP test systems
+
+Custom pulse solutions
+
+🔴 2️⃣ VF-TLP (Very Fast TLP) Systems
+
+VF-TLP는 rise time이 매우 빠르기 때문에 CDM 평가에 중요합니다.
+
+🔹 Barth VF-TLP
+
+Sub-ns rise time
+
+100 ps ~ 500 ps class
+
+🔹 Thermo Fisher VF-TLP
+
+CDM correlation purpose
+
+Automotive transient validation
+
+🔹 HPPI VF-TLP
+
+Fast rise pulse generator
+
+Advanced clamp timing analysis 가능
+
+🟣 3️⃣ 통합 TLP + VF-TLP 플랫폼
+
+일부 R&D lab에서는:
+
+Integrated TLP + VF-TLP system
+
+High-bandwidth oscilloscope (Tektronix / Keysight)
+
+High-speed current probe
+
+를 하나의 bench setup으로 구성합니다.
+
+⚙️ 보통 함께 쓰는 장비
+
+TLP 시스템은 단독으로 쓰이지 않고 다음과 같이 구성됩니다:
+
+Pulse Generator (TLP)
+        │
+Transmission Line
+        │
+     DUT
+        │
+High-Speed Oscilloscope
+
+
+보통 함께 사용되는 장비:
+
+Tektronix DPO/MSO 20GHz class
+
+Keysight Infiniium 13~33 GHz
+
+Pearson current monitor
+
+High-voltage attenuators
+
+📌 정리 (R&D Lab 현실적인 구성)
+
+TVS R&D Lab에서 가장 현실적인 구성은:
+
+기본 세트
+
+Barth TLP System
+
+VF-TLP module
+
+10~20 GHz Oscilloscope
+
+Parameter Analyzer (B1500)
+
+Automotive / High-End Lab
+
+Integrated TLP/VF-TLP platform
+
+CDM tester (JEDEC compliant)
+
+High-current pulse generator
+
+Automated LabVIEW control
+
+🎯 인터뷰용 한 문장
+
+“In a TVS development lab, dynamic robustness is typically evaluated using a 100 ns TLP system—such as Barth or HPPI platforms—and complemented by VF-TLP for CDM-like transient analysis.”
+
+원하시면 다음 단계로:
