@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SmartShelf – Design Pattern & Dispatcher Model</title>
+<style>
+body { font-family: Georgia, serif; margin: 60px auto; max-width: 900px; line-height: 1.7; color: #111; }
+h1 { font-size: 32px; }
+h2 { margin-top: 40px; border-bottom: 1px solid #ccc; padding-bottom: 6px; }
+code { background: #f4f4f4; padding: 2px 6px; }
+pre { background: #f4f4f4; padding: 15px; overflow-x: auto; }
+a { color: #5a2ca0; text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<h1>Design Pattern & Dispatcher Model</h1>
+
+<p>
+SmartShelf uses a <strong>Dispatcher Pattern</strong> to decouple UI choices from functional logic.
+This improves modularity, scalability, and maintainability.
+</p>
+
+<h2>Dispatcher Table</h2>
+
+<pre><code>
+choice_handlers = {
+    'View Pantry': render_pantry,
+    'Edit Pantry Quantities': render_edit_pantry,
+    'Add to Pantry': render_pantry_update,
+    'Expired Items': render_expired_items,
+    'Exit': exit_app
+}
+</code></pre>
+
+<p>
+Each menu button maps to a dedicated handler function.
+Adding new functionality requires only:
+</p>
+
+<ul>
+<li>Implementing a new <code>render_*</code> function</li>
+<li>Registering it in the dispatcher dictionary</li>
+</ul>
+
+<h2>Controller Logic</h2>
+
+<pre><code>
+def handle_choice(choice):
+    handler = choice_handlers.get(choice)
+    if handler:
+        handler()
+</code></pre>
+
+<p>
+This design removes conditional branching and centralizes control logic.
+</p>
+
+<h2>Architectural Benefit</h2>
+
+<ul>
+<li>Loose coupling between UI and logic</li>
+<li>Clear extensibility model</li>
+<li>Clean separation of concerns</li>
+<li>Scalable for larger interactive systems</li>
+</ul>
+
+<p><a href="index.html">← Back to Index</a></p>
+
+</body>
+</html>

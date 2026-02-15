@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SmartShelf – Pantry Data Flow & State Management</title>
+<style>
+body { font-family: Georgia, serif; margin: 60px auto; max-width: 900px; line-height: 1.7; color: #111; }
+h1 { font-size: 32px; }
+h2 { margin-top: 40px; border-bottom: 1px solid #ccc; padding-bottom: 6px; }
+code { background: #f4f4f4; padding: 2px 6px; }
+pre { background: #f4f4f4; padding: 15px; overflow-x: auto; }
+a { color: #5a2ca0; text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<h1>Pantry Data Flow & State Management</h1>
+
+<p>
+SmartShelf operates on a lightweight state model built around Pandas DataFrames.
+All pantry and shopping data originate from CSV storage.
+</p>
+
+<h2>Data Flow Overview</h2>
+
+<pre>
+CSV → load_csvs()
+    → Pandas DataFrames (userPantry, shoppingList)
+    → UI Interaction
+    → Data Update
+    → closeout() → Save CSV
+</pre>
+
+<h2>State Handling Strategy</h2>
+
+<ul>
+<li>Global DataFrame references for runtime state</li>
+<li>Immediate in-memory updates upon user action</li>
+<li>Persistence triggered during application exit</li>
+</ul>
+
+<h2>Example: Updating Quantity</h2>
+
+<pre><code>
+userPantry.loc[
+    userPantry['item_name'] == original_name,
+    'quantity'
+] = qty_val
+</code></pre>
+
+<p>
+This direct DataFrame mutation keeps state consistent across UI rendering cycles.
+</p>
+
+<h2>Design Characteristics</h2>
+
+<ul>
+<li>Simple, readable state model</li>
+<li>No complex ORM or backend dependency</li>
+<li>Suitable for small-to-medium interactive tools</li>
+<li>Easily extendable to database-backed persistence</li>
+</ul>
+
+<p><a href="index.html">← Back to Index</a></p>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SmartShelf – Architecture & Implementation Note</title>
+<style>
+body {
+    font-family: Georgia, serif;
+    margin: 60px auto;
+    max-width: 900px;
+    line-height: 1.7;
+    color: #111;
+}
+h1 { font-size: 34px; }
+h2 { margin-top: 40px; border-bottom: 1px solid #ccc; padding-bottom: 6px; }
+code { background: #f4f4f4; padding: 2px 6px; }
+pre {
+    background: #f4f4f4;
+    padding: 15px;
+    overflow-x: auto;
+}
+a { color: #5a2ca0; text-decoration: underline; }
+.section-list { margin-left: 20px; }
+.author { margin-top: 40px; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<h1>SmartShelf – Python Application Architecture</h1>
+
+<p>
+This technical note summarizes the internal architecture and design logic of 
+<strong>SmartShelf</strong>, a PyWebIO-based interactive pantry management system.
+The focus is on structural design, dispatch logic, and data-driven UI rendering.
+</p>
+
+<hr>
+
+<h2>Architecture Overview</h2>
+
+<p>SmartShelf follows a simple layered structure:</p>
+
+<pre>
+CSV Storage → Pandas DataFrames → Utility Layer (pantry_utils)
+            → UI Rendering (PyWebIO) → User Interaction → Data Update
+</pre>
+
+<ul>
+<li><strong>Data Layer:</strong> CSV files loaded into Pandas DataFrames.</li>
+<li><strong>Logic Layer:</strong> Business logic abstracted in <code>pantry_utils</code>.</li>
+<li><strong>UI Layer:</strong> PyWebIO button-driven dynamic rendering.</li>
+<li><strong>Controller:</strong> Dispatcher table mapping menu → handler functions.</li>
+</ul>
+
+<h2>Core Design Pattern – Dispatcher Model</h2>
+
+<p>
+The application uses a dispatch table to map UI choices to handler functions.
+This enables modular expansion without altering core control flow.
+</p>
+
+<pre><code>
+choice_handlers = {
+    'View Pantry': render_pantry,
+    'Edit Pantry Quantities': render_edit_pantry,
+    'Add to Pantry': render_pantry_update,
+    ...
+}
+</code></pre>
+
+<h2>Dynamic UI Rendering via Scope</h2>
+
+<p>Instead of static page reloads, SmartShelf uses scoped rendering:</p>
+
+<pre><code>
+clear_scope('main')
+with use_scope('main'):
+    put_table(...)
+</code></pre>
+
+<p>This creates a lightweight reactive behavior similar to modern frontend frameworks.</p>
+
+<h2>Safe Input Mapping Strategy</h2>
+
+<p>To dynamically generate forms, item names are sanitized:</p>
+
+<pre><code>
+safe_name = re.sub(r'\W+', '_', item['item_name'])
+</code></pre>
+
+<p>This prevents invalid variable binding and ensures safe dictionary mapping.</p>
+
+<h2>SmartShelf – Extension Module (Additional Technical Note)</h2>
+
+<p>
+As an extension to this index, the full SmartShelf implementation can be treated
+as a standalone applied Python architecture example.
+</p>
+
+<ol class="section-list">
+<li><a href="#">Architecture Overview (SmartShelf)</a></li>
+<li><a href="#">Design Pattern & Dispatcher Model</a></li>
+<li><a href="#">Pantry Data Flow & State Management</a></li>
+</ol>
+
+<div class="author">
+Author: System Design & Application Architecture Notes
+</div>
+
+</body>
+</html>
