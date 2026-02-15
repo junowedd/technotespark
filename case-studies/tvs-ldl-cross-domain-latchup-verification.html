@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Topology-Driven TVS Reliability & Cross-Domain Latch-Up Prevention</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/css/case-studies.css?v=20260209">
+</head>
+
+<body>
+
+<header class="site-header">
+  <nav class="site-nav">
+    <span class="site-title">TechNotesPark</span> | 
+    <a href="../index.html">Home</a> |
+    <a href="../projects/eda/index.html">EDA Portfolio</a> |
+    <a href="../case-studies/index.html" class="active">Case Studies</a>
+  </nav>
+</header>
+
+<main class="container">
+
+<header class="page-header">
+  <h1>Topology-Driven TVS Reliability & Cross-Domain Latch-Up Prevention</h1>
+  <p>
+    Integrating Calibre PERC LDL structural verification with laboratory
+    characterization to eliminate cross-domain latch-up risk in high-voltage TVS designs.
+  </p>
+</header>
+
+<section>
+
+<h2>Background</h2>
+<p>
+In mixed-voltage SoCs, high-current TVS clamps coexist with low-voltage core devices.
+While TVS ensures strong ESD discharge capability, its low-resistance clamp path may
+reduce effective well resistance and increase parasitic SCR susceptibility.
+</p>
+
+<div class="highlight">
+Strong clamp path + Low well resistance + Cross-domain adjacency  
+= Latch-up risk amplifier
+</div>
+
+</section>
+
+<section>
+
+<h2>Failure Mechanism</h2>
+
+<p>
+The CMOS parasitic PNPN structure forms a natural SCR path. When well regions are
+shared or insufficiently isolated across voltage domains, holding current can decrease,
+making latch-up more likely during bias ramp or transient stress.
+</p>
+
+<ul>
+<li>Shared N-well across IO and Core domains</li>
+<li>Large TVS diffusion lowering well resistance</li>
+<li>Insufficient guard ring density</li>
+<li>Domain bias ramp triggering parasitic path</li>
+</ul>
+
+</section>
+
+<section>
+
+<h2>LDL-Based Structural Verification</h2>
+
+<h3>Topology Checks</h3>
+<ul>
+<li>IO → Clamp → GND path validation</li>
+<li>Cross-domain well adjacency tracing</li>
+<li>Guard ring completeness verification</li>
+</ul>
+
+<h3>Resistance Qualification</h3>
+<ul>
+<li>P2P well-to-well resistance extraction</li>
+<li>Bulk resistance imbalance detection</li>
+<li>Domain-aware latch-up threshold criteria</li>
+</ul>
+
+<p>
+Unlike traditional DRC, LDL combines topology and resistance awareness,
+preventing structural latch-up candidates before silicon validation.
+</p>
+
+</section>
+
+<section>
+
+<h2>TVS Characterization & Measurement Methodology</h2>
+
+<h3>DC Characterization</h3>
+<ul>
+<li>Semiconductor Parameter Analyzer (Keysight B1500, Keithley 4200A)</li>
+<li>Breakdown voltage (Vbr)</li>
+<li>Leakage current measurement</li>
+<li>Holding voltage extraction</li>
+</ul>
+
+<h3>TLP (Transmission Line Pulse)</h3>
+<ul>
+<li>100 ns pulse stress</li>
+<li>Trigger voltage (Vt1)</li>
+<li>Dynamic resistance (Rd)</li>
+<li>Failure current (It2)</li>
+</ul>
+
+<h3>VF-TLP</h3>
+<ul>
+<li>Sub-nanosecond transient stress</li>
+<li>Clamp overshoot analysis</li>
+<li>CDM-like stress evaluation</li>
+</ul>
+
+<h3>Latch-Up Susceptibility Testing</h3>
+<ul>
+<li>Domain bias ramp testing</li>
+<li>Well bias injection</li>
+<li>Substrate current monitoring</li>
+<li>Holding current measurement</li>
+</ul>
+
+</section>
+
+<section>
+
+<h2>Laboratory Environment & Tools</h2>
+
+<p>
+In a TVS product development environment, the following equipment and
+software stack is typically used:
+</p>
+
+<h3>Measurement Equipment</h3>
+<ul>
+<li>Keysight B1500 / Keithley 4200A (DC characterization)</li>
+<li>Barth TLP System (ESD pulse characterization)</li>
+<li>VF-TLP platform for CDM evaluation</li>
+<li>High-bandwidth oscilloscope (4–20 GHz)</li>
+<li>Vector Network Analyzer (RF impact evaluation)</li>
+</ul>
+
+<h3>Software & Simulation</h3>
+<ul>
+<li>Synopsys Sentaurus / Silvaco Atlas (TCAD)</li>
+<li>ADS / HSPICE / Spectre (circuit simulation)</li>
+<li>Python / MATLAB (data analysis)</li>
+<li>LabVIEW (instrument automation)</li>
+</ul>
+
+</section>
+
+<section>
+
+<h2>Correlation: Structural Verification vs Physical Validation</h2>
+
+<p>
+LDL structural screening identifies cross-domain low-resistance paths before tape-out.
+Laboratory TLP and latch-up testing confirm increased holding current margin
+and improved snapback stability.
+</p>
+
+<div class="highlight">
+Structural verification (LDL) + Physical validation (Lab characterization)  
+= Robust TVS qualification flow
+</div>
+
+</section>
+
+<section>
+
+<h2>Technical Takeaways</h2>
+
+<ul>
+<li>TVS clamp strength must be balanced with domain isolation</li>
+<li>Well resistance is a critical latch-up control parameter</li>
+<li>Cross-domain adjacency must be topology-verified</li>
+<li>Measurement correlation is essential for model calibration</li>
+</ul>
+
+<p>
+Traditional DRC verifies geometry.  
+LDL verifies robustness.  
+Laboratory validation confirms device physics.
+</p>
+
+</section>
+
+</main>
+
+</body>
+</html>

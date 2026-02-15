@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calibre PERC LDL – Structural ESD Reliability Architecture</title>
+
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.65;
+      color: #222;
+      max-width: 950px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h1, h2, h3 { line-height: 1.3; }
+
+    h2 {
+      margin-top: 2.8em;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 0.3em;
+    }
+
+    .subtitle {
+      color: #555;
+      font-size: 1.15em;
+      margin-bottom: 2em;
+    }
+
+    .highlight {
+      background: #f7f7f7;
+      padding: 18px;
+      border-left: 4px solid #444;
+      margin: 25px 0;
+      font-size: 1.05em;
+    }
+
+    .architecture-box {
+      background: #fafafa;
+      border: 1px solid #e5e5e5;
+      border-radius: 14px;
+      padding: 30px;
+      margin: 40px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .layer {
+      background: white;
+      border-radius: 12px;
+      padding: 18px;
+      margin: 16px 0;
+      border: 1px solid #eaeaea;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      transition: all 0.2s ease;
+    }
+
+    .layer:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .ldl-layer {
+      border: 2px solid #444;
+      background: #fdfdfd;
+    }
+
+    .arrow {
+      text-align: center;
+      font-size: 20px;
+      color: #aaa;
+      margin: 8px 0;
+    }
+
+    ul { margin-left: 20px; }
+
+    .accent {
+      font-weight: 600;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Structural ESD Reliability Architecture</h1>
+<p class="subtitle">
+Calibre PERC LDL as the Topology Control Layer for Robust TVS & ESD Sign-off
+</p>
+
+<h2>Project Context</h2>
+
+<p>
+Advanced SoCs integrate dense IO structures, multiple voltage domains,
+and complex ESD clamp networks. Traditional DRC ensures geometric correctness.
+LVS ensures connectivity consistency.
+</p>
+
+<p>
+But neither guarantees structural robustness under real ESD stress.
+</p>
+
+<div class="highlight">
+Geometry correctness ≠ Discharge robustness  
+Connectivity correctness ≠ Resistance balance
+</div>
+
+<h2>System Architecture View</h2>
+
+<div class="architecture-box">
+
+  <div class="layer">
+    <strong>Geometry Layer (DRC)</strong><br>
+    Spacing rules, enclosure checks, polygon integrity.
+  </div>
+
+  <div class="arrow">↓</div>
+
+  <div class="layer">
+    <strong>Connectivity Layer (LVS)</strong><br>
+    Netlist matching, pin mapping, schematic consistency.
+  </div>
+
+  <div class="arrow">↓</div>
+
+  <div class="layer ldl-layer">
+    <strong>⭐ LDL Topology & Resistance Layer</strong><br>
+    IO→Clamp→GND path validation, P2P resistance balance,
+    voltage-aware spacing, cross-domain latch-up prevention.
+  </div>
+
+  <div class="arrow">↓</div>
+
+  <div class="layer" style="border:2px solid #2d6a4f;">
+    <strong>Structural Reliability Sign-off</strong><br>
+    Robust ESD qualification readiness before silicon stress testing.
+  </div>
+
+</div>
+
+<h2>What LDL Adds Beyond Traditional Flows</h2>
+
+<h3>1. Discharge Path Completeness</h3>
+<ul>
+  <li>IO → Clamp → GND topology verification</li>
+  <li>Floating clamp detection</li>
+  <li>Cross-domain discharge validation</li>
+</ul>
+
+<h3>2. Resistance-Aware Robustness</h3>
+<ul>
+  <li>P2P bulk resistance imbalance detection</li>
+  <li>Finger resistance comparison</li>
+  <li>Ballasting validation in TVS layout</li>
+</ul>
+
+<h3>3. Voltage-Dependent Structural Checks</h3>
+<ul>
+  <li>Pin-voltage-aware spacing rules</li>
+  <li>High-voltage clamp environment validation</li>
+</ul>
+
+<h3>4. Source-Based Alignment</h3>
+<ul>
+  <li>Schematic-to-layout object mapping</li>
+  <li>Simulation intent correlation</li>
+</ul>
+
+<h2>Concrete Reliability Impact</h2>
+
+<ul>
+  <li>Prevention of snapback turn-on imbalance</li>
+  <li>Elimination of current crowding risk</li>
+  <li>Detection of latch-up-prone well structures</li>
+  <li>Reduction of ESD re-spin cycles</li>
+</ul>
+
+<h2>Strategic Positioning</h2>
+
+<div class="highlight">
+LDL is not another DRC rule set.  
+It is a <span class="accent">topology-aware structural firewall</span>  
+between layout completion and silicon qualification.
+</div>
+
+<p>
+In advanced TVS and high-voltage environments,
+topology-driven verification becomes a competitive reliability enabler.
+</p>
+
+<h2>I-Ready Summary</h2>
+
+<p>
+“Traditional sign-off verifies correctness.
+LDL verifies robustness.
+That distinction determines whether ESD issues appear in silicon —
+or are eliminated before tape-out.”
+</p>
+
+</body>
+</html>

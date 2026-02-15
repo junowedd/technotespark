@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topology-Driven TVS Reliability & Cross-Domain Latch-Up Prevention</title>
+
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.65;
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 0 20px;
+  color: #222;
+}
+h1, h2, h3 { line-height: 1.3; }
+h2 {
+  margin-top: 2.8em;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.3em;
+}
+.subtitle {
+  color: #555;
+  font-size: 1.15em;
+  margin-bottom: 2em;
+}
+.highlight {
+  background: #f7f7f7;
+  padding: 18px;
+  border-left: 4px solid #444;
+  margin: 25px 0;
+}
+.diagram {
+  margin: 30px 0;
+  padding: 20px;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+}
+svg text {
+  font-size: 13px;
+}
+ul { margin-left: 20px; }
+</style>
+</head>
+<body>
+
+<h1>Topology-Driven TVS Reliability & Cross-Domain Latch-Up Prevention</h1>
+<p class="subtitle">
+Integrating Calibre PERC LDL Structural Verification with Experimental TVS Characterization
+</p>
+
+<h2>1. Technical Background</h2>
+
+<p>
+In advanced mixed-signal SoCs, high-voltage TVS protection structures coexist with low-voltage core devices.
+While TVS ensures strong ESD discharge capability, its low-resistance clamp path may unintentionally
+reduce effective well resistance and increase parasitic SCR susceptibility.
+</p>
+
+<div class="highlight">
+Strong clamp path + Low well resistance + Cross-domain adjacency  
+= Latch-up risk amplifier
+</div>
+
+---
+
+<h2>2. Failure Mechanism: TVS + Cross-Domain Interaction</h2>
+
+<p>
+The parasitic PNPN structure in CMOS naturally forms an SCR.
+Improper domain isolation and well sharing can lower the holding current threshold.
+</p>
+
+<ul>
+<li>Shared N-well across domains</li>
+<li>Insufficient guard ring insertion</li>
+<li>Low bulk resistance near large TVS diffusion</li>
+<li>Domain bias ramp triggering parasitic path</li>
+</ul>
+
+---
+
+<h2>3. Structural Verification Using PERC LDL</h2>
+
+<h3>Topology-Based Checks</h3>
+<ul>
+<li>IO → Clamp → GND path validation</li>
+<li>Cross-domain well adjacency detection</li>
+<li>Guard ring completeness verification</li>
+</ul>
+
+<h3>Resistance-Based Qualification</h3>
+<ul>
+<li>P2P well-to-well resistance extraction</li>
+<li>Bulk resistance imbalance detection</li>
+<li>Domain-aware threshold criteria</li>
+</ul>
+
+<div class="highlight">
+LDL prevents structural latch-up candidates before silicon validation.
+</div>
+
+---
+
+<h2>4. Experimental TVS Characterization Methodology</h2>
+
+<h3>4.1 DC Characterization</h3>
+<ul>
+<li>Semiconductor Parameter Analyzer (Keysight B1500 / Keithley 4200A)</li>
+<li>Extract: Vbr, leakage current, holding voltage</li>
+</ul>
+
+<h3>4.2 TLP (Transmission Line Pulse)</h3>
+<ul>
+<li>Pulse width ~100ns</li>
+<li>Extract: Trigger voltage (Vt1), Dynamic resistance (Rd), Failure current (It2)</li>
+</ul>
+
+<h3>4.3 VF-TLP (Sub-ns Pulse)</h3>
+<ul>
+<li>CDM-like stress evaluation</li>
+<li>Clamp overshoot measurement</li>
+</ul>
+
+<h3>4.4 Latch-Up Susceptibility Test</h3>
+<ul>
+<li>Domain bias ramp test</li>
+<li>Well bias injection</li>
+<li>Substrate current monitoring</li>
+</ul>
+
+---
+
+<h2>5. Laboratory Measurement Setup</h2>
+
+<div class="diagram">
+
+<svg width="880" height="400">
+
+<!-- SMU -->
+<rect x="40" y="50" width="180" height="60" fill="#e8f0fe" stroke="#2e75b6"/>
+<text x="70" y="85">Parameter Analyzer</text>
+
+<!-- TLP -->
+<rect x="40" y="150" width="180" height="60" fill="#fde9e9" stroke="#b22222"/>
+<text x="95" y="185">TLP System</text>
+
+<!-- Oscilloscope -->
+<rect x="40" y="250" width="180" height="60" fill="#fef3c7" stroke="#d97706"/>
+<text x="70" y="285">High-Speed Scope</text>
+
+<!-- DUT -->
+<rect x="400" y="150" width="200" height="80" fill="#e6ffe6" stroke="#2d6a4f" stroke-width="2"/>
+<text x="470" y="195">TVS DUT</text>
+
+<!-- Arrows -->
+<line x1="220" y1="80" x2="400" y2="180" stroke="#000"/>
+<line x1="220" y1="180" x2="400" y2="180" stroke="#000"/>
+<line x1="220" y1="280" x2="400" y2="180" stroke="#000"/>
+
+</svg>
+
+</div>
+
+<p>
+The DUT (Device Under Test) is characterized under DC, pulsed, and transient stress
+while monitoring clamp voltage, substrate current, and holding behavior.
+</p>
+
+---
+
+<h2>6. Software & Automation Environment</h2>
+
+<ul>
+<li>TCAD: Synopsys Sentaurus, Silvaco Atlas</li>
+<li>Circuit Simulation: ADS, HSPICE, Spectre</li>
+<li>Data Analysis: Python, MATLAB</li>
+<li>Instrument Automation: LabVIEW</li>
+<li>Compact Modeling: SPICE-based ESD macro models</li>
+</ul>
+
+---
+
+<h2>7. Correlation: Structural Verification vs Measurement</h2>
+
+<p>
+LDL structural screening identified cross-domain low-resistance paths prior to silicon.
+TLP characterization confirmed reduction in snapback imbalance
+and increased holding current margin.
+</p>
+
+<div class="highlight">
+Structural verification (LDL) + Physical validation (Lab measurement)  
+= Robust TVS qualification flow
+</div>
+
+---
+
+<h2>8. Technical Takeaways</h2>
+
+<ul>
+<li>TVS clamp strength must be balanced with domain isolation</li>
+<li>Well resistance is a key latch-up control parameter</li>
+<li>Cross-domain adjacency must be topology-verified</li>
+<li>Measurement correlation is essential for model calibration</li>
+</ul>
+
+<p>
+Traditional DRC verifies geometry.
+LDL verifies robustness.
+Laboratory validation confirms physics.
+</p>
+
+</body>
+</html>
