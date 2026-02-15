@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LDL-Based ESD/TVS Reliability Positioning</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
+        h1 { color: #7f0000; }
+        h2 { color: #b22222; margin-top: 30px; }
+        ul { margin-left: 20px; }
+        .section { margin-bottom: 25px; }
+        .highlight { background-color: #fff3f3; padding: 12px; border-left: 5px solid #b22222; }
+        .key { font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<h1>Calibre PERC LDL for ESD/TVS Reliability Verification</h1>
+
+<div class="section">
+<h2>1. ESD Discharge Path Validation</h2>
+<div class="highlight">
+Topology-based verification of actual discharge paths beyond pure geometry checks.
+</div>
+<ul>
+<li>IO → Clamp → GND path completeness validation</li>
+<li>Cross-domain discharge path analysis</li>
+<li>Detection of floating clamps or missing protection</li>
+<li>Pre-identification of potential current density hotspots</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>2. P2P Resistance-Based ESD Robustness Analysis</h2>
+<div class="highlight">
+Identifies resistance imbalance leading to non-uniform snapback turn-on and insufficient ballasting.
+</div>
+<ul>
+<li>Bulk resistance mismatch → latch-up risk detection</li>
+<li>High discharge path resistance → clamping degradation prediction</li>
+<li>Finger resistance imbalance → current crowding risk</li>
+<li>Support for ballasting validation in TVS design</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>3. Cross-Domain Latch-Up Risk Verification</h2>
+<div class="highlight">
+Simultaneous well spacing and resistance checks to prevent latch-up-prone structures.
+</div>
+<ul>
+<li>Combined spacing + resistance criteria</li>
+<li>Domain-crossing net risk identification</li>
+<li>Power domain isolation validation</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>4. Voltage-Dependent Spacing Checks</h2>
+<div class="highlight">
+Dynamic spacing verification based on pin voltage information.
+</div>
+<ul>
+<li>High-voltage TVS clamp environment validation</li>
+<li>Voltage-difference-based metal spacing rules</li>
+<li>ESD pulse scenario-driven layout validation</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>5. Source-Based Simulation Alignment</h2>
+<div class="highlight">
+Ensures that protection network intent in simulation matches physical implementation.
+</div>
+<ul>
+<li>Clamp topology intent verification</li>
+<li>Automated simulation net to layout mapping</li>
+<li>Protection network completeness validation</li>
+</ul>
+</div>
+
+<hr>
+
+<h2>Strategic Positioning for TVS Roles</h2>
+<ul>
+<li><span class="key">LDL does not directly simulate snapback physics,</span> but eliminates structural causes such as resistance imbalance and incomplete discharge paths.</li>
+<li>Strengthens ESD robustness structurally before physical testing.</li>
+<li>Adds topology-aware sign-off layer to TVS development flow.</li>
+<li>Enables automation of ESD/TVS reliability verification at design stage.</li>
+</ul>
+
+</body>
+</html>
