@@ -40,6 +40,38 @@
       text-decoration: underline;
     }
   </style>
+
+<style>
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-container .tooltip-text {
+  visibility: hidden;
+  width: 420px;
+  background-color: #222;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  top: 125%;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 14px;
+  line-height: 1.4;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
+}
+
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+</style>
+
 </head>
 
 <body>
@@ -78,105 +110,158 @@ used in modern semiconductor R&D environments.
 <h2>Concept Engineer TVS — Development & TRL Execution Roadmap - Hover over each topic number to see the details</h2>
 
 <ol>
-  <li>
-    <a href="trl-reliability-arch.html" target="_blank">
-      TRL-Based Reliability Architecture for TVS Product Development
-    </a>
-    – Concept adaptation, device variants, physical implementation,
-      characterization strategy, and production ramp alignment
-  </li>
-
-  <li>
-    <a href="ads-seed-methodology.html" target="_blank">
-      System-Efficient ESD Design (SEED) Methodology & Pulsed Characterization Framework ADS
-    </a>
-    – Pulsed I-V, TLP, VF-TLP methodologies, clamping behavior analysis, snapback validation,
-      dynamic resistance extraction, and failure current assessment
-  </li>
-
-  <li>
-    <a href="tvs_tlp_sparameter_overview.html" target="_blank">
-      TVS Characterization Framework: TLP, VF-TLP & S-Parameter Integration
-    </a>
-    – Large-signal vs small-signal behavior analysis,
-      non-linear snapback physics, and TRL-aligned system-level validation
-  </li>
   
   <li>
-  <a href="tvs-esd-handbook.html" target="_blank">
+    <div class="tooltip-container">
+      <a href="trl-reliability-arch.html" target="_blank">
+      TRL-Based Reliability Architecture for TVS Product Development
+    </a>
+      <span class="tooltip-text">Concept adaptation, device variants, physical implementation,
+      characterization strategy, and production ramp alignment</span>
+    </div>
+  </li>
+
+
+  
+  <li>
+    <div class="tooltip-container">
+      <a href="ads-seed-methodology.html" target="_blank">
+      System-Efficient ESD Design (SEED) Methodology & Pulsed Characterization Framework ADS
+    </a>
+      <span class="tooltip-text">Pulsed I-V, TLP, VF-TLP methodologies, clamping behavior analysis, snapback validation,
+      dynamic resistance extraction, and failure current assessment</span>
+    </div>
+  </li>
+
+
+  
+  <li>
+    <div class="tooltip-container">
+      <a href="tvs_tlp_sparameter_overview.html" target="_blank">
+      TVS Characterization Framework: TLP, VF-TLP & S-Parameter Integration
+    </a>
+      <span class="tooltip-text">Large-signal vs small-signal behavior analysis,
+      non-linear snapback physics, and TRL-aligned system-level validation</span>
+    </div>
+  </li>
+
+  
+  
+  <li>
+    <div class="tooltip-container">
+      <a href="tvs-esd-handbook.html" target="_blank">
     TVS / ESD Protection Engineering Handbook
   </a>
-  – Structured technical reference covering snapback physics, 
-    parasitic inductance interaction, BJT/SCR turn-on mechanisms, and system-level protection design
-   
+      <span class="tooltip-text">Structured technical reference covering snapback physics, 
+    parasitic inductance interaction, BJT/SCR turn-on mechanisms, and system-level protection design</span>
+    </div>
   </li>
 
+
+  
   <li>
-    <a href="../projects/eda/PERC_ESD_Topo_Checks_External_Technical_v3_Optimized.pdf" target="_blank">
+    <div class="tooltip-container">
+      <a href="../projects/eda/PERC_ESD_Topo_Checks_External_Technical_v3_Optimized.pdf" target="_blank">
       PERC ESD TOPO Practice (PDF)
     </a>
-    – PERC ESD Topology Checks for automated reliability verification,
-      defining sign-off standards for ESD device layout and design rules
+      <span class="tooltip-text">PERC ESD Topology Checks for automated reliability verification,
+      defining sign-off standards for ESD device layout and design rules</span>
+    </div>
   </li>
 
-  <li>
-  <a href="PERC_LDL_DRC_Flow_Summary_EN.html" target="_blank">
-    PERC LDL DRC Flow – Key Capabilities & Value
-  </a>
-  – Execution & Command-Line Capability
-  </li> 
 
+  
   <li>
-  <a href="PERC_LDL_ESD_TVS_Reliability_Positioning_EN.html" target="_blank">
+    <div class="tooltip-container">
+      <a href="PERC_LDL_DRC_Flow_Summary_EN.html" target="_blank">
+    PERC LDL DRC Flow
+      <span class="tooltip-text">Key Capabilities & Value
+  </a>
+  – Execution & Command-Line Capability</span>
+    </div>
+  </li>
+ 
+
+  
+  <li>
+    <div class="tooltip-container">
+      <a href="PERC_LDL_ESD_TVS_Reliability_Positioning_EN.html" target="_blank">
     PERC LDL for ESD/TVS Reliability Verification
   </a>
-  – ESD Discharge Path Validation, Topology-Driven Reliability Firewall, and Sign-off Architecture
-  </li> 
+      <span class="tooltip-text">ESD Discharge Path Validation, Topology-Driven Reliability Firewall, and Sign-off Architecture</span>
+    </div>
+  </li>
+ 
 
+  
   <li>
-    <a href="caa-morphological.html" target="_blank">
+    <div class="tooltip-container">
+      <a href="caa-morphological.html" target="_blank">
       Critical Area Analysis (CAA) & Morphological Dilation with TVS Protection
     </a>
-    – Layout-based yield modeling methodology using defect-size dependent
+      <span class="tooltip-text">Layout-based yield modeling methodology using defect-size dependent
       Critical Area extraction and morphological operations,
-      including TVS protection concept visualization
+      including TVS protection concept visualization</span>
+    </div>
   </li>
 
+
+  
   <li>
-  <a href="scr_esd_protection.html" target="_blank">
-    Silicon Controlled Rectifier (SCR) – ESD Protection Mechanism
+    <div class="tooltip-container">
+      <a href="scr_esd_protection.html" target="_blank">
+    Silicon Controlled Rectifier (SCR)
+      <span class="tooltip-text">ESD Protection Mechanism
   </a>
   – PNPN regenerative structure, snapback behavior,
-    current capability, and design considerations
-</li>
+    current capability, and design considerations</span>
+    </div>
+  </li>
 
+
+  
   <li>
-  <a href="local_esd_protection_analog_ios.html" target="_blank">
+    <div class="tooltip-container">
+      <a href="local_esd_protection_analog_ios.html" target="_blank">
     Local ESD Protection in Analog I/Os
   </a>
-  – Protection architectures, performance trade-offs, and design considerations for high-speed analog interfaces
-  </li> 
+      <span class="tooltip-text">Protection architectures, performance trade-offs, and design considerations for high-speed analog interfaces</span>
+    </div>
+  </li>
+ 
 
+  
   <li>
-  <a href="perc-ldl-esd-reliability-architecture-case.html" target="_blank">
+    <div class="tooltip-container">
+      <a href="perc-ldl-esd-reliability-architecture-case.html" target="_blank">
     Topology-Driven ESD Reliability Sign-off Architecture
   </a>
-  – PERC LDL as a Structural Reliability Firewall for TVS & ESD Design
-  </li> 
+      <span class="tooltip-text">PERC LDL as a Structural Reliability Firewall for TVS & ESD Design</span>
+    </div>
+  </li>
+ 
 
+  
   <li>
-  <a href="perc-ldl-esd-reliability-architecture-case-tpn.html" target="_blank">
+    <div class="tooltip-container">
+      <a href="perc-ldl-esd-reliability-architecture-case-tpn.html" target="_blank">
     Structural ESD Reliability Architecture Case Study: PERC LDL for TVS & ESD Design
   </a>
-  – PERC LDL as the Topology Control Layer for Robust TVS & ESD Sign-off
-  </li> 
+      <span class="tooltip-text">PERC LDL as the Topology Control Layer for Robust TVS & ESD Sign-off</span>
+    </div>
+  </li>
+ 
 
+  
   <li>
-  <a href="../case-studies/tvs-ldl-cross-domain-latchup-verification.html" target="_blank">
+    <div class="tooltip-container">
+      <a href="../case-studies/tvs-ldl-cross-domain-latchup-verification.html" target="_blank">
     Topology-Driven TVS Reliability & Cross-Domain Latch-Up Prevention
   </a>
-  – Laboratory characterization to eliminate cross-domain latch-up risk in high-voltage TVS designs
-  </li> 
+      <span class="tooltip-text">Laboratory characterization to eliminate cross-domain latch-up risk in high-voltage TVS designs</span>
+    </div>
+  </li>
+ 
 
 
 </ol>
