@@ -514,3 +514,14 @@ section ul {
   border-radius: 50%;
   box-shadow: 0 15px 35px rgba(0,0,0,0.35);
 }
+
+@media (max-width: 900px) {
+  .header-flex {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-photo {
+    margin-top: 30px;
+  }
+}
