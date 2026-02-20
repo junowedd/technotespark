@@ -498,30 +498,3 @@ section ul {
   .section-gap { margin-top: 22px; }
 </style>
 
-.header-flex {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 60px;
-}
-
-.header-text {
-  flex: 100%;
-}
-
-.header-photo img {
-  width: 160px;
-  border-radius: 50%;
-  box-shadow: 0 18px 38px rgba(0,0,0,0.35);
-}
-
-
-@media (max-width: 900px) {
-  .header-flex {
-    grid-template-columns: 1fr;   /* 한 열로 */
-  }
-
-  .header-photo {
-    margin-top: 30px;
-  }
-}
