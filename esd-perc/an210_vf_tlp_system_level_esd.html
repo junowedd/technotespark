@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AN210 – Effective System-Level ESD Design using VF-TLP</title>
+
+<!-- MathJax -->
+<script>
+window.MathJax = {
+  tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
+  svg: {fontCache: 'global'}
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  margin: 40px;
+  line-height: 1.7;
+  color: #111;
+  background: #fff;
+  max-width: 1000px;
+}
+
+h1 { font-size: 32px; }
+h2 { margin-top: 40px; }
+h3 { margin-top: 25px; }
+
+p { font-size: 17px; }
+
+hr { margin: 40px 0; }
+
+figure {
+  margin: 30px 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 14px;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+table, th, td {
+  border: 1px solid #444;
+  padding: 8px 12px;
+}
+
+th {
+  background: #f2f2f2;
+}
+
+.meta {
+  font-size: 14px;
+  font-style: italic;
+  margin-top: 40px;
+}
+
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+</style>
+</head>
+
+<body>
+
+<h1>AN 210</h1>
+<h1>Effective ESD Protection Design at System Level</h1>
+<h2>Using VF-TLP Characterization Methodology</h2>
+
+<p><strong>
+Physics-based methodology for predictive system-level ESD robustness
+using Very-Fast Transmission Line Pulse (VF-TLP) characterization.
+</strong></p>
+
+<hr>
+
+<h2>1. Introduction</h2>
+
+<p>
+System-level ESD according to IEC 61000-4-2 introduces significantly higher peak current
+and faster rise-time compared to component-level HBM qualification.
+Traditional trial-and-error ESD debugging increases redesign cycles and delays compliance.
+VF-TLP provides quantitative transient characterization bridging device physics and system robustness.
+</p>
+
+<hr>
+
+<h2>2. Component vs System Level ESD</h2>
+
+<table>
+<tr>
+<th>Parameter</th>
+<th>HBM (Component)</th>
+<th>IEC 61000-4-2 (System)</th>
+</tr>
+<tr>
+<td>RC Network</td>
+<td>100 pF / 1.5 kΩ</td>
+<td>150 pF / 330 Ω</td>
+</tr>
+<tr>
+<td>Peak Current @1kV</td>
+<td>~0.67 A</td>
+<td>~3.75 A</td>
+</tr>
+<tr>
+<td>Rise Time</td>
+<td>2–10 ns</td>
+<td>0.7–1 ns</td>
+</tr>
+<tr>
+<td>Peak Current @8kV</td>
+<td>N/A</td>
+<td>30 A</td>
+</tr>
+</table>
+
+<figure>
+<img src="images/iec_vs_hbm_waveform.png" alt="HBM vs IEC waveform comparison" width="650">
+<figcaption>
+Figure 1 – Comparison of HBM and IEC 61000-4-2 ESD current waveforms.
+</figcaption>
+</figure>
+
+<hr>
+
+<h2>3. Transmission Line Pulse Principle</h2>
+
+<p>
+Pulse width of classical TLP:
+</p>
+
+<p>
+\[
+t_p = \frac{2L}{v}
+\]
+</p>
+
+<p>
+where $L$ is transmission line length and $v$ is propagation velocity.
+</p>
+
+<figure>
+<img src="images/tlp_generator_principle.png" alt="TLP generator principle" width="650">
+<figcaption>
+Figure 2 – Classical transmission line pulse generator concept.
+</figcaption>
+</figure>
+
+<hr>
+
+<h2>4. VF-TLP Reconstruction Method</h2>
+
+<p>
+When pulse width &lt; 10 ns, incident and reflected waves overlap.
+VF-TLP separates them using delay-line technique:
+</p>
+
+<p>
+\[
+V_{DUT}(t) = V_I(t) + V_R(t)
+\]
+</p>
+
+<p>
+\[
+I_{DUT}(t) = \frac{V_I(t) - V_R(t)}{Z_0}
+\]
+</p>
+
+<figure>
+<img src="images/vf_tlp_reconstruction.png" alt="VF-TLP reconstruction principle" width="650">
+<figcaption>
+Figure 3 – Separation of incident and reflected waves in VF-TLP.
+</figcaption>
+</figure>
+
+<hr>
+
+<h2>5. TLP I-V Characteristic</h2>
+
+<figure>
+<img src="images/tlp_iv_curve.png" alt="Typical TLP IV curve" width="650">
+<figcaption>
+Figure 4 – Typical TLP I–V characteristic including breakdown and clamping.
+</figcaption>
+</figure>
+
+<p>
+Dynamic resistance:
+</p>
+
+<p>
+\[
+R_{dyn} = \frac{\Delta V}{\Delta I}
+\]
+</p>
+
+<p>
+Lower $R_{dyn}$ results in improved clamping performance.
+</p>
+
+<hr>
+
+<h2>6. Transient Overshoot</h2>
+
+<p>
+Overshoot is driven by parasitic inductance:
+</p>
+
+<p>
+\[
+V = L \cdot \frac{dI}{dt}
+\]
+</p>
+
+<figure>
+<img src="images/transient_overshoot.png" alt="Transient overshoot waveform" width="650">
+<figcaption>
+Figure 5 – Initial overshoot before clamping stabilization.
+</figcaption>
+</figure>
+
+<hr>
+
+<h2>7. Reverse Recovery & Switching Behavior</h2>
+
+<figure>
+<img src="images/reverse_recovery.png" alt="Reverse recovery waveform" width="650">
+<figcaption>
+Figure 6 – Reverse recovery transient of diode during switching.
+</figcaption>
+</figure>
+
+<p>
+Fast recovery reduces transient stress and limits overshoot.
+</p>
+
+<hr>
+
+<h2>8. Safe Operating Area & Multi-Pulse Stress</h2>
+
+<figure>
+<img src="images/soa_curve.png" alt="Safe operating area curve" width="650">
+<figcaption>
+Figure 7 – Safe Operating Area (SOA) mapping via TLP.
+</figcaption>
+</figure>
+
+<p>
+Multi-pulse evaluation enables degradation tracking:
+</p>
+
+<ul>
+<li>Leakage drift</li>
+<li>Breakdown voltage shift</li>
+<li>Clamping degradation</li>
+</ul>
+
+<hr>
+
+<h2>9. Engineering Design Impact</h2>
+
+<p>
+VF-TLP transforms system-level ESD engineering from empirical debugging
+to predictive device characterization.
+</p>
+
+<ul>
+<li>Quantified dynamic resistance</li>
+<li>Measured overshoot behavior</li>
+<li>Snapback validation</li>
+<li>Multi-pulse robustness evaluation</li>
+<li>Reduced redesign loops</li>
+</ul>
+
+<hr>
+
+<h2>10. System-Level Design Workflow</h2>
+
+<ol>
+<li>Define IEC threat level</li>
+<li>Select protection topology</li>
+<li>Perform VF-TLP characterization</li>
+<li>Extract $R_{dyn}$ and overshoot</li>
+<li>Validate multi-pulse robustness</li>
+<li>Optimize PCB layout</li>
+<li>Perform compliance validation</li>
+</ol>
+
+<hr>
+
+<p class="meta">
+Tech Notes Park – System-Efficient ESD Engineering Series<br>
+Prepared for Concept-Level TVS & System Protection Architecture Development
+</p>
+
+<p>
+↩ <a href="index.html">Back to Tech Notes Park</a>
+</p>
+
+</body>
+</html>
