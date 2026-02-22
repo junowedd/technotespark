@@ -15,7 +15,8 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
     .project-highlight h2 { margin-top: 0; color: #0056b3; }
-    .project-highlight ul { margin-bottom: 15px; }
+    .project-highlight ul { margin-bottom: 20px; }
+    .btn-group { display: flex; gap: 15px; margin-top: 20px; }
     .btn-view-report {
       display: inline-block;
       background: #0056b3;
@@ -27,6 +28,8 @@
       transition: background 0.3s;
     }
     .btn-view-report:hover { background: #004085; }
+    .btn-sample { background: #28a745; }
+    .btn-sample:hover { background: #218838; }
   </style>
 </head>
 
@@ -64,24 +67,20 @@ sign-off ownership, automation, and methodology development for advanced ASIC pr
     <li><strong>Statistical Yield Prediction:</strong> Integrated 1,000-iteration Monte Carlo simulations to ensure 3-Sigma reliability.</li>
     <li><strong>Design Readiness:</strong> Automated generation of Foundry-Ready HTML/PDF datasheets including SOA verification results.</li>
   </ul>
-  <a href="Integrated_Project_Report_EN.html" class="btn-view-report">
-    View Full Engineering Report →
-  </a>
+  
+  <div class="btn-group">
+    <a href="Integrated_Project_Report_EN.html" class="btn-view-report">
+      View Engineering Workflow →
+    </a>
+    <a href="IP_Technical_Datasheet.html" class="btn-view-report btn-sample">
+      View Sample Datasheet (HTML) →
+    </a>
+  </div>
 </section>
+
 <section class="selected-case-studies">
 <h2>Contents</h2>
 <ul>
-
-<div style="margin-top: 20px; display: flex; gap: 15px;">
-  <a href="Integrated_Project_Report_EN.html" class="btn-view-report">
-    View Engineering Workflow →
-  </a>
-  
-  <a href="IP_Technical_Datasheet.html" class="btn-view-report" style="background: #28a745;">
-    View Sample Datasheet (HTML) →
-  </a>
-</div>
-
   <li>
     <a href="Manufacturing-oriented-Engineering.pdf" target="_blank">
       Backend Physical Verification Overview (PDF)
@@ -111,7 +110,6 @@ sign-off ownership, automation, and methodology development for advanced ASIC pr
       PERC ESD TOPO Practice (PDF)
     </a>
   </li>
-
 
   <li>
     <a href="../../highlights/signoff_ownership.html" >
