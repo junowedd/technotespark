@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>180nm BCD IP Development & Automation Portfolio</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; max-width: 1100px; margin: auto; padding: 40px; background-color: #f8f9fa; }
+        .container { background: white; padding: 50px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        
+        /* Header Section */
+        header { border-bottom: 4px solid #0056b3; margin-bottom: 40px; padding-bottom: 20px; }
+        h1 { color: #0056b3; margin: 0; font-size: 2.5em; }
+        .subtitle { font-size: 1.2em; color: #666; margin-top: 10px; }
+        
+        /* Navigation/Sections */
+        section { margin-bottom: 50px; padding: 20px; border-left: 5px solid #0056b3; background-color: #ffffff; }
+        h2 { color: #004085; border-bottom: 1px solid #dee2e6; padding-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        h3 { color: #495057; margin-top: 25px; font-weight: 600; }
+
+        /* Technical Content Style */
+        .tech-box { background: #2b2b2b; color: #f8f8f2; padding: 20px; border-radius: 8px; font-family: 'Consolas', 'Courier New', monospace; margin: 15px 0; overflow-x: auto; border-left: 5px solid #66d9ef; }
+        .highlight { color: #0056b3; font-weight: bold; }
+        
+        /* Visuals */
+        .image-placeholder { display: flex; justify-content: space-around; gap: 20px; margin: 30px 0; }
+        .image-card { flex: 1; text-align: center; background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .image-card img { max-width: 100%; border-radius: 4px; border: 1px solid #eee; }
+
+        /* Table Style */
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: white; }
+        th, td { padding: 15px; border: 1px solid #dee2e6; text-align: left; }
+        th { background-color: #0056b3; color: white; font-weight: 500; }
+        tr:nth-child(even) { background-color: #f8f9fa; }
+
+        /* Footer */
+        footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid #dee2e6; font-size: 0.9em; color: #868e96; text-align: center; }
+        .badge { display: inline-block; padding: 5px 12px; border-radius: 15px; background: #0056b3; color: white; font-size: 0.8em; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="badge">Foundry Engineering & Design Support</div>
+            <h1>Project Workflow: 180nm BCD IP Development</h1>
+            <p class="subtitle">Full-Stack Automation from PDK Architecture to Technical Datasheet Generation</p>
+        </header>
+
+        <section id="pdk-strategy">
+            <h2>1. PDK Architecture & Foundry Strategy</h2>
+            <p>For the successful launch of the <strong>180nm BCD (Bipolar-CMOS-DMOS)</strong> platform, I established a robust PDK architecture leveraging the <strong>Cadence Virtuoso</strong> environment. Key strategic focus areas included:</p>
+            <ul>
+                <li><strong>Multi-Tool Verification Roadmap:</strong> Established a transition path from Calibre to <strong>PVS</strong> and <strong>IC Validator</strong> to provide customers with flexible sign-off options.</li>
+                <li><strong>BCD Device Modeling:</strong> Enhanced <strong>LDMOS</strong> modeling to accurately capture non-linear drift region resistance and high-voltage isolation characteristics.</li>
+                <li><strong>Foundry-Ready IP Ecosystem:</strong> Led the "IP as a Business Enabler" initiative, converting internal blocks into "Foundry-Ready" IP (including datasheets, LEF abstracts, and simulation models) for free distribution with the PDK.</li>
+            </ul>
+        </section>
+
+        <section id="automation-flow">
+            <h2>2. Simulation & Data Analytics Automation</h2>
+            <p>To optimize engineering resources, I developed a <strong>Python-based end-to-end automation pipeline</strong> that bridges the gap between raw circuit simulation and final documentation.</p>
+            <div class="tech-box">
+                [Spectre Engine] -> [OCEAN Script Extraction] -> [Pandas Data Processing] -> [Automated HTML/PDF Datasheet]
+            </div>
+            <h3>Key Technical Implementations:</h3>
+            <ul>
+                <li><strong>Automated PVT Corner Analysis:</strong> Scripted analysis of Voltage (Vdd) and Temperature (Tj) variations to verify design margins.</li>
+                <li><strong>Monte Carlo Yield Estimation:</strong> Integrated statistical analysis to predict 3-Sigma production yields based on process and mismatch variations.</li>
+                <li><strong>Robust Backend Handling:</strong> Implemented <code>matplotlib.use('Agg')</code> to ensure seamless report generation in non-GUI/headless Linux server environments.</li>
+            </ul>
+        </section>
+
+        <section id="specifications">
+            <h2>3. Electrical Specifications & Reliability Results</h2>
+            <p>Final characterization results for the <strong>180nm BCD Bandgap Reference</strong> IP block:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Condition</th>
+                        <th>Min</th>
+                        <th>Typ</th>
+                        <th>Max</th>
+                        <th>Unit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Supply Voltage (Vdd)</td>
+                        <td>Full Operation Range</td>
+                        <td>1.62</td>
+                        <td>1.80</td>
+                        <td>1.98</td>
+                        <td>V</td>
+                    </tr>
+                    <tr>
+                        <td>Output Voltage (Vref)</td>
+                        <td>-40°C to 125°C</td>
+                        <td>1.235</td>
+                        <td>1.250</td>
+                        <td>1.265</td>
+                        <td>V</td>
+                    </tr>
+                    <tr>
+                        <td>Estimated Yield</td>
+                        <td>Spec &plusmn; 30mV</td>
+                        <td>99.0</td>
+                        <td>99.8</td>
+                        <td>-</td>
+                        <td>%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>Reliability & SOA Verification:</h3>
+            <p>Verified 180nm BCD <strong>Safe Operating Area (SOA)</strong> compliance using Spectre Assertion checks. All devices were confirmed to operate within reliability limits across the full automotive temperature range.</p>
+        </section>
+
+        <section id="visual-results">
+            <h2>4. Graphical Data Analysis</h2>
+            <p>Visual outputs generated by the custom Python analytics engine:</p>
+            <div class="image-placeholder">
+                <div class="image-card">
+                    <h4>Voltage Margin Analysis</h4>
+                    <p><i>PVT Variation Tracking</i></p>
+                    <div style="background:#f1f1f1; height:220px; display:flex; align-items:center; justify-content:center; color:#666; border: 1px dashed #ccc;">
+                        [voltage_margin_plot.png]
+                    </div>
+                </div>
+                <div class="image-card">
+                    <h4>Monte Carlo Yield Analysis</h4>
+                    <p><i>1000 Iteration Distribution</i></p>
+                    <div style="background:#f1f1f1; height:220px; display:flex; align-items:center; justify-content:center; color:#666; border: 1px dashed #ccc;">
+                        [mc_analysis_report.png]
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="roadmap">
+            <h2>5. Future Outlook: Design Closure Automation</h2>
+            <p>The next phase involves implementing <strong>Closed-Loop Design Automation</strong> using <strong>PyCell (Python Layout)</strong>. This will enable real-time device resizing based on simulation margin feedback, further accelerating the time-to-market for the 180nm BCD platform.</p>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 ams OSRAM Foundry Services - Project Engineering Portfolio</p>
+            <p>Confidential Engineering Documentation | Revision 1.0.0-EN</p>
+        </footer>
+    </div>
+</body>
+</html>
