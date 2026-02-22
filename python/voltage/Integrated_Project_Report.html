@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>180nm BCD IP Development & Automation Report</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; max-width: 1100px; margin: auto; padding: 40px; background-color: #f8f9fa; }
+        .container { background: white; padding: 50px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        
+        /* Header Section */
+        header { border-bottom: 4px solid #0056b3; margin-bottom: 40px; padding-bottom: 20px; }
+        h1 { color: #0056b3; margin: 0; font-size: 2.5em; }
+        .subtitle { font-size: 1.2em; color: #666; margin-top: 10px; }
+        
+        /* Navigation/Sections */
+        section { margin-bottom: 50px; padding: 20px; border-left: 5px solid #e9ecef; }
+        h2 { color: #004085; border-bottom: 1px solid #dee2e6; padding-bottom: 10px; }
+        h3 { color: #495057; margin-top: 25px; }
+
+        /* Technical Content Style */
+        .tech-box { background: #f1f3f5; padding: 20px; border-radius: 8px; font-family: 'Courier New', Courier, monospace; margin: 15px 0; overflow-x: auto; }
+        .highlight { color: #d63384; font-weight: bold; }
+        
+        /* Visuals */
+        .image-placeholder { display: flex; justify-content: space-around; gap: 20px; margin: 30px 0; }
+        .image-card { flex: 1; text-align: center; background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 8px; }
+        .image-card img { max-width: 100%; border-radius: 4px; }
+
+        /* Table Style */
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: white; }
+        th, td { padding: 15px; border: 1px solid #dee2e6; text-align: left; }
+        th { background-color: #0056b3; color: white; }
+
+        /* Footer */
+        footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid #dee2e6; font-size: 0.9em; color: #868e96; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Engineering Workflow: 180nm BCD IP Development</h1>
+            <p class="subtitle">Design Support & IP Readiness Automation Process</p>
+        </header>
+
+        <section id="pdk-strategy">
+            <h2>1. PDK Architecture & Strategy</h2>
+            <p>180nm BCD 공정의 성공적인 런칭을 위해 <strong>Cadence Virtuoso</strong> 기반의 PDK 아키텍처를 수립했습니다. 주요 전략은 다음과 같습니다.</p>
+            <ul>
+                <li><strong>Verification Extension:</strong> Calibre에서 PVS 및 IC Validator로의 검증 툴 확장 전략 수립.</li>
+                <li><strong>BCD Specialization:</strong> High-Voltage(HV) Isolation 및 Drift 영역의 비선형 특성을 반영한 LDMOS 모델링 강화.</li>
+                <li><strong>Business Enabler:</strong> 내부 IP를 Foundry-Ready 상태로 전환하여 고객에게 무료 배포하는 비즈니스 모델 지원.</li>
+            </ul>
+        </section>
+
+        <section id="automation-flow">
+            <h2>2. Simulation & Data Automation Workflow</h2>
+            <p>시뮬레이션부터 리포트 생성까지의 전 과정을 <strong>Python 및 OCEAN 스크립트</strong>로 자동화하여 엔지니어링 리소스를 최적화했습니다.</p>
+            <div class="tech-box">
+                [Spectre Simulation] -> [OCEAN Extraction] -> [Python Data Processing] -> [HTML Report Generation]
+            </div>
+            <h3>Key Automation Components:</h3>
+            <ul>
+                <li><strong>PVT Corner Analysis:</strong> 전압(Vdd) 및 온도(Temp) 변화에 따른 전압 마진(Voltage Margin) 자동 분석.</li>
+                <li><strong>Monte Carlo Yield Analysis:</strong> 공정 산포에 따른 3-Sigma 수율 예측 및 통계적 데이터 확보.</li>
+                <li><strong>Error Handling:</strong> ParserError 및 GUI 환경(TclError) 이슈를 백엔드 설정을 통해 해결.</li>
+            </ul>
+        </section>
+
+        <section id="specifications">
+            <h2>3. Electrical Specifications & Reliability</h2>
+            <p>실제 180nm BCD Bandgap Reference IP의 핵심 사양입니다.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Condition</th>
+                        <th>Min</th>
+                        <th>Typ</th>
+                        <th>Max</th>
+                        <th>Unit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Supply Voltage (Vdd)</td>
+                        <td>Full Temp Range</td>
+                        <td>1.62</td>
+                        <td>1.80</td>
+                        <td>1.98</td>
+                        <td>V</td>
+                    </tr>
+                    <tr>
+                        <td>Output Voltage (Vref)</td>
+                        <td>-40°C to 125°C</td>
+                        <td>1.235</td>
+                        <td>1.250</td>
+                        <td>1.265</td>
+                        <td>V</td>
+                    </tr>
+                    <tr>
+                        <td>Estimated Yield</td>
+                        <td>Spec +/- 30mV</td>
+                        <td>99.0</td>
+                        <td>99.8</td>
+                        <td>-</td>
+                        <td>%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>Reliability & SOA Status:</h3>
+            <p>180nm BCD의 고전압 특성을 고려하여 <strong>Safe Operating Area (SOA)</strong> 위반 여부를 Spectre Assertion 기능을 통해 전수 검증하였습니다.</p>
+        </section>
+
+        <section id="visual-results">
+            <h2>4. Simulation Analysis Visualization</h2>
+            <p>분석 스크립트를 통해 생성된 실제 데이터 시각화 결과입니다.</p>
+            <div class="image-placeholder">
+                <div class="image-card">
+                    <h4>Voltage Margin Analysis</h4>
+                    <p>(Temperature vs. Vref across Vdd corners)</p>
+                    <div style="background:#eee; height:200px; display:flex; align-items:center; justify-content:center; color:#999;">[voltage_margin_plot.png]</div>
+                </div>
+                <div class="image-card">
+                    <h4>Monte Carlo Yield Distribution</h4>
+                    <p>(1000 Iterations Statistical Analysis)</p>
+                    <div style="background:#eee; height:200px; display:flex; align-items:center; justify-content:center; color:#999;">[mc_analysis_report.png]</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="roadmap">
+            <h2>5. Future Roadmap: Layout Automation</h2>
+            <p>다음 단계로 <strong>PyCell(Python Layout)</strong>을 도입하여 분석 결과에 따른 소자 크기 자동 보정 시스템(Closed-loop Design) 구축을 계획하고 있습니다.</p>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 ams OSRAM Foundry Design Support Project | Engineering Report v1.0</p>
+            <p>Confidential Engineering Documentation</p>
+        </footer>
+    </div>
+</body>
+</html>
