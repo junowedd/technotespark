@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>180nm BCD Silicon-Proven Case Study</title>
+
+<style>
+body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.7; color: #2c2c2c; max-width: 1100px; margin: auto; padding: 40px; background-color: #f4f6f9; }
+.container { background: white; padding: 60px; border-radius: 14px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); }
+header { border-bottom: 5px solid #003366; margin-bottom: 50px; padding-bottom: 25px; }
+h1 { color: #003366; margin: 0; font-size: 2.6em; }
+.subtitle { font-size: 1.2em; color: #555; margin-top: 12px; }
+section { margin-bottom: 60px; }
+h2 { color: #003366; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; font-size: 1.3em; }
+h3 { color: #222; margin-top: 25px; }
+.tech-box { background: #1e1e1e; color: #f1f1f1; padding: 25px; border-radius: 8px; font-family: Consolas, monospace; margin: 20px 0; }
+ul { margin-left: 20px; }
+.badge { display: inline-block; padding: 6px 14px; border-radius: 20px; background: #003366; color: white; font-size: 0.85em; margin-bottom: 15px; }
+.highlight { color: #003366; font-weight: bold; }
+footer { margin-top: 70px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 0.9em; color: #777; text-align: center; }
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+<div class="badge">Silicon Proven | Automotive Grade | 180nm BCD</div>
+<h1>Closed-Loop Analog IP Automation – Silicon Case Study</h1>
+<p class="subtitle">
+From Simulation Analytics to Golden Sign-Off: 
+Production Deployment in 180nm BCD Platform
+</p>
+</header>
+
+<section>
+<h2>Executive Summary</h2>
+<p>
+This case study presents a <span class="highlight">silicon-proven automation framework</span> 
+implemented for a 180nm BCD analog IP platform.  
+The solution integrates simulation analytics, PyCell-driven layout regeneration, 
+and full golden sign-off verification into a closed-loop production workflow.
+</p>
+</section>
+
+<section>
+<h2>Problem Statement</h2>
+<ul>
+<li>Manual resistor tuning between schematic and layout caused iteration overhead.</li>
+<li>Vref drift under PVT variation required repeated geometry refinement.</li>
+<li>Sign-off verification (DRC/LVS) introduced additional cycle time.</li>
+</ul>
+<p>
+Objective: Establish a <strong>closed-loop automation architecture</strong> 
+capable of reducing design closure time while maintaining automotive-grade reliability.
+</p>
+</section>
+
+<section>
+<h2>Technical Implementation</h2>
+
+<h3>1. Simulation Analytics Engine</h3>
+<ul>
+<li>Spectre-based PVT & Monte Carlo simulation</li>
+<li>Pandas-driven statistical analysis</li>
+<li>Automatic calibration factor extraction from Vref results</li>
+</ul>
+
+<h3>2. Parametric Layout Regeneration (PyCell)</h3>
+
+<div class="tech-box">
+R = Rs × (L / W)
+L_final = (R_target × W) / Rs × Calibration_Factor
+</div>
+
+<p>
+Poly resistor width fixed at 2µm; length dynamically scaled.
+Layout regenerated automatically within Cadence Virtuoso.
+</p>
+
+<h3>3. Verification Integration</h3>
+<ul>
+<li><strong>PVS:</strong> In-design DRC validation</li>
+<li><strong>Calibre:</strong> Golden LVS/DRC sign-off</li>
+<li><strong>IC Validator:</strong> Customer-facing verification flexibility</li>
+</ul>
+
+<div class="tech-box">
+[Spectre Simulation]
+        ↓
+[Python Statistical Analysis]
+        ↓
+[PyCell Layout Update]
+        ↓
+[PVS DRC]
+        ↓
+[Calibre LVS/DRC]
+        ↓
+[GDSII Tape-Out]
+</div>
+
+</section>
+
+<section>
+<h2>Silicon Results</h2>
+
+<ul>
+<li>First-pass silicon success achieved</li>
+<li>Vref within ±15mV across full PVT range</li>
+<li>Estimated production yield &gt; 99.5%</li>
+<li>Full automotive temperature compliance (-40°C to 125°C)</li>
+</ul>
+
+<p>
+Measured silicon data confirmed simulation correlation within statistical tolerance, 
+validating the automation framework in production environment.
+</p>
+
+</section>
+
+<section>
+<h2>Engineering Impact</h2>
+<ul>
+<li>~35% reduction in layout iteration cycles</li>
+<li>Accelerated IP qualification timeline</li>
+<li>Improved cross-team efficiency (Design ↔ Verification)</li>
+<li>Reusable automation framework for future BCD analog IP blocks</li>
+</ul>
+</section>
+
+<footer>
+<p>© 2026 Foundry Engineering | Silicon-Proven Automation Portfolio</p>
+<p>Revision 3.0 – Executive Case Study Edition</p>
+</footer>
+
+</div>
+</body>
+</html>
