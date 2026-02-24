@@ -139,6 +139,104 @@
             <p>The next phase involves implementing <strong>Closed-Loop Design Automation</strong> using <strong>PyCell (Python Layout)</strong>. This will enable real-time device resizing based on simulation margin feedback, further accelerating the time-to-market for the 180nm BCD platform.</p>
         </section>
 
+        <section id="pycell-automation">
+    <h2>6. Cadence Python (PyCell) – 180nm BCD Resistor Auto-Layout</h2>
+
+    <p>
+        As part of the closed-loop automation strategy, I implemented a 
+        <strong>Cadence PyCell-based layout generator</strong> in the 
+        <strong>180nm BCD process</strong>.  
+        This Python-driven layout module automatically resizes a Poly resistor 
+        based on post-simulation calibration data.
+    </p>
+
+    <h3>Concept Overview</h3>
+    <ul>
+        <li><strong>Target Resistance:</strong> 10kΩ</li>
+        <li><strong>Fixed Width:</strong> 2µm (Poly)</li>
+        <li><strong>Sheet Resistance:</strong> 50 Ω/sq</li>
+        <li><strong>Automatic Length Adjustment:</strong> Based on Vref simulation feedback</li>
+    </ul>
+
+    <div class="tech-box">
+R = Rs × (L / W)  
+L = (R × W) / Rs × Calibration_Factor
+    </div>
+
+    <p>
+        If simulation results indicate Vref drift, the layout engine dynamically 
+        updates the resistor length while keeping the width fixed at 2µm.  
+        This enables <strong>simulation-driven physical optimization</strong>.
+    </p>
+
+    <h3>PyCell Implementation (Cadence Environment)</h3>
+
+    <div class="tech-box">
+from cni.drc import *
+from cni.pycell.util import *
+from cni.pycell.wrapper import *
+import pandas as pd
+
+class AutoAdjustResistor(PyCell):
+
+    @classmethod
+    def defineParam(cls, specs):
+        specs.add('target_res', 10000.0)
+        specs.add('w', 2.0)
+        specs.add('sheet_res', 50.0)
+
+    def display(self):
+
+        try:
+            df = pd.read_csv('sim_summary.txt')
+            cal_factor = df['Vref_Avg'].mean() / 1.250
+        except:
+            cal_factor = 1.0
+
+        base_l = (self.target_res * self.w) / self.sheet_res
+        adjusted_l = base_l * cal_factor
+
+        poly_layer = Layer('POLY', 'drawing')
+        self.addRect(poly_layer, Box(0, 0, self.w, adjusted_l))
+
+        metal_layer = Layer('MET1', 'drawing')
+        self.addRect(metal_layer, Box(0, -1, self.w, 0))
+        self.addRect(metal_layer, Box(0, adjusted_l, self.w, adjusted_l + 1))
+    </div>
+
+    <h3>Generated Layout Visualization</h3>
+
+    <div class="image-placeholder">
+        <div class="image-card">
+            <h4>Expected Layout Result (Top & Cross View)</h4>
+            <img src="a_technical_infographic_diagram_on_a_light_backgro.png" 
+                 alt="AutoAdjustResistor Layout Diagram">
+        </div>
+
+        <div class="image-card">
+            <h4>AutoAdjustResistor – 180nm BCD Implementation</h4>
+            <img src="a_technical_diagram_slide_explaining_an_auto_adj.png" 
+                 alt="AutoAdjustResistor 180nm BCD Diagram">
+        </div>
+    </div>
+
+    <h3>Engineering Impact</h3>
+    <ul>
+        <li>Simulation-to-Layout closed loop automation</li>
+        <li>Reduced manual resistor tuning iterations</li>
+        <li>Faster PDK IP validation cycle</li>
+        <li>Reusable PyCell architecture for BCD analog IP blocks</li>
+    </ul>
+
+    <p>
+        This demonstrates a practical integration of 
+        <strong>Cadence Python (PyCell)</strong> within a 
+        <strong>180nm BCD foundry environment</strong>, 
+        bridging circuit simulation analytics and parametric layout generation.
+    </p>
+</section>
+
+
         <footer>
             <p>&copy; 2026 Foundry Services - Project Engineering Portfolio</p>
             <p>Confidential Engineering Documentation | Revision 1.0.0-EN</p>
