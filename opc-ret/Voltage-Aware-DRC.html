@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Voltage Aware DRC – Technical Overview</title>
+
+<style>
+body {
+    font-family: "Times New Roman", serif;
+    margin: 60px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+}
+
+.abstract {
+    font-size: 14px;
+    text-align: justify;
+    margin-bottom: 30px;
+}
+
+.section {
+    margin-top: 40px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.content {
+    column-count: 2;
+    column-gap: 40px;
+    font-size: 14px;
+    text-align: justify;
+}
+
+.figure {
+    break-inside: avoid;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.figure img {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+}
+
+.caption {
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+.formula {
+    text-align: center;
+    font-size: 16px;
+    margin: 10px 0;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Voltage-Aware DRC Analysis</h1>
+
+<div class="abstract">
+<b>Abstract—</b>
+Voltage-aware DRC ensures layout spacing rules are evaluated based on
+voltage differences (ΔV) between power domains. As technology scales and
+multiple supply domains increase, deterministic voltage-aware checking
+becomes essential for reliability and dielectric integrity.
+</div>
+
+<div class="section">I. Increasing Complexity in Multi-Voltage Designs</div>
+
+<div class="content">
+
+Modern dies contain multiple voltage domains. Voltage differences (ΔV)
+between regions introduce spacing challenges and dielectric stress concerns.
+
+<div class="figure">
+    <img src="/technotespark/esd-perc/images/VA-2.png" alt="Figure 1">
+    <div class="caption">
+        Fig. 1. Increasing complexity due to multiple voltage domains.
+    </div>
+</div>
+
+</div>
+
+<div class="section">II. Voltage-Aware Spacing Requirements</div>
+
+<div class="content">
+
+Spacing rules must vary depending on voltage combinations:
+
+5V ↔ 5V  
+3.3V ↔ 3.3V  
+3.3V ↔ 5V  
+
+Greater ΔV requires larger spacing to prevent breakdown.
+
+<div class="figure">
+    <img src="/technotespark/esd-perc/images/VA-3.png" alt="Figure 2">
+    <div class="caption">
+        Fig. 2. Voltage-dependent spacing rules.
+    </div>
+</div>
+
+</div>
+
+<div class="section">III. Limitations of Marker Layer Methodology</div>
+
+<div class="content">
+
+Traditional approaches relied on marker layers to isolate voltage regions.
+However, advanced nodes introduce:
+
+• More voltage domains  
+• Cross-domain routing  
+• Increased rule complexity  
+• Human-error risk  
+
+<div class="figure">
+    <img src="/technotespark/esd-perc/images/VA-5.png" alt="Figure 3">
+    <div class="caption">
+        Fig. 3. Marker layer complexity in advanced nodes.
+    </div>
+</div>
+
+</div>
+
+<div class="section">IV. Text-Based Voltage Annotation</div>
+
+<div class="content">
+
+Voltage annotations enable deterministic checking by assigning
+voltage properties directly to nets.
+
+Advantages:
+• Reduced dependency on CAD marker layers  
+• Improved reliability  
+• Better automation  
+
+<div class="figure">
+    <img src="/technotespark/esd-perc/images/VA-6.png" alt="Figure 4">
+    <div class="caption">
+        Fig. 4. Voltage annotation methodology.
+    </div>
+</div>
+
+</div>
+
+<div class="section">V. Deterministic Voltage-Aware DRC Flow</div>
+
+<div class="content">
+
+Voltage propagation and spacing verification are integrated
+into connectivity-aware checking.
+
+<div class="figure">
+    <img src="/technotespark/esd-perc/images/VA-9.png" alt="Figure 5">
+    <div class="caption">
+        Fig. 5. Voltage-aware DRC flow architecture.
+    </div>
+</div>
+
+</div>
+
+<div class="section">Conclusion</div>
+
+<div class="content">
+
+Voltage-aware DRC provides deterministic, scalable, and
+reliability-driven spacing verification for multi-domain designs.
+As nodes scale and power domains multiply, voltage-based rule
+evaluation becomes mandatory for robust sign-off.
+
+</div>
+
+</body>
+</html>
