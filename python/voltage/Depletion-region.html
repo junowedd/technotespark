@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EDA & Device Physics Portfolio</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; max-width: 1000px; margin: auto; padding: 20px; }
+    .project-highlight { background: #fff; border: 1px solid #e1e4e8; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    h1 { color: #0056b3; text-align: center; }
+    h2 { color: #0056b3; border-bottom: 2px solid #0056b3; padding-bottom: 10px; }
+    
+    .physics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 30px; }
+    .physics-card { background: #f8f9fa; border: 1px solid #ddd; padding: 20px; border-radius: 10px; text-align: center; transition: transform 0.2s; }
+    .physics-card:hover { transform: translateY(-5px); }
+    .physics-card img { width: 100%; height: 200px; object-fit: contain; background: #fff; border-radius: 6px; margin-bottom: 15px; border: 1px solid #eee; }
+    .physics-card h3 { margin-top: 0; font-size: 1.1em; color: #333; }
+    .physics-card p { font-size: 0.9em; color: #666; text-align: left; }
+
+    .btn-group { display: flex; gap: 15px; justify-content: center; margin-top: 30px; }
+    .btn { padding: 12px 25px; border-radius: 6px; text-decoration: none; font-weight: bold; color: white; transition: 0.3s; }
+    .btn-primary { background: #0056b3; }
+    .btn-secondary { background: #28a745; }
+    .btn:hover { opacity: 0.9; }
+  </style>
+</head>
+<body>
+
+<main class="project-highlight">
+  <h1>Featured Project: Low-Cap TVS Design Automation</h1>
+  <p style="text-align: center; color: #555;">Focusing on 180nm BCD Process & Signal Integrity for 10Gbps+ Interfaces</p>
+
+  <div class="physics-grid">
+    <div class="physics-card">
+      <h3>1. Depletion Region Physics</h3>
+      <img src="depletion_physics.png" alt="Depletion Region Mechanism">
+      <p>Under reverse bias, the <b>Depletion Region</b> acts as a voltage-dependent <b>Dielectric</b>. Controlling its width is key to managing junction capacitance ($C_j$).</p>
+    </div>
+
+    <div class="physics-card">
+      <h3>2. Device Cross-section</h3>
+      <img src="tvs_cross_section.png" alt="TVS Cross-section">
+      <p>A monolithic 180nm BCD structure integrating <b>Steering Diodes</b> for low-cap and a <b>Vertical TVS</b> for high-energy surge clamping.</p>
+    </div>
+
+    <div class="physics-card">
+      <h3>3. Eye Diagram Integrity</h3>
+      <img src="eye_diagram_impact.png" alt="Signal Integrity Analysis">
+      <p>Minimizing capacitance to <b>0.1pF</b> is critical. Even slight parasitic increases can "close the eye," leading to fatal data errors in high-speed links.</p>
+    </div>
+
+    <div class="physics-card">
+      <h3>4. Series Equivalent Model</h3>
+      <img src="equivalent_circuit.png" alt="Circuit Strategy">
+      <p>Using a <b>Rail-to-Rail</b> steering topology to place capacitances in series, effectively reducing the total capacitive load on the I/O line.</p>
+    </div>
+  </div>
+
+  <div class="btn-group">
+    <a href="Integrated_Project_Report_EN.html" class="btn btn-primary">View Full Workflow Report</a>
+    <a href="IP_Technical_Datasheet.html" class="btn btn-secondary">View Sample Datasheet</a>
+  </div>
+</main>
+
+</body>
+</html>
