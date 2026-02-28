@@ -1,0 +1,49 @@
+[
+    {
+        "action": "WIDEN_METAL",
+        "target_net": "VDD",
+        "coord": [
+            120.5,
+            450.2
+        ],
+        "params": {
+            "add_width": "0.2um",
+            "layer": "M1"
+        }
+    },
+    {
+        "action": "WIDEN_METAL",
+        "target_net": "VDD",
+        "coord": [
+            500.0,
+            500.0
+        ],
+        "params": {
+            "add_width": "0.2um",
+            "layer": "M1"
+        }
+    },
+    {
+        "action": "ADD_REDUNDANT_VIA",
+        "target_net": "SIGNAL_A",
+        "coord": [
+            150.2,
+            300.5
+        ],
+        "params": {
+            "via_type": "VIA12_DOUBLE"
+        }
+    },
+    {
+        "action": "WIDEN_METAL",
+        "target_net": "VDD",
+        "coord": [
+            600.7,
+            850.1
+        ],
+        "params": {
+            "add_width": "0.2um",
+            "layer": "M1"
+        }
+    }
+]

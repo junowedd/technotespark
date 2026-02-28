@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EDA Design & Process Optimization Report</title>
+    <style>
+        /* CSS styles same as Korean version */
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: auto; padding: 20px; }
+        .section { background: #fff; border: 1px solid #ddd; padding: 25px; border-radius: 10px; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        h1 { color: #0056b3; text-align: center; }
+        h2 { color: #0056b3; border-bottom: 2px solid #0056b3; padding-bottom: 10px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .card { background: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #eee; text-align: center; }
+        .card img { width: 100%; height: auto; border-radius: 5px; margin-bottom: 10px; }
+        .stats { display: flex; justify-content: space-around; background: #eef6ff; padding: 20px; border-radius: 8px; margin-top: 15px; }
+        .stat-item b { font-size: 1.5em; color: #0056b3; }
+        pre { background: #2d2d2d; color: #ccc; padding: 15px; border-radius: 5px; overflow-x: auto; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <h1>Low-Cap TVS Design & DFM Automation Report</h1>
+
+    <section class="section">
+        <h2>1. Device Physics & Signal Integrity</h2>
+        <p>Achieved 0.1pF ultra-low capacitance by optimizing the depletion region for 10Gbps+ interface protection.</p>
+        <div class="grid">
+            <div class="card">
+                <h3>Depletion Physics</h3>
+                
+                <p>Minimized parasitic $C_j$ by controlling the dielectric width of the junction under reverse bias.</p>
+            </div>
+            <div class="card">
+                <h3>Eye Diagram Integrity</h3>
+                
+                <p>Preserved eye-opening for high-speed signals by implementing a series-steering topology.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>2. Automation via Calibre DFM PVR</h2>
+        <p>Automated workflow for detecting and mitigating 1,000+ IR-drop hotspots using Python scripting.</p>
+        <div class="stats">
+            <div class="stat-item">TAT Reduction<br><b>90% (3d → 2h)</b></div>
+            <div class="stat-item">Correction Accuracy<br><b>100% (Zero Error)</b></div>
+            <div class="stat-item">Application<br><b>180nm BCD</b></div>
+        </div>
+        <pre><code># Automated Correction Snippet
+def optimize_pvr(hotspots):
+    for point in hotspots:
+        if point.v_drop > 40:
+            apply_enhancement("METAL_WIDENING")
+        elif point.is_single_via:
+            apply_enhancement("REDUNDANT_VIA")</code></pre>
+    </section>
+</body>
+</html>

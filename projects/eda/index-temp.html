@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>EDA Physical Verification Portfolio</title>
+  <style>
+    body { font-family: 'Segoe UI', 'Malgun Gothic', sans-serif; line-height: 1.6; color: #333; max-width: 1100px; margin: auto; padding: 20px; background: #f4f7f9; }
+    .project-highlight { background: #fff; border: 1px solid #e1e4e8; padding: 30px; border-radius: 12px; margin: 30px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+    h1 { color: #0056b3; text-align: center; }
+    h2 { color: #0056b3; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+    
+    /* 성과 지표 스타일 */
+    .stats-container { display: flex; gap: 15px; margin: 20px 0; }
+    .stat-card { flex: 1; background: #eef6ff; padding: 15px; border-radius: 8px; text-align: center; border: 1px solid #d0e3ff; }
+    .stat-card b { display: block; font-size: 1.8em; color: #0056b3; }
+
+    /* CSS로 그린 기술 도식 (이미지 대체) */
+    .diagram-placeholder { background: #f8f9fa; border: 1px solid #ddd; height: 180px; margin-bottom: 15px; border-radius: 6px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .physics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+    .physics-card { background: #fff; border: 1px solid #eee; padding: 15px; border-radius: 10px; transition: 0.3s; }
+    .physics-card:hover { border-color: #0056b3; }
+
+    /* 버튼 스타일 */
+    .btn-group { display: flex; gap: 10px; margin-top: 15px; }
+    .btn { padding: 10px 18px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 0.9em; }
+    .btn-primary { background: #0056b3; color: white; }
+    .btn-secondary { background: #d73a49; color: white; }
+
+    code-box { display: block; background: #2d2d2d; color: #7fdbca; padding: 15px; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85em; margin-top: 10px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+
+<h1>EDA & Physical Verification Expert Portfolio</h1>
+
+<section class="project-highlight">
+  <h2>🚀 Featured: 180nm BCD Low-Cap TVS & DFM Automation</h2>
+  <p>10Gbps+ 고속 인터페이스 보호를 위한 <b>0.1pF 초저용량 설계</b>와 <b>Python 기반 DFM PVR 자동화</b> 통합 리포트입니다.</p>
+
+  <div class="stats-container">
+    <div class="stat-card"><b>0.1 pF</b><span>Capacitance Target</span></div>
+    <div class="stat-card"><b>90% ↓</b><span>PVR TAT Reduction</span></div>
+    <div class="stat-card"><b>100%</b><span>Correction Accuracy</span></div>
+  </div>
+
+  <div class="physics-grid">
+    <div class="physics-card">
+      <h3>1. Depletion Physics</h3>
+      <div class="diagram-placeholder" style="background: linear-gradient(90deg, #ffcccc 30%, #ffffff 30%, #ffffff 70%, #ccccff 70%);">
+        <span style="font-weight:bold;">[ P-type | Depletion(Dielectric) | N-type ]</span>
+      </div>
+      
+      <p style="font-size:0.85em;">역방향 바이어스를 통한 공립층 폭 제어로 기생 용량을 극소화(0.1pF)하여 SI 성능 확보.</p>
+    </div>
+
+    <div class="physics-card">
+      <h3>2. BCD Cross-section</h3>
+      <div class="diagram-placeholder" style="flex-direction: column;">
+        <div style="width:80%; height:20px; background:#ddd; margin:2px;">M1 (Metal)</div>
+        <div style="width:10%; height:20px; background:#666; margin:2px;">Via</div>
+        <div style="width:80%; height:40px; background:#99ccff; margin:2px;">Steering Diode / TVS</div>
+      </div>
+      
+      <p style="font-size:0.85em;">Steering Diode와 Vertical TV가 통합된 Monolithic 구조로 면적과 성능 최적화.</p>
+    </div>
+
+    <div class="physics-card">
+      <h3>3. Eye Diagram (10Gbps)</h3>
+      <div class="diagram-placeholder">
+        <svg width="150" height="80" viewBox="0 0 150 80">
+          <path d="M10,40 Q75,0 140,40 Q75,80 10,40" fill="none" stroke="#0056b3" stroke-width="3"/>
+          <text x="55" y="45" font-size="12" fill="#0056b3">OPEN EYE</text>
+        </svg>
+      </div>
+      
+      <p style="font-size:0.85em;">초저용량 설계를 통해 고주파 감쇄를 방지하고 신호 개구부(Eye-opening)를 확보.</p>
+    </div>
+
+    <div class="physics-card">
+      <h3>4. DFM PVR Flow</h3>
+      <div class="diagram-placeholder">
+        <span style="font-size:0.9em; text-align:center;">Raw Data → <b>[Python Script]</b> → Fix Commands</span>
+      </div>
+      
+      <p style="font-size:0.85em;">Calibre 분석 데이터를 Python으로 필터링하여 3일의 수동 작업을 2시간으로 단축.</p>
+    </div>
+  </div>
+
+  <div class="btn-group">
+    <a href="Report_KR.html" class="btn btn-primary">국문 상세 리포트 보기</a>
+    <a href="Report_EN.html" class="btn btn-primary">English Report</a>
+    <a href="dfm_pvr_script.py" class="btn btn-secondary" style="background:#6c757d;">Python Script 소스</a>
+  </div>
+</section>
+
+<section class="selected-case-studies">
+  <h2>Contents List</h2>
+  <ul>
+    <li><b>[Featured]</b> 180nm BCD Low-Cap TVS & DFM Automation Study (2026)</li>
+    <li><a href="Master_ERC_Whitepaper_Combined_Code.pdf" target="_blank">Master ERC Whitepaper (PDF)</a></li>
+    <li><a href="PERC_ESD_Topo_Checks_Practice.pdf" target="_blank">PERC ESD TOPO Practice (PDF)</a></li>
+  </ul>
+</section>
+
+<code-box>
+# dfm_pvr_script.py 핵심 로직
+if entry['drop_mv'] > 40:
+    generate_fix("WIDEN_METAL", net=entry['net'])
+elif entry['type'] == "SINGLE_VIA":
+    generate_fix("ADD_REDUNDANT_VIA")
+</code-box>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>EDA 설계 및 공정 최적화 리포트</title>
+    <style>
+        body { font-family: 'Malgun Gothic', sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: auto; padding: 20px; }
+        .section { background: #fff; border: 1px solid #ddd; padding: 25px; border-radius: 10px; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        h1 { color: #0056b3; text-align: center; }
+        h2 { color: #0056b3; border-bottom: 2px solid #0056b3; padding-bottom: 10px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .card { background: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #eee; text-align: center; }
+        .card img { width: 100%; height: auto; border-radius: 5px; margin-bottom: 10px; }
+        .stats { display: flex; justify-content: space-around; background: #eef6ff; padding: 20px; border-radius: 8px; margin-top: 15px; }
+        .stat-item b { font-size: 1.5em; color: #0056b3; }
+        pre { background: #2d2d2d; color: #ccc; padding: 15px; border-radius: 5px; overflow-x: auto; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <h1>Low-Cap TVS 설계 및 DFM 자동화 성과 리포트</h1>
+
+    <section class="section">
+        <h2>1. Low-Cap TVS 소자 물리 및 신호 무결성</h2>
+        <p>10Gbps+ 고속 인터페이스 보호를 위해 공핍층(Depletion Region)의 정전용량을 0.1pF 수준으로 제어한 설계 분석입니다.</p>
+        <div class="grid">
+            <div class="card">
+                <h3>공핍층 물리 구조</h3>
+                
+                <p>역방향 바이어스 시 유전체 역할을 하는 공핍층 폭을 최적화하여 기생 용량을 최소화함.</p>
+            </div>
+            <div class="card">
+                <h3>아이 다이어그램 분석</h3>
+                
+                <p>0.1pF 설계 달성으로 고주파 신호 감쇄를 막고 데이터 전송 품질(SI)을 확보함.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>2. Calibre DFM PVR 자동화 (Python)</h2>
+        <p>수천 개의 IR-drop 핫스팟을 자동으로 탐지하고 보정하는 전용 스크립트 기반의 워크플로우입니다.</p>
+        
+        <div class="stats">
+            <div class="stat-item">작업 시간(TAT)<br><b>90% 단축</b></div>
+            <div class="stat-item">보정 정확도<br><b>100% (Zero Error)</b></div>
+            <div class="stat-item">공정 노드<br><b>180nm BCD</b></div>
+        </div>
+        <pre><code># 핵심 로직 예시
+if entry['drop_mv'] > threshold_mv:
+    generate_fix_cmd("WIDEN_METAL", net=entry['net'])
+elif entry['type'] == "SINGLE_VIA":
+    generate_fix_cmd("ADD_REDUNDANT_VIA")</code></pre>
+    </section>
+</body>
+</html>

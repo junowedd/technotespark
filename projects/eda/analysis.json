@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "coordinate": [
+            120.5,
+            450.2
+        ],
+        "drop_mv": 45,
+        "type": "IR_DROP",
+        "net": "VDD"
+    },
+    {
+        "id": 2,
+        "coordinate": [
+            340.1,
+            120.8
+        ],
+        "drop_mv": 12,
+        "type": "IR_DROP",
+        "net": "VSS"
+    },
+    {
+        "id": 3,
+        "coordinate": [
+            500.0,
+            500.0
+        ],
+        "drop_mv": 85,
+        "type": "IR_DROP",
+        "net": "VDD"
+    },
+    {
+        "id": 4,
+        "coordinate": [
+            150.2,
+            300.5
+        ],
+        "drop_mv": 0,
+        "type": "SINGLE_VIA",
+        "net": "SIGNAL_A"
+    }
+]
