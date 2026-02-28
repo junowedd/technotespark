@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Industrial Tech Note – Calibre DFM PVR Automation</title>
+<style>
+    body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        margin: 50px;
+        background-color: #f4f6f9;
+        color: #2c3e50;
+        line-height: 1.7;
+    }
+    h1, h2, h3 {
+        color: #0b3d91;
+    }
+    .card {
+        background: white;
+        padding: 25px;
+        margin-bottom: 30px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+    }
+    pre {
+        background: #1e1e1e;
+        color: #dcdcdc;
+        padding: 15px;
+        border-radius: 6px;
+        overflow-x: auto;
+    }
+    code {
+        color: #e67e22;
+    }
+    .highlight {
+        background: #e8f1ff;
+        padding: 15px;
+        border-left: 6px solid #0b3d91;
+        margin: 15px 0;
+    }
+    ul {
+        margin-left: 20px;
+    }
+    .diagram {
+        background: #ffffff;
+        padding: 20px;
+        border: 1px solid #dcdcdc;
+        border-radius: 6px;
+        font-family: monospace;
+        white-space: pre;
+    }
+    footer {
+        margin-top: 50px;
+        font-size: 0.85em;
+        color: gray;
+    }
+</style>
+</head>
+<body>
+
+<h1>Calibre DFM PVR Automation Framework</h1>
+<p><strong>Industrial Technical Note – Prototype Stage 1</strong></p>
+
+<div class="card">
+<h2>1. Industry Background</h2>
+<p>
+In advanced semiconductor nodes, power integrity and reliability verification
+are mandatory signoff requirements.
+Calibre DFM / PVR tools detect:
+</p>
+
+<ul>
+<li>IR-drop hotspots</li>
+<li>Power grid weaknesses</li>
+<li>Single via reliability risks</li>
+<li>Potential electromigration concerns</li>
+</ul>
+
+<div class="highlight">
+Detection alone is not sufficient.  
+Large SoC designs generate thousands of violations.  
+Manual review and fixing are inefficient and non-scalable.
+</div>
+</div>
+
+<div class="card">
+<h2>2. Real Calibre Signoff Flow</h2>
+
+<div class="diagram">
+Layout (GDS / OA)
+        ↓
+Calibre DRC / PEX / PERC
+        ↓
+PVR / Power Analysis
+        ↓
+RDB / SVDB Output
+        ↓
+RVE Review
+        ↓
+Manual Layout Fix
+        ↓
+Re-run Verification
+</div>
+
+<p>
+The bottleneck exists between <strong>RDB output and Layout Fix</strong>.
+This automation addresses that gap.
+</p>
+</div>
+
+<div class="card">
+<h2>3. Automation Architecture</h2>
+
+<div class="diagram">
+Input (JSON / Converted RDB)
+        ↓
+Data Validation
+        ↓
+Rule Engine
+        ↓
+Fix Plan Generation
+        ↓
+Export:
+    - JSON Report
+    - TCL Script
+</div>
+
+<p>
+This mirrors industrial automation structure:
+</p>
+
+<ul>
+<li>Data Ingestion</li>
+<li>Rule Evaluation</li>
+<li>Corrective Recommendation</li>
+<li>EDA Tool Integration</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>4. Python Automation Core (Key Concept)</h2>
+
+<p>The script performs:</p>
+
+<ul>
+<li>Threshold-based IR-drop filtering</li>
+<li>Single-via reliability detection</li>
+<li>Fix action generation</li>
+<li>Export to JSON and TCL</li>
+</ul>
+
+<h3>Example Input (analysis.json)</h3>
+
+<pre>
+[
+  {
+    "id": 1,
+    "coordinate": [120.5, 450.2],
+    "drop_mv": 45,
+    "type": "IR_DROP",
+    "net": "VDD"
+  },
+  {
+    "id": 4,
+    "coordinate": [150.2, 300.5],
+    "drop_mv": 0,
+    "type": "SINGLE_VIA",
+    "net": "SIGNAL_A"
+  }
+]
+</pre>
+
+<h3>Core Logic Concept</h3>
+
+<pre>
+if entry["type"] == "IR_DROP" and entry["drop_mv"] > threshold:
+    → Generate WIDEN_METAL action
+
+if entry["type"] == "SINGLE_VIA":
+    → Generate ADD_REDUNDANT_VIA action
+</pre>
+
+<h3>Example Output (dfm_pvr_fix_report.json)</h3>
+
+<pre>
+[
+  {
+    "action": "WIDEN_METAL",
+    "target_net": "VDD",
+    "coord": [120.5, 450.2]
+  },
+  {
+    "action": "ADD_REDUNDANT_VIA",
+    "target_net": "SIGNAL_A",
+    "coord": [150.2, 300.5]
+  }
+]
+</pre>
+
+<h3>Generated TCL Script Example</h3>
+
+<pre>
+# IR drop 45mV > 40mV
+db_enhance_metal -net VDD -coord 120.5 450.2 -add_width 0.2
+
+# IR drop 85mV > 40mV
+db_enhance_metal -net VDD -coord 500.0 500.0 -add_width 0.2
+
+# Single Via Reliability
+db_insert_via -net SIGNAL_A -coord 150.2 300.5 -type DOUBLE
+</pre>
+
+<div class="highlight">
+This transforms analysis output into actionable layout correction commands.
+</div>
+</div>
+
+<div class="card">
+<h2>5. Industrial Value</h2>
+
+<h3>✔ Scalable Fix Planning</h3>
+<p>Reduces manual review workload in large SoC environments.</p>
+
+<h3>✔ Structured & Extendable</h3>
+<p>Future rules can include EM, density, CMP, or advanced power grid optimization.</p>
+
+<h3>✔ Interview & Portfolio Value</h3>
+<ul>
+<li>Demonstrates understanding of Calibre flow</li>
+<li>Shows automation mindset</li>
+<li>Bridges verification and layout correction</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>6. Future Realistic Enhancements</h2>
+
+<ul>
+<li>ASCII RDB parsing</li>
+<li>Calibre batch execution integration</li>
+<li>Closed-loop re-verification</li>
+<li>OpenAccess direct layout modification</li>
+<li>Multi-rule configuration file support</li>
+</ul>
+
+<div class="highlight">
+Current version is a structured prototype.
+It models industrial DFM automation logic
+while remaining tool-agnostic.
+</div>
+</div>
+
+<footer>
+Industrial EDA Automation Note<br>
+Calibre DFM PVR – Prototype Stage 1<br>
+Author: EDA Automation Study
+</footer>
+
+</body>
+</html>
