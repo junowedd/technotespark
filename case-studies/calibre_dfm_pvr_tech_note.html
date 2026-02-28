@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calibre DFM PVR Automation Tech Note</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #1a3c6e;
+        }
+        code {
+            background-color: #eaeaea;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .highlight {
+            background-color: #eef5ff;
+            padding: 15px;
+            border-left: 5px solid #1a3c6e;
+        }
+        ul {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Calibre DFM PVR Automation – Technical Note</h1>
+
+<div class="section">
+<h2>1. Background</h2>
+<p>
+In advanced semiconductor design, Power Integrity verification has become
+a critical signoff requirement. As geometries shrink and current densities increase,
+IR-drop and via reliability issues directly impact yield, performance, and long-term reliability.
+</p>
+
+<p>
+Calibre DFM / PVR (Power Verification and Reliability) tools detect:
+</p>
+
+<ul>
+    <li>IR-drop hotspots</li>
+    <li>Single via reliability risks</li>
+    <li>Power grid weaknesses</li>
+    <li>Potential EM-related concerns</li>
+</ul>
+
+<p>
+However, detection alone is insufficient. Large designs generate thousands of violations.
+Manual fixing is inefficient, error-prone, and not scalable.
+</p>
+</div>
+
+<div class="section">
+<h2>2. Why This Automation Was Needed</h2>
+
+<div class="highlight">
+The purpose of this Python-based DFM PVR Enhancer is to bridge the gap between
+analysis output and actionable layout correction.
+</div>
+
+<p>
+Typical industry flow:
+</p>
+
+<pre>
+Calibre Analysis
+      ↓
+RDB / Report Output
+      ↓
+Manual Review
+      ↓
+Layout Fix
+      ↓
+Re-Verification
+</pre>
+
+<p>
+This manual loop slows down design closure.
+The automation prototype converts analysis data into structured correction plans.
+</p>
+</div>
+
+<div class="section">
+<h2>3. What the Script Does</h2>
+
+<p>The integrated automation performs:</p>
+
+<ul>
+    <li>JSON-based hotspot ingestion</li>
+    <li>Rule-based filtering (IR-drop threshold detection)</li>
+    <li>Single-via reliability detection</li>
+    <li>Fix plan generation (Metal widening / Redundant via insertion)</li>
+    <li>JSON report export</li>
+    <li>TCL command generation (EDA tool integration ready)</li>
+</ul>
+
+<p>
+Pipeline structure:
+</p>
+
+<pre>
+Input (JSON)
+    ↓
+Validation
+    ↓
+Rule Engine
+    ↓
+Fix Plan Generation
+    ↓
+Export (JSON / TCL)
+</pre>
+</div>
+
+<div class="section">
+<h2>4. Why This Approach Is Valuable</h2>
+
+<h3>✔ Structured Automation</h3>
+<p>
+Instead of ad-hoc scripting, the class-based architecture allows modular extension.
+Future additions (EM checks, density rules, CMP analysis) can be integrated cleanly.
+</p>
+
+<h3>✔ Scalable to Large Designs</h3>
+<p>
+Filtering and threshold-based logic reduces manual inspection workload.
+</p>
+
+<h3>✔ Industry-Oriented Architecture</h3>
+<p>
+The structure mirrors real semiconductor signoff flows:
+</p>
+
+<pre>
+Data Ingestion
+    ↓
+Validation
+    ↓
+Rule Evaluation
+    ↓
+Fix Recommendation
+    ↓
+Automation Script Export
+</pre>
+
+<h3>✔ Portfolio & Interview Value</h3>
+<p>
+This demonstrates:
+</p>
+
+<ul>
+    <li>Understanding of Calibre DFM / PVR flow</li>
+    <li>Knowledge of layout reliability challenges</li>
+    <li>Automation-oriented thinking</li>
+    <li>EDA integration mindset</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>5. Limitations & Future Extensions</h2>
+
+<p>Current stage (Prototype Level):</p>
+<ul>
+    <li>JSON-based input (mock or converted RDB)</li>
+    <li>Single-pass analysis</li>
+</ul>
+
+<p>Future realistic enhancements:</p>
+<ul>
+    <li>ASCII RDB parsing</li>
+    <li>Calibre batch integration</li>
+    <li>Closed-loop re-verification</li>
+    <li>OpenAccess layout modification API</li>
+    <li>Multi-rule configuration support</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>6. Conclusion</h2>
+
+<div class="highlight">
+This project represents an early-stage DFM automation framework
+bridging analysis results and corrective layout actions.
+</div>
+
+<p>
+It transforms verification output into structured, repeatable, and scalable
+design enhancement steps — aligning with modern semiconductor signoff methodology.
+</p>
+
+<p>
+Rather than being a simple script, it serves as a conceptual prototype
+for a Calibre-integrated DFM automation pipeline.
+</p>
+</div>
+
+<hr>
+<p><small>Author: EDA Automation Development Note<br>
+Version: Prototype Stage 1 – JSON-based Flow</small></p>
+
+</body>
+</html>
