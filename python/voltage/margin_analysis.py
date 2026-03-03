@@ -48,10 +48,12 @@ plt.ylabel('Reference Voltage (Vref) [V]', fontsize=12)
 plt.legend(title='Temperature [℃]', bbox_to_anchor=(1.05, 1), loc='upper left')
 plt.tight_layout()
 
+
 # 그래프 저장 및 출력
 plt.savefig('voltage_margin_plot.png', dpi=300)
 print("그래프가 'voltage_margin_plot.png'로 저장되었습니다.")
-plt.show()
+
+plt.savefig("margin_plot.png", dpi=300)
 
 # 4. 분석 요약 통계 출력
 summary = df.groupby('Temp')['Vref_Avg'].agg(['min', 'max', 'mean'])
